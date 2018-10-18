@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerController : PhysicsObject {
 
     private int playerId;
@@ -15,7 +17,6 @@ public class PlayerController : PhysicsObject {
         animator = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         /*
         if (Input.GetKeyDown(controlSet["Up"]))
@@ -47,15 +48,37 @@ public class PlayerController : PhysicsObject {
         {
             Jump();
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+
+        if (Input.GetKey(KeyCode.RightArrow))
         {
+            CheckRotate(true);
             velocity.x = 5f;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            velocity.x = -5f;
+            CheckRotate(false);
+            velocity.x = 5f;
+        }
+        else
+        {
+            velocity.x = 0f;
         }
 
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        animator.SetFloat("Speed", velocity.x);
+    }
+
+    private void CheckRotate(bool Facing)
+    {
+        if(Facing ^ isFacingRight)
+        {
+            isFacingRight = Facing;
+            transform.Rotate(Vector3.up * 180);
+        }
     }
 
     private void ResetAllAnimatorTrigger()
