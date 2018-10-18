@@ -15,9 +15,10 @@ public class CharacterFactory
         CharacterNameList.Add("UnityChan");
         CharacterNameList.Add("CatFighter");
         CharacterNameList.Add("Toko");
+        LoadAllCharacterPrefabs();
+
         StartPosition[0] = new Vector3(-1.2f, 0);
         StartPosition[1] = new Vector3(1.2f, 0);
-        LoadAllCharacterPrefabs();
     }
 
     private void LoadAllCharacterPrefabs()

@@ -32,7 +32,7 @@ public class GameManager
     {
         playerControlSets = new Dictionary<string, KeyCode>[2];
         playerCharacterPicks = new string[2];
-        playerCharacterPicks[1] = "Toko";
+        //playerCharacterPicks[1] = "Toko";
         characterFactory = new CharacterFactory();
     }
 

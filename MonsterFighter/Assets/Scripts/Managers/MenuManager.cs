@@ -8,25 +8,25 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour {
 
-    private Dictionary<string, KeyCode>[] PlayerControlSets = new Dictionary<string, KeyCode>[2];
+    private Dictionary<string, KeyCode>[] playerControlSets = new Dictionary<string, KeyCode>[2];
 
     private Button currentButton;
     private string buttonTextTemp;
-    private string[] ControlType = new string[] { "Up", "Down", "Right", "Left", "Attack1", "Attack2" };
+    private string[] controlType = new string[] { "Up", "Down", "Right", "Left", "AtkL", "AtkH" };
     private string[] defaultControlKeyCode = new string[] { "UpArrow", "DownArrow", "RightArrow", "LeftArrow", "Comma", "Period" };
 
     void Awake ()
     {
         for(int i = 0; i < 2; i++)
         {
-            PlayerControlSets[i] = new Dictionary<string, KeyCode>();
-            for (int j = 0; j < ControlType.Length; j++)
+            playerControlSets[i] = new Dictionary<string, KeyCode>();
+            for (int j = 0; j < controlType.Length; j++)
             {
-                string keycode = PlayerPrefs.GetString(i.ToString() + "_" + ControlType[j], defaultControlKeyCode[j]);
-                PlayerControlSets[i].Add(ControlType[j], (KeyCode)Enum.Parse(typeof(KeyCode), keycode));
+                string defaultKeyCode = PlayerPrefs.GetString(i.ToString() + "_" + controlType[j], defaultControlKeyCode[j]);
+                playerControlSets[i].Add(controlType[j], (KeyCode)Enum.Parse(typeof(KeyCode), defaultKeyCode));
             }
         }
-        GameManager.Instance.playerControlSets = PlayerControlSets;
+        GameManager.Instance.playerControlSets = playerControlSets;
     }
 
     void OnGUI()
@@ -38,10 +38,9 @@ public class MenuManager : MonoBehaviour {
             {
                 int playerNumber = Int32.Parse(currentButton.name.Split(new char[] { '_' })[0]);
                 string controlType = currentButton.name.Split(new char[] { '_' })[1];
-                if (e.keyCode != KeyCode.None && (PlayerControlSets[playerNumber][controlType] == e.keyCode || !PlayerControlSets[playerNumber].ContainsValue(e.keyCode)))
+                if (e.keyCode != KeyCode.None && (playerControlSets[playerNumber][controlType] == e.keyCode || !playerControlSets[playerNumber].ContainsValue(e.keyCode)))
                 {
-                    //Debug.Log(playerNumber.ToString() + ":" + controlType + ":" + e.keyCode.ToString());
-                    PlayerControlSets[playerNumber][controlType] = e.keyCode;
+                    playerControlSets[playerNumber][controlType] = e.keyCode;
                     GetButtonText(currentButton).text = e.keyCode.ToString();
                     GetButtonText(currentButton).fontStyle = FontStyles.Bold;
                     currentButton = null;
@@ -68,13 +67,13 @@ public class MenuManager : MonoBehaviour {
     {
         for (int i = 0; i < 2; i++)
         {
-            for (int j = 0; j < ControlType.Length; j++)
+            for (int j = 0; j < controlType.Length; j++)
             {
-                PlayerPrefs.SetString(i.ToString() + "_" + ControlType[j], PlayerControlSets[i][ControlType[j]].ToString());
+                PlayerPrefs.SetString(i.ToString() + "_" + controlType[j], playerControlSets[i][controlType[j]].ToString());
             }
         }
         PlayerPrefs.Save();
-        GameManager.Instance.playerControlSets = PlayerControlSets;
+        GameManager.Instance.playerControlSets = playerControlSets;
         GameObject.Find("ControlSettingPanel").SetActive(false);
     }
 
@@ -89,7 +88,7 @@ public class MenuManager : MonoBehaviour {
 
             int playerNumber = Int32.Parse(B.name.Split(new char[] { '_' })[0]);
             string controlType = B.name.Split(new char[] { '_' })[1];
-            GetButtonText(B).text = PlayerControlSets[playerNumber][controlType].ToString();
+            GetButtonText(B).text = playerControlSets[playerNumber][controlType].ToString();
         }
     }
 

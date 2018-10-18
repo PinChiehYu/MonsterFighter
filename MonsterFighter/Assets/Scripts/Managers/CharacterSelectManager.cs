@@ -7,7 +7,11 @@ using UnityEngine.SceneManagement;
 public class CharacterSelectManager : MonoBehaviour {
 
 	// Use this for initialization
+    void Awake ()
+    {
 
+    }
+    
 	void Start () {
 		
 	}
