@@ -19,9 +19,9 @@ public class PhysicsObject : MonoBehaviour {
     protected bool isGrounded;
     protected Vector2 gravity;
     protected Vector2 velocity;
-    protected bool isFacingRight;
+    protected bool isFaceRight;
 
-    private float jumpVelocity;
+    protected float jumpVelocity;
 
     private BoxCollider2D bodyCollider;
 
@@ -31,9 +31,7 @@ public class PhysicsObject : MonoBehaviour {
 
         gravity = Vector2.down * (2 * jumpHeight) / Mathf.Pow(jumpTimeToTop, 2);
         jumpVelocity = Mathf.Abs(gravity.magnitude) * jumpTimeToTop;
-        isFacingRight = true;
-
-        velocity = new Vector2(0f, 0f);
+        isFaceRight = true;
     }
 
     void FixedUpdate()
@@ -42,6 +40,7 @@ public class PhysicsObject : MonoBehaviour {
         Vector2 deltaPosition = velocity * Time.fixedDeltaTime;
 
         Move(deltaPosition);
+        velocity.x = 0f;
     }
 
     private void Move(Vector2 movement)
@@ -50,32 +49,27 @@ public class PhysicsObject : MonoBehaviour {
 
         if (movement.y < 0f)
         {
-            HorizontalMovementAdapt(ref movement);
             VerticalMovementAdapt(ref movement);
         }
 
         if (isGrounded)
         {
+            HorizontalMovementAdapt(ref movement);
             velocity.y = 0f;
         }
 
         transform.Translate(movement);
     }
 
-    void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 100, 50), velocity.ToString());
-    }
-
     private void HorizontalMovementAdapt(ref Vector2 movement)
     {
         Bounds colliderBounds = bodyCollider.bounds;
-        float anchorX = isFacingRight ? (colliderBounds.max.x - shellWidth) : (colliderBounds.min.x + shellWidth);
+        float anchorX = isFaceRight ? (colliderBounds.max.x - shellWidth) : (colliderBounds.min.x + shellWidth);
         float bottomY = colliderBounds.min.y + shellWidth;
         float spaceLenght = 2f * (colliderBounds.extents.y - shellWidth) / (rayCount - 1);
 
         float raycastLength = movement.x + shellWidth;
-        Vector2 raycastDirection = isFacingRight ? Vector2.right : Vector2.left;
+        Vector2 raycastDirection = isFaceRight ? Vector2.right : Vector2.left;
         Vector2 raycastPoint = new Vector2(anchorX, bottomY - spaceLenght);
 
         for (int i = 0; i < rayCount; i++)
@@ -84,7 +78,6 @@ public class PhysicsObject : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(raycastPoint, raycastDirection, raycastLength, collisionLayerMask);
             if (hit)
             {
-                //Debug.DrawRay(raycastPoint, raycastDirection, Color.red, raycastLength);
                 movement.x = hit.distance - shellWidth;
             }
         }
@@ -107,15 +100,9 @@ public class PhysicsObject : MonoBehaviour {
             if (hit)
             {
                 isGrounded = true;
-                //Debug.DrawRay(raycastPoint, Vector2.down, Color.red, raycastLength);
                 movement.y = -(hit.distance - shellWidth);
             }
         }
     }
 
-    protected void Jump()
-    {
-        isGrounded = false;
-        velocity.y = jumpVelocity;
-    }
 }

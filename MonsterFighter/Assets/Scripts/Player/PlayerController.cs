@@ -3,97 +3,168 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer), typeof(Animator), typeof(PlayerInfo))]
 public class PlayerController : PhysicsObject {
 
-    private int playerId;
+    [SerializeField]
+    private ActionList actionList;
+
+    private PlayerInfo playerInfo;
+    private Animator animator;
+
+    private Vector2 initPosition;
     private Dictionary<string, KeyCode> controlSet;
     private Queue<string> inputBuffer = new Queue<string>();
 
-    private Animator animator;
+
+    private AtkTrigger atkTrigger;
     
 	public override void Awake () {
         base.Awake();
+        /////////for Sene Test///////
+        string[] controlType = new string[] { "Up", "Down", "Right", "Left", "AtkL", "AtkH" };
+        string[] defaultControlKeyCode = new string[] { "UpArrow", "DownArrow", "RightArrow", "LeftArrow", "Comma", "Period" };
+        controlSet = new Dictionary<string, KeyCode>();
+        for (int j = 0; j < controlType.Length; j++)
+        {
+            string defaultKeyCode = PlayerPrefs.GetString("0_" + controlType[j], defaultControlKeyCode[j]);
+            controlSet.Add(controlType[j], (KeyCode)Enum.Parse(typeof(KeyCode), defaultKeyCode));
+        }
+        /////////for Sene Test///////
+        playerInfo = GetComponent<PlayerInfo>();
         animator = GetComponent<Animator>();
 	}
-	
-	void Update () {
-        /*
-        if (Input.GetKeyDown(controlSet["Up"]))
+
+    void Update () {
+        HandleMovementOperation();
+        HandleCombatOperation();
+        UpdateAnimator();
+    }
+
+    private void HandleMovementOperation()
+    {
+        if (playerInfo.actionState == ActionState.Action)
         {
-            animator.SetTrigger("Up");
+            return;
         }
-        else if (Input.GetKeyDown(controlSet["Down"]))
+
+        if (Input.GetKey(controlSet["Right"]))
         {
-            animator.SetTrigger("Down");
+            CheckFaceRight(true);
+            velocity.x = 5f;
         }
-        else if (Input.GetKeyDown(controlSet["Right"]))
+        else if (Input.GetKey(controlSet["Left"]))
         {
-            animator.SetTrigger("Right");
+            CheckFaceRight(false);
+            velocity.x = 5f;
         }
-        else if (Input.GetKeyDown(controlSet["Left"]))
-        {
-            animator.SetTrigger("Left");
-        }
-        else if (Input.GetKeyDown(controlSet["Atk_L"]))
-        {
-            animator.SetTrigger("Atk_L");
-        }
-        else if (Input.GetKeyDown(controlSet["Atk_H"]))
-        {
-            animator.SetTrigger("Atk_H");
-        }
-        */
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+
+        if (Input.GetKeyDown(controlSet["Up"]) && isGrounded)
         {
             Jump();
         }
+        else if (Input.GetKey(controlSet["Down"]) && !isGrounded)
+        {
+            Fall();
+        }
+    }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+    private void HandleCombatOperation()
+    {
+        if (playerInfo.actionState == ActionState.Normal)
         {
-            CheckRotate(true);
-            velocity.x = 5f;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            CheckRotate(false);
-            velocity.x = 5f;
-        }
-        else
-        {
-            velocity.x = 0f;
+            animator.ResetTrigger("AtkL");
+            animator.ResetTrigger("AtkH");
+            atkTrigger = AtkTrigger.None;
         }
 
-        UpdateAnimator();
+        if (Input.GetKeyDown(controlSet["AtkH"]))
+        {
+            atkTrigger = AtkTrigger.AtkH;
+        }
+        else if (Input.GetKeyDown(controlSet["AtkL"]))
+        {
+            atkTrigger = AtkTrigger.AtkL;
+        }
+
+        if (playerInfo.actionState == ActionState.Normal || playerInfo.combatState == CombatState.Transition)
+        {
+            string trigger = Enum.GetName(typeof(AtkTrigger), atkTrigger);
+            if (trigger != "None")
+            {
+                animator.SetTrigger(trigger);
+                atkTrigger = AtkTrigger.None;
+            }
+        }
     }
 
     private void UpdateAnimator()
     {
-        animator.SetFloat("Speed", velocity.x);
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("SpeedX", velocity.x);
+        animator.SetFloat("SpeedY", velocity.y);
     }
 
-    private void CheckRotate(bool Facing)
+    public void SetupController(Dictionary<string, KeyCode> controlset, Vector2 initposition)
     {
-        if(Facing ^ isFacingRight)
+        controlSet = controlset;
+        initPosition = initposition;
+        GetComponentInChildren<AttackboxDetector>().id = playerInfo.id;
+    }
+
+    public void InitController()
+    {
+        transform.position = initPosition;
+        velocity = Vector2.zero;
+        isGrounded = false;
+        CheckFaceRight(playerInfo.id == 0);
+        animator.Rebind();
+    }
+
+    private void CheckFaceRight(bool newFacing)
+    {
+        if (newFacing ^ isFaceRight)
         {
-            isFacingRight = Facing;
+            isFaceRight = newFacing;
             transform.Rotate(Vector3.up * 180);
         }
     }
 
-    private void ResetAllAnimatorTrigger()
+    void OnGUI()
     {
-        //animator.
+        GUI.Label(new Rect(0, 0, 100, 50), Enum.GetName(typeof(CombatState), playerInfo.combatState));
     }
 
-    public void SetPlayerId(int id)
+    private void Jump()
     {
-        playerId = id;
-        if (playerId == 1) transform.rotation *= Quaternion.Euler(0, 180, 0);
+        isGrounded = false;
+        velocity.y = jumpVelocity;
     }
 
-    public void SetControlSet(Dictionary<string, KeyCode> controlset)
+    private void Fall()
     {
-        controlSet = controlset;
+        if (velocity.y > 0f)
+        {
+            velocity.y = 0f;
+        }
+    }
+
+    public void Damaged(float enemyXPosition)
+    {
+        CheckFaceRight(enemyXPosition > transform.position.x);
+        velocity.x = -10f;
+        animator.SetTrigger("Damaged");
+    }
+
+    public void Fallout()
+    {
+        transform.position = new Vector2(-4f, -1f);
+        velocity.x = 0f;
+        animator.SetTrigger("Damaged");
+    }
+
+    private float GetCurrentFrame()
+    {
+        return (animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f);
     }
 }

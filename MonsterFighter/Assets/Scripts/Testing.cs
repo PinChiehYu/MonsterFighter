@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Testing : MonoBehaviour {
-
-    // Use this for initialization
-    private Animator animator;
-	void Start () {
-        animator = GetComponent<Animator>();
+public class Testing : PlayerController
+{
+    void Update()
+    {
+        UpdateAnimator();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetTrigger("Damaged");
-        }
-	}
+
+    private void UpdateAnimator()
+    {
+        GetComponent<Animator>().SetBool("IsGrounded", isGrounded);
+        GetComponent<Animator>().SetFloat("SpeedX", velocity.x);
+        GetComponent<Animator>().SetFloat("SpeedY", velocity.y);
+    }
 }

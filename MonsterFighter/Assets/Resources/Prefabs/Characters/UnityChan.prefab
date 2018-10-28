@@ -100,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 1729444783680884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 4936470603352972}
   - {fileID: 4393302958124376}
@@ -283,6 +283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpHeight: 0
+  jumpTimeToTop: 0
+  shellWidth: 0
+  rayCount: 0
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  actionList: {fileID: 0}
 --- !u!212 &212552378905531138
 SpriteRenderer:
   m_ObjectHideFlags: 1

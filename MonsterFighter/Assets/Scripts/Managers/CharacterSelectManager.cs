@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelectManager : MonoBehaviour {
 
+    private List<string> characterList;
+
 	// Use this for initialization
     void Awake ()
     {
-
+        characterList = new List<string>();
+        characterList.Add("Coco");
+        GameManager.Instance.playerCharacterPicks[0] = "Coco";
+        GameManager.Instance.playerCharacterPicks[1] = "Coco";
     }
     
 	void Start () {
@@ -21,9 +26,13 @@ public class CharacterSelectManager : MonoBehaviour {
 		
 	}
 
-    public void SelectCharacter(Button button)
+    public void SelectCharacter(string charName)
     {
-        GameManager.Instance.playerCharacterPicks[0] = button.name;
+        GameManager.Instance.playerCharacterPicks[1] = charName;
+    }
+
+    public void StartBattle()
+    {
         SceneManager.LoadScene("Battle");
     }
 }
