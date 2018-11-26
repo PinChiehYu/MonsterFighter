@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(Animator), typeof(PlayerInfo))]
-public class PlayerController : PhysicsObject {
+[RequireComponent(typeof(Animator), typeof(PlayerInfo), typeof(PhysicsObject))]
+public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private ActionList actionList;
 
     private PlayerInfo playerInfo;
+    private PhysicsObject physics;
     private Animator animator;
 
     private Vector2 initPosition;
@@ -19,8 +20,7 @@ public class PlayerController : PhysicsObject {
 
     private AtkTrigger atkTrigger;
     
-	public override void Awake () {
-        base.Awake();
+	public void Awake () {
         /////////for Sene Test///////
         string[] controlType = new string[] { "Up", "Down", "Right", "Left", "AtkL", "AtkH" };
         string[] defaultControlKeyCode = new string[] { "UpArrow", "DownArrow", "RightArrow", "LeftArrow", "Comma", "Period" };
@@ -32,6 +32,7 @@ public class PlayerController : PhysicsObject {
         }
         /////////for Sene Test///////
         playerInfo = GetComponent<PlayerInfo>();
+        physics = GetComponent<PhysicsObject>();
         animator = GetComponent<Animator>();
 	}
 
@@ -50,22 +51,26 @@ public class PlayerController : PhysicsObject {
 
         if (Input.GetKey(controlSet["Right"]))
         {
-            CheckFaceRight(true);
-            velocity.x = 5f;
+            physics.IsFaceRight = true;
+            physics.Forward(5f);
         }
         else if (Input.GetKey(controlSet["Left"]))
         {
-            CheckFaceRight(false);
-            velocity.x = 5f;
+            physics.IsFaceRight = false;
+            physics.Forward(5f);
+        }
+        else if (physics.IsGrounded)
+        {
+            physics.Forward(0f);
         }
 
-        if (Input.GetKeyDown(controlSet["Up"]) && isGrounded)
+        if (Input.GetKeyDown(controlSet["Up"]) && physics.IsGrounded)
         {
-            Jump();
+            physics.Jump();
         }
-        else if (Input.GetKey(controlSet["Down"]) && !isGrounded)
+        else if (Input.GetKey(controlSet["Down"]) && physics.IsGrounded)
         {
-            Fall();
+            
         }
     }
 
@@ -100,9 +105,9 @@ public class PlayerController : PhysicsObject {
 
     private void UpdateAnimator()
     {
-        animator.SetBool("IsGrounded", isGrounded);
-        animator.SetFloat("SpeedX", velocity.x);
-        animator.SetFloat("SpeedY", velocity.y);
+        animator.SetBool("IsGrounded", physics.IsGrounded);
+        animator.SetFloat("SpeedX", physics.Velocity.x);
+        animator.SetFloat("SpeedY", physics.Velocity.y);
     }
 
     public void SetupController(Dictionary<string, KeyCode> controlset, Vector2 initposition)
@@ -115,19 +120,8 @@ public class PlayerController : PhysicsObject {
     public void InitController()
     {
         transform.position = initPosition;
-        velocity = Vector2.zero;
-        isGrounded = false;
-        CheckFaceRight(playerInfo.id == 0);
+        physics.IsFaceRight = playerInfo.id == 0;
         animator.Rebind();
-    }
-
-    private void CheckFaceRight(bool newFacing)
-    {
-        if (newFacing ^ isFaceRight)
-        {
-            isFaceRight = newFacing;
-            transform.Rotate(Vector3.up * 180);
-        }
     }
 
     void OnGUI()
@@ -135,31 +129,17 @@ public class PlayerController : PhysicsObject {
         GUI.Label(new Rect(0, 0, 100, 50), Enum.GetName(typeof(CombatState), playerInfo.combatState));
     }
 
-    private void Jump()
-    {
-        isGrounded = false;
-        velocity.y = jumpVelocity;
-    }
-
-    private void Fall()
-    {
-        if (velocity.y > 0f)
-        {
-            velocity.y = 0f;
-        }
-    }
-
     public void Damaged(float enemyXPosition)
     {
-        CheckFaceRight(enemyXPosition > transform.position.x);
-        velocity.x = -10f;
+        physics.IsFaceRight = enemyXPosition > transform.position.x;
+        physics.Forward(-10f);
         animator.SetTrigger("Damaged");
     }
 
     public void Fallout()
     {
         transform.position = new Vector2(-4f, -1f);
-        velocity.x = 0f;
+        physics.Forward(0f);
         animator.SetTrigger("Damaged");
     }
 

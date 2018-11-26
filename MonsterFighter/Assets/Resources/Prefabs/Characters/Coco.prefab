@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 212736711791876240}
   - component: {fileID: 95165752435626244}
   - component: {fileID: 61481233018508216}
+  - component: {fileID: 114869219597991760}
   - component: {fileID: 114676264951651948}
   - component: {fileID: 114880446908022838}
   - component: {fileID: 114336704615439168}
@@ -257,7 +258,25 @@ MonoBehaviour:
   baseHealthPoint: 100
   baseManaPoint: 100
   baseEnergyPoint: 100
-  currentHealthPoint: 0
+  CurrentEnergyPoint: 0
+--- !u!114 &114869219597991760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490460272704856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa96eff78a5d0f54eb8c95019085f478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 10
+  jumpTimeToTop: 3
+  shellWidth: 0.5
+  rayCount: 10
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &114880446908022838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,13 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 4
-  jumpTimeToTop: 0.5
-  shellWidth: 0.01
-  rayCount: 10
-  collisionLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
   actionList: {fileID: 0}
 --- !u!212 &212736711791876240
 SpriteRenderer:

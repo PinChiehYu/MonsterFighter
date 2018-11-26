@@ -4,9 +4,8 @@ using UnityEngine;
 
 [System.Serializable]
 public class ActionInfo {
-    public int id;
-    public ActionType actionType;
     public float triggerFrame;
-    public int actionValue;
-    public float startNextInputTime;
+    public bool useDefaultGravity;
+    public Vector2 initVelocity;
+    public Vector2 initAcceleration;
 }

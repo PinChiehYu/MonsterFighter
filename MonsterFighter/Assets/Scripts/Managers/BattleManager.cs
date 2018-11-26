@@ -9,6 +9,7 @@ public class BattleManager : MonoBehaviour {
 
     [SerializeField]
     private int maxWinRound;
+    private int maxTimePerRound;
 
     private int roundCounter;
     private float countdownTimer;
@@ -17,12 +18,14 @@ public class BattleManager : MonoBehaviour {
     private TMP_Text announceText;
     private InformationSet[] informationSets;
 
+    private int[] playerComboHit = new int[2] { 0, 0 };
+
     private PlayerInfo[] playerInfos = new PlayerInfo[2];
     private int[] playerWinCount = new int[2] { 0, 0 };
 
     void Awake ()
     {
-        countdownTimer = 90f;
+        maxTimePerRound = 90;
         roundCounter = 1;
        
         timerText = GameObject.Find("CountDownTimer").GetComponent<TMP_Text>();
@@ -46,8 +49,9 @@ public class BattleManager : MonoBehaviour {
         countdownTimer -= Time.deltaTime;
         timerText.text = ((int)Mathf.Ceil(countdownTimer)).ToString();
 
-        if(countdownTimer <= 0f)
+        if(countdownTimer < 0f)
         {
+            countdownTimer = 0f;
             EndRound(-1);
         }
     }
@@ -90,7 +94,7 @@ public class BattleManager : MonoBehaviour {
 
     private void StartNewRound()
     {
-        countdownTimer = 90f;
+        countdownTimer = maxTimePerRound;
         InitPlayers();
         StartCoroutine(StartRoundDisplay(roundCounter));
     }
@@ -106,6 +110,7 @@ public class BattleManager : MonoBehaviour {
 
         playerWinCount[winnerid]++;
         roundCounter++;
+        Debug.LogFormat("Player {0} win {1} round", winnerid, playerWinCount[winnerid]);
         StartCoroutine(EndRoundDisplay(istimeup, winnerid));
     }
 

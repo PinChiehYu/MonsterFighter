@@ -11,8 +11,6 @@ public class Testing : PlayerController
 
     private void UpdateAnimator()
     {
-        GetComponent<Animator>().SetBool("IsGrounded", isGrounded);
-        GetComponent<Animator>().SetFloat("SpeedX", velocity.x);
-        GetComponent<Animator>().SetFloat("SpeedY", velocity.y);
+
     }
 }

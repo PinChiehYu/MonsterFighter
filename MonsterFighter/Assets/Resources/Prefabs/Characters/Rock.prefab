@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212541343303103626}
   - component: {fileID: 95920509818506972}
   - component: {fileID: 61048866281795928}
+  - component: {fileID: 114569244738841750}
   - component: {fileID: 114357100623803258}
   - component: {fileID: 114842230427024158}
   - component: {fileID: 114205488126056212}
@@ -246,7 +247,25 @@ MonoBehaviour:
   baseHealthPoint: 100
   baseManaPoint: 100
   baseEnergyPoint: 100
-  currentHealthPoint: 0
+  CurrentEnergyPoint: 0
+--- !u!114 &114569244738841750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1196211054833806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa96eff78a5d0f54eb8c95019085f478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 10
+  jumpTimeToTop: 3
+  shellWidth: 0.5
+  rayCount: 10
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &114842230427024158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,13 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 4
-  jumpTimeToTop: 0.5
-  shellWidth: 0.01
-  rayCount: 10
-  collisionLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
   actionList: {fileID: 0}
 --- !u!114 &114892976748215828
 MonoBehaviour:

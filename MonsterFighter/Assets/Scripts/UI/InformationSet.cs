@@ -45,9 +45,9 @@ public class InformationSet : MonoBehaviour {
 
     IEnumerator DisplayLight(int id)
     {
-        while(Lights[id].fillAmount < 1)
+        while(Lights[id].fillAmount < 1f)
         {
-            Lights[id].fillAmount = Mathf.Lerp(Lights[id].fillAmount, 1, 0.05f);
+            Lights[id].fillAmount = Mathf.Lerp(Lights[id].fillAmount, 1f, 0.05f);
             yield return null;
         }
     }

@@ -9,12 +9,17 @@ public class CombatHandler : MonoBehaviour {
     private PlayerInfo playerInfo;
     private PlayerController playerController;
 
+    private int comboCounter;
+
     private bool readyToAttack;
+
+    public event Action OnHitTarget;
 
     void Awake()
     {
         playerInfo = GetComponent<PlayerInfo>();
         playerController = GetComponent<PlayerController>();
+        comboCounter = 0;
         readyToAttack = false;
     }
 
@@ -32,6 +37,7 @@ public class CombatHandler : MonoBehaviour {
     {
         if (readyToAttack)
         {
+            OnHitTarget?.Invoke();
             enemyHandler.ReceiveAttack(10, transform.position.x);
             readyToAttack = false;
         }

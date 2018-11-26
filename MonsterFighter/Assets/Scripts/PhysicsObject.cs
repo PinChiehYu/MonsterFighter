@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -16,43 +17,61 @@ public class PhysicsObject : MonoBehaviour {
     [SerializeField]
     private LayerMask collisionLayerMask;
 
-    protected bool isGrounded;
-    protected Vector2 gravity;
-    protected Vector2 velocity;
-    protected bool isFaceRight;
+    public bool IsGrounded { get; private set; }
+    public Vector2 Velocity => velocity;
+    private Vector2 velocity;
+    private float jumpVelocity;
+    private Vector2 acceleration;
 
-    protected float jumpVelocity;
+    private Vector2 defaultGravity;
+
+    public bool IsFaceRight
+    {
+        get { return isFaceRight; }
+        set {
+            if (value ^ isFaceRight)
+            {
+                isFaceRight = value;
+                transform.Rotate(Vector3.up * 180);
+            }
+        }
+    }
+    private bool isFaceRight;
 
     private BoxCollider2D bodyCollider;
 
-    public virtual void Awake()
+    void Awake()
     {
         bodyCollider = GetComponent<BoxCollider2D>(); 
 
-        gravity = Vector2.down * (2 * jumpHeight) / Mathf.Pow(jumpTimeToTop, 2);
-        jumpVelocity = Mathf.Abs(gravity.magnitude) * jumpTimeToTop;
+        acceleration = Vector2.down * (2 * jumpHeight) / Mathf.Pow(jumpTimeToTop, 2);
+        jumpVelocity = Mathf.Abs(acceleration.magnitude) * jumpTimeToTop;
+        velocity = Vector2.zero;
+
+        defaultGravity = acceleration;
+
         isFaceRight = true;
+        IsGrounded = false;
     }
 
     void FixedUpdate()
     {
-        velocity += gravity * Time.fixedDeltaTime;
+        velocity += acceleration * Time.fixedDeltaTime;
         Vector2 deltaPosition = velocity * Time.fixedDeltaTime;
 
         Move(deltaPosition);
-        velocity.x = 0f;
     }
 
     private void Move(Vector2 movement)
     {
-        isGrounded = false;
+        IsGrounded = false;
 
         if (movement.y < 0f)
         {
             VerticalMovementAdapt(ref movement);
         }
 
-        if (isGrounded)
+        if (IsGrounded)
         {
             HorizontalMovementAdapt(ref movement);
             velocity.y = 0f;
@@ -99,10 +118,26 @@ public class PhysicsObject : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(raycastPoint, Vector2.down, raycastLength, collisionLayerMask);
             if (hit)
             {
-                isGrounded = true;
+                IsGrounded = true;
                 movement.y = -(hit.distance - shellWidth);
             }
         }
     }
 
+    public void Forward(float v)
+    {
+        velocity.x = v;
+    }
+
+    public void Jump()
+    {
+        IsGrounded = false;
+        velocity.y = jumpVelocity;
+    }
+
+    public void SetPhysicsParam(Vector2? velo, Vector2? accel)
+    {
+        velocity = velo.HasValue ? velo.Value : velocity;
+        acceleration = accel.HasValue ? accel.Value : defaultGravity;
+    }
 }
