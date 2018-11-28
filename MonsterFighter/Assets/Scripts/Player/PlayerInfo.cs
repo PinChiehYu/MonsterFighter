@@ -14,20 +14,16 @@ public class PlayerInfo : MonoBehaviour {
     [SerializeField]
     private int baseEnergyPoint;
 
-    private PlayerController playerController;
-
-    private int currentHealthPoind;
+    private int currentHealthPoint;
     public float CurrentHealthPoint {
-        get { return currentHealthPoind; }
+        get { return currentHealthPoint; }
         set {
-            currentHealthPoind = Mathf.Clamp((int)value, 0, 100);
-            if (OnHPChange != null)
+            currentHealthPoint = (int)value;
+            Debug.LogFormat("Player {0} remain HP:{1}", id, (float)currentHealthPoint / baseHealthPoint);
+            OnHPChange?.Invoke((float)currentHealthPoint / baseHealthPoint);
+            if (currentHealthPoint <= 0)
             {
-                OnHPChange.Invoke((float)currentHealthPoind / baseManaPoint);
-            }
-            if (currentHealthPoind == 0 && OnDie != null)
-            {
-                OnDie.Invoke(id);
+                OnDie?.Invoke(id);
             }
         }
     }
@@ -48,7 +44,7 @@ public class PlayerInfo : MonoBehaviour {
 
     void Awake()
     {
-        playerController = GetComponent<PlayerController>();
+
     }
 
     public void InitPlayer()
@@ -60,7 +56,8 @@ public class PlayerInfo : MonoBehaviour {
         CurrentManaPoint = 0;
         CurrentEnergyPoint = 0;
 
-        playerController.InitController();
+        GetComponent<PlayerController>().InitController();
+        GetComponent<PhysicsObject>().InitPhysics();
     }
 
     public void SwitchActionState(ActionState aS)

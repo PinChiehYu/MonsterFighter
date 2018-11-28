@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class BaseAnimationState : StateMachineBehaviour
 {
-    public List<ActionInfo> actionList;
+    [SerializeField]
+    private List<ActionInfo> actionList;
+    [SerializeField]
+    private bool resetVelocity;
+
     private PhysicsObject physics;
-    private float currentFrame;
     private int actionId;
 
-    public bool resetVelocity;
+    protected float currentFrame;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         physics = animator.GetComponent<PhysicsObject>();
@@ -27,37 +30,20 @@ public class BaseAnimationState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (resetVelocity)
         {
-            physics.SetPhysicsParam(Vector2.zero, null);
+            physics.SetPhysicsParam(Vector2.zero, Vector2.zero, true);
         }
         else
         {
-            physics.SetPhysicsParam(null, null);
+            physics.SetPhysicsParam(null, Vector2.zero, true);
         }
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 
     private void UpdatePhysicsParamByFrame()
     {
         if (actionId+1 < actionList.Count && actionList[actionId+1].triggerFrame < currentFrame)
         {
             actionId++;
-            if (actionList[actionId].useDefaultGravity)
-            {
-                physics.SetPhysicsParam(actionList[actionId].initVelocity, null);
-            }
-            else
-            {
-                physics.SetPhysicsParam(actionList[actionId].initVelocity, actionList[actionId].initAcceleration);
-            }
+            physics.SetPhysicsParam(actionList[actionId].initVelocity, actionList[actionId].acceleration, actionList[actionId].useDefaultGravity);
         }
     }
 }

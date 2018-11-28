@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ActionInfo {
+public class CombatInfo {
     public float triggerFrame;
-    public bool useDefaultGravity;
-    public Vector2 initVelocity;
-    public Vector2 acceleration;
+    public int damage;
+    public Vector2 applyVelocity;
 }

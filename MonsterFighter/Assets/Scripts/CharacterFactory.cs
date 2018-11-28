@@ -28,7 +28,14 @@ public class CharacterFactory
         foreach (string name in characterNameList)
         {
             characterDictionary.Add(name, Resources.Load<GameObject>("Prefabs/Characters/" + name));
-            if (characterDictionary[name] != null) Debug.Log("Load Prefab Success:" + name);
+            if (characterDictionary[name] != null)
+            {
+                Debug.Log("Load Prefab Success:" + name);
+            }
+            else
+            {
+                Debug.LogWarning("Load Prefab Fail:" + name);
+            }
         }
     }
 

@@ -36,8 +36,6 @@ public class GameManager
         characterFactory = new CharacterFactory();
     }
 
-
-
     public GameObject CreateCharacter(int playerId)
     {
         return characterFactory.CreateCharacter(playerId, playerCharacterPicks[playerId], playerControlSets[playerId]);

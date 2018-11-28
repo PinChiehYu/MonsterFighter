@@ -12,6 +12,7 @@ public class CombatHandler : MonoBehaviour {
     private int comboCounter;
 
     private bool readyToAttack;
+    private CombatInfo currentCombatInfo;
 
     public event Action OnHitTarget;
 
@@ -38,15 +39,15 @@ public class CombatHandler : MonoBehaviour {
         if (readyToAttack)
         {
             OnHitTarget?.Invoke();
-            enemyHandler.ReceiveAttack(10, transform.position.x);
+            enemyHandler.ReceiveAttack(currentCombatInfo, transform.position.x);
             readyToAttack = false;
         }
     }
 
-    public void ReceiveAttack(int damage, float enemyXPosition)
+    public void ReceiveAttack(CombatInfo combatInfo, float enemyXPosition)
     {
-        //Debug.LogFormat("Player {0} Get {1} Points Hit.", playerInfo.id, damage);
-        playerInfo.CurrentHealthPoint -= damage;
+        Debug.LogFormat("Player {0} Get {1} Points Hit.", playerInfo.id, combatInfo.damage);
+        playerInfo.CurrentHealthPoint -= combatInfo.damage;
         playerController.Damaged(enemyXPosition);
     }
 
@@ -57,8 +58,9 @@ public class CombatHandler : MonoBehaviour {
         playerController.Fallout();
     }
 
-    public void PrepareAttack()
+    public void PrepareAttack(CombatInfo combatInfo)
     {
         readyToAttack = true;
+        currentCombatInfo = combatInfo;
     }
 }

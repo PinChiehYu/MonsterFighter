@@ -42,13 +42,11 @@ public class PhysicsObject : MonoBehaviour {
 
     void Awake()
     {
-        bodyCollider = GetComponent<BoxCollider2D>(); 
+        bodyCollider = GetComponent<BoxCollider2D>();
 
-        acceleration = Vector2.down * (2 * jumpHeight) / Mathf.Pow(jumpTimeToTop, 2);
-        jumpVelocity = Mathf.Abs(acceleration.magnitude) * jumpTimeToTop;
-        velocity = Vector2.zero;
-
-        defaultGravity = acceleration;
+        defaultGravity = Vector2.down * (2 * jumpHeight) / Mathf.Pow(jumpTimeToTop, 2);
+        jumpVelocity = Mathf.Abs(defaultGravity.magnitude) * jumpTimeToTop;
+        InitPhysics();
 
         isFaceRight = true;
         IsGrounded = false;
@@ -60,6 +58,12 @@ public class PhysicsObject : MonoBehaviour {
         Vector2 deltaPosition = velocity * Time.fixedDeltaTime;
 
         Move(deltaPosition);
+    }
+
+    public void InitPhysics()
+    {
+        velocity = Vector2.zero;
+        acceleration = defaultGravity;
     }
 
     private void Move(Vector2 movement)
@@ -135,9 +139,9 @@ public class PhysicsObject : MonoBehaviour {
         velocity.y = jumpVelocity;
     }
 
-    public void SetPhysicsParam(Vector2? velo, Vector2? accel)
+    public void SetPhysicsParam(Vector2? velo, Vector2 accel, bool usedefaultgravity)
     {
         velocity = velo.HasValue ? velo.Value : velocity;
-        acceleration = accel.HasValue ? accel.Value : defaultGravity;
+        acceleration = usedefaultgravity ? accel + defaultGravity : accel;
     }
 }

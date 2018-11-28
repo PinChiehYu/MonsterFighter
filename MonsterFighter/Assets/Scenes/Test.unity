@@ -317,7 +317,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4284957411385248, guid: fb088b996b8760644b9798774940fb6e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284957411385248, guid: fb088b996b8760644b9798774940fb6e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -347,15 +347,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114869219597991760, guid: fb088b996b8760644b9798774940fb6e,
+    - target: {fileID: 114676264951651948, guid: fb088b996b8760644b9798774940fb6e,
         type: 2}
-      propertyPath: jumpHeight
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114869219597991760, guid: fb088b996b8760644b9798774940fb6e,
-        type: 2}
-      propertyPath: jumpTimeToTop
-      value: 0.5
+      propertyPath: id
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1490460272704856, guid: fb088b996b8760644b9798774940fb6e, type: 2}
       propertyPath: m_IsActive
@@ -468,7 +463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76e273eaa88f2c4e96ad00c3c0d33e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionList: {fileID: 0}
 --- !u!114 &1332703381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1435790072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,7 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionList: {fileID: 0}
 --- !u!114 &1435790074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,20 +965,6 @@ Prefab:
     - target: {fileID: 4271901626813080, guid: a89175e59331bac48b624136aeb147a7, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114569244738841750, guid: a89175e59331bac48b624136aeb147a7,
-        type: 2}
-      propertyPath: jumpHeight
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114569244738841750, guid: a89175e59331bac48b624136aeb147a7,
-        type: 2}
-      propertyPath: jumpTimeToTop
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1196211054833806, guid: a89175e59331bac48b624136aeb147a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89175e59331bac48b624136aeb147a7, type: 2}

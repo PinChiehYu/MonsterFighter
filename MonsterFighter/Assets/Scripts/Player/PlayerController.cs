@@ -6,9 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(PlayerInfo), typeof(PhysicsObject))]
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField]
-    private ActionList actionList;
-
     private PlayerInfo playerInfo;
     private PhysicsObject physics;
     private Animator animator;
@@ -67,10 +64,6 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(controlSet["Up"]) && physics.IsGrounded)
         {
             physics.Jump();
-        }
-        else if (Input.GetKey(controlSet["Down"]) && physics.IsGrounded)
-        {
-            
         }
     }
 

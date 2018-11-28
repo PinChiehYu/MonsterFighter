@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  baseHealthPoint: 100
+  baseHealthPoint: 1000
   baseManaPoint: 100
   baseEnergyPoint: 100
   CurrentEnergyPoint: 0
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa96eff78a5d0f54eb8c95019085f478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 10
-  jumpTimeToTop: 3
+  jumpHeight: 4
+  jumpTimeToTop: 0.5
   shellWidth: 0.5
   rayCount: 10
   collisionLayerMask:
@@ -277,7 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionList: {fileID: 0}
 --- !u!114 &114892976748215828
 MonoBehaviour:
   m_ObjectHideFlags: 1

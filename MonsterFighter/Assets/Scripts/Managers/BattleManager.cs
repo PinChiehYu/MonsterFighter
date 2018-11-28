@@ -17,6 +17,7 @@ public class BattleManager : MonoBehaviour {
     private TMP_Text timerText;
     private TMP_Text announceText;
     private InformationSet[] informationSets;
+    private Combo[] comboSets;
 
     private int[] playerComboHit = new int[2] { 0, 0 };
 
@@ -32,6 +33,7 @@ public class BattleManager : MonoBehaviour {
         announceText = GameObject.Find("Announce").GetComponent<TMP_Text>();
         announceText.gameObject.SetActive(false);
         informationSets = GameObject.Find("Canvas").GetComponentsInChildren<InformationSet>();
+        comboSets = GameObject.Find("Canvas").GetComponentsInChildren<Combo>();
 
         InstantiateCharacters();
         RegisterEvent();
@@ -74,6 +76,7 @@ public class BattleManager : MonoBehaviour {
         {
             playerInfos[i].OnDie += CharacterDie;
             playerInfos[i].OnHPChange += informationSets[i].OnPlayerHpChange;
+            playerInfos[i].OnHPChange += comboSets[i].OnPlayerHpChange;
         }
     }
 

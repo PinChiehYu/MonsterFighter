@@ -57,6 +57,104 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &114107750683137008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5d5d231f0d2d242b65914e76f3c02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionList: []
+  resetVelocity: 0
+  combatList:
+  - triggerFrame: 1.8
+    damage: 50
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 2.8
+    damage: 10
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 3.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 4.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 5.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 6.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 7.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 8.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 9.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 10.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+  - triggerFrame: 11.8
+    damage: 5
+    applyVelocity: {x: 0, y: 0}
+--- !u!114 &114498207861258738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5d5d231f0d2d242b65914e76f3c02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionList: []
+  resetVelocity: 0
+  combatList:
+  - triggerFrame: 2
+    damage: 100
+    applyVelocity: {x: 0, y: 0}
+--- !u!114 &114757830030404356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5d5d231f0d2d242b65914e76f3c02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionList: []
+  resetVelocity: 0
+  combatList:
+  - triggerFrame: 3
+    damage: 150
+    applyVelocity: {x: 0, y: 0}
+--- !u!114 &114814924356036926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5d5d231f0d2d242b65914e76f3c02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionList: []
+  resetVelocity: 0
+  combatList:
+  - triggerFrame: 2
+    damage: 100
+    applyVelocity: {x: 0, y: 0}
 --- !u!206 &206753540373049294
 BlendTree:
   m_ObjectHideFlags: 1
@@ -422,7 +520,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101224668938463376}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114757830030404356}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -449,7 +548,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101769840202025508}
   - {fileID: 1101731489060429348}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114814924356036926}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -502,7 +602,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101364298582342206}
   - {fileID: 1101197419182959016}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114498207861258738}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -582,7 +683,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101875371854610958}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114107750683137008}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -607,7 +709,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102429656836726816}
-    m_Position: {x: 408, y: 216, z: 0}
+    m_Position: {x: 732, y: 108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102462579134790884}
     m_Position: {x: 192, y: 0, z: 0}
@@ -619,7 +721,7 @@ AnimatorStateMachine:
     m_Position: {x: 408, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102985153842656174}
-    m_Position: {x: 624, y: 0, z: 0}
+    m_Position: {x: 636, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102822992077424186}
     m_Position: {x: 648, y: 396, z: 0}

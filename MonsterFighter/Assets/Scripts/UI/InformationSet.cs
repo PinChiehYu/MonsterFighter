@@ -19,10 +19,10 @@ public class InformationSet : MonoBehaviour {
 
     void Awake ()
     {
-        HPBar = transform.GetChild(0).GetComponent<Image>();
-        MPBar = transform.GetChild(1).GetComponent<Image>();
-        Lights[0] = transform.GetChild(2).GetComponent<Image>();
-        Lights[1] = transform.GetChild(3).GetComponent<Image>();
+        HPBar = transform.Find("HpBar").GetComponent<Image>();
+        MPBar = transform.Find("EnergyBar").GetComponent<Image>();
+        Lights[0] = transform.Find("Bubble_1").GetComponent<Image>();
+        Lights[1] = transform.Find("Bubble_2").GetComponent<Image>();
         newHpPercentage = 1f;
         newMpPercentage = 1f;
     }
