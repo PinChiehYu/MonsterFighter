@@ -1,30 +1,27 @@
-﻿public enum ActionState
+﻿public enum GameMode
 {
-    Normal,
-    Action
+
 }
 
-public enum MovementState
+public enum StateType
 {
-    Normal,
-    Immovable
+    Base,
+    Combat,
+    Skill
 }
 
-public enum CombatState
-{
-    ReceiveInput,
-    Transition
-}
-
-public enum ActionType
+public enum CombatType
 {
     Attack,
+    Project,
     Buff
 }
 
-public enum AtkTrigger
+public enum CombatTrigger
 {
     None,
     AtkL,
-    AtkH
+    AtkH,
+    SklS,
+    SklB
 }

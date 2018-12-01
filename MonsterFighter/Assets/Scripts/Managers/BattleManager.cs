@@ -37,12 +37,40 @@ public class BattleManager : MonoBehaviour {
 
         InstantiateCharacters();
         RegisterEvent();
-
         StartNewRound();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void InstantiateCharacters()
+    {
+        playerInfos[0] = GameManager.Instance.CreateCharacter(0).GetComponent<PlayerInfo>();
+        playerInfos[1] = GameManager.Instance.CreateCharacter(1).GetComponent<PlayerInfo>();
+    }
+
+    private void RegisterEvent()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            playerInfos[i].OnDie += CharacterDie;
+            playerInfos[i].OnHPChange += informationSets[i].OnPlayerHpChange;
+            playerInfos[i].OnHPChange += comboSets[i].OnPlayerHpChange;
+        }
+    }
+
+    private void StartNewRound()
+    {
+        countdownTimer = maxTimePerRound;
+        ResetPlayers();
+        StartCoroutine(StartRoundDisplay(roundCounter));
+    }
+
+    private void ResetPlayers()
+    {
+        playerInfos[0].ResetPlayer();
+        playerInfos[1].ResetPlayer();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.P))
         {
             SwitchPause();
@@ -55,28 +83,6 @@ public class BattleManager : MonoBehaviour {
         {
             countdownTimer = 0f;
             EndRound(-1);
-        }
-    }
-
-    private void InstantiateCharacters()
-    {
-        playerInfos[0] = GameManager.Instance.CreateCharacter(0).GetComponent<PlayerInfo>();
-        playerInfos[1] = GameManager.Instance.CreateCharacter(1).GetComponent<PlayerInfo>();
-    }
-
-    private void InitPlayers()
-    {
-        playerInfos[0].InitPlayer();
-        playerInfos[1].InitPlayer();
-    }
-
-    private void RegisterEvent()
-    {
-        for(int i = 0; i < 2; i++)
-        {
-            playerInfos[i].OnDie += CharacterDie;
-            playerInfos[i].OnHPChange += informationSets[i].OnPlayerHpChange;
-            playerInfos[i].OnHPChange += comboSets[i].OnPlayerHpChange;
         }
     }
 
@@ -93,13 +99,6 @@ public class BattleManager : MonoBehaviour {
             announceText.gameObject.SetActive(true);
             announceText.text = "PAUSE";
         }
-    }
-
-    private void StartNewRound()
-    {
-        countdownTimer = maxTimePerRound;
-        InitPlayers();
-        StartCoroutine(StartRoundDisplay(roundCounter));
     }
 
     private void EndRound(int winnerid)
@@ -130,14 +129,14 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator StartRoundDisplay(int roundNumber)
     {
-        Time.timeScale = 0f;
+        GameManager.Instance.PauseTime(true);
         announceText.gameObject.SetActive(true);
         announceText.text = string.Format("Round {0}", roundNumber);
         yield return new WaitForSecondsRealtime(3);
         announceText.text = "Fight!";
         yield return new WaitForSecondsRealtime(1);
         announceText.gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        GameManager.Instance.PauseTime(false);
     }
 
     IEnumerator EndRoundDisplay(bool isTimeUp, int winnerId)

@@ -16,7 +16,7 @@ public class CharacterFactory
         characterNameList.Add("CatFighter");
         characterNameList.Add("Coco");
         characterNameList.Add("Rock");
-        characterNameList.Add("Test");
+        characterNameList.Add("Dummy");
         LoadAllCharacterPrefabs();
 
         StartPosition[0] = new Vector3(-4f, -3f);
@@ -30,11 +30,11 @@ public class CharacterFactory
             characterDictionary.Add(name, Resources.Load<GameObject>("Prefabs/Characters/" + name));
             if (characterDictionary[name] != null)
             {
-                Debug.Log("Load Prefab Success:" + name);
+                //Debug.Log("Load Prefab Success:" + name);
             }
             else
             {
-                Debug.LogWarning("Load Prefab Fail:" + name);
+                //Debug.LogWarning("Load Prefab Fail:" + name);
             }
         }
     }

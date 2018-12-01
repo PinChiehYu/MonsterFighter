@@ -12,8 +12,8 @@ public class MenuManager : MonoBehaviour {
 
     private Button currentButton;
     private string buttonTextTemp;
-    private string[] controlType = new string[] { "Up", "Down", "Right", "Left", "AtkL", "AtkH" };
-    private string[] defaultControlKeyCode = new string[] { "UpArrow", "DownArrow", "RightArrow", "LeftArrow", "Comma", "Period" };
+    private string[] controlType = new string[] { "Up", "Down", "Right", "Left", "AtkL", "AtkH", "SklS", "SklB" };
+    private string[] defaultControlKeyCode = new string[] { "UpArrow", "DownArrow", "RightArrow", "LeftArrow", "Comma", "Period", "K", "H" };
 
     void Awake ()
     {
@@ -97,8 +97,9 @@ public class MenuManager : MonoBehaviour {
         return button.GetComponentInChildren<TMP_Text>();
     }
 
-    public void StartGame()
+    public void StartGame(string mode)
     {
+        GameManager.Instance.gameMode = mode;
         SceneManager.LoadScene("CharacterSelect");
     }
 }

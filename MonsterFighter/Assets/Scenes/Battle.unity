@@ -618,11 +618,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4478858352808196, guid: 8702881b52d78c140b3031888d49776d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.18
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4478858352808196, guid: 8702881b52d78c140b3031888d49776d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.34
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 4478858352808196, guid: 8702881b52d78c140b3031888d49776d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0

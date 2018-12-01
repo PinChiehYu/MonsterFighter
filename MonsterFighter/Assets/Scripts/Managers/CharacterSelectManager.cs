@@ -16,15 +16,6 @@ public class CharacterSelectManager : MonoBehaviour {
         GameManager.Instance.playerCharacterPicks[0] = "Coco";
         GameManager.Instance.playerCharacterPicks[1] = "Coco";
     }
-    
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void SelectCharacter(string charName)
     {
@@ -33,6 +24,6 @@ public class CharacterSelectManager : MonoBehaviour {
 
     public void StartBattle()
     {
-        SceneManager.LoadScene("Battle");
+        SceneManager.LoadScene("Battle"); //GameManager.Instance.gameMode
     }
 }

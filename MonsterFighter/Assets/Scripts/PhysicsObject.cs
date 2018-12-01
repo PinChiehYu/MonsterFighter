@@ -17,7 +17,7 @@ public class PhysicsObject : MonoBehaviour {
     [SerializeField]
     private LayerMask collisionLayerMask;
 
-    public bool IsGrounded { get; private set; }
+    public bool IsGrounded { get; set; }
     public Vector2 Velocity => velocity;
     private Vector2 velocity;
     private float jumpVelocity;
@@ -46,7 +46,7 @@ public class PhysicsObject : MonoBehaviour {
 
         defaultGravity = Vector2.down * (2 * jumpHeight) / Mathf.Pow(jumpTimeToTop, 2);
         jumpVelocity = Mathf.Abs(defaultGravity.magnitude) * jumpTimeToTop;
-        InitPhysics();
+        ResetPhysics();
 
         isFaceRight = true;
         IsGrounded = false;
@@ -60,7 +60,7 @@ public class PhysicsObject : MonoBehaviour {
         Move(deltaPosition);
     }
 
-    public void InitPhysics()
+    public void ResetPhysics()
     {
         velocity = Vector2.zero;
         acceleration = defaultGravity;

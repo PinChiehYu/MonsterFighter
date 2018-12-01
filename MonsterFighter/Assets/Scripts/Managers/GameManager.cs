@@ -8,8 +8,13 @@ public class GameManager
 {
     private static object m_oLock = new object();
     private static GameManager m_oInstance = null;
+
     public Dictionary<string, KeyCode>[] playerControlSets;
     public string[] playerCharacterPicks;
+    public string gameMode;
+
+    private float fixedtime;
+
     private CharacterFactory characterFactory;
 
     public static GameManager Instance
@@ -41,4 +46,17 @@ public class GameManager
         return characterFactory.CreateCharacter(playerId, playerCharacterPicks[playerId], playerControlSets[playerId]);
     }
 
+    public void PauseTime(bool yes)
+    {
+        if (yes)
+        {
+            fixedtime = Time.fixedDeltaTime;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.fixedDeltaTime = fixedtime;
+            Time.timeScale = 1;
+        }
+    }
 }

@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d13990dd8e7a844fa187f4366fe6257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  baseHealthPoint: 100
+  id: 0
+  baseHealthPoint: 1000
   baseManaPoint: 100
   baseEnergyPoint: 100
   CurrentEnergyPoint: 0
@@ -288,6 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableMovementInput: 1
+  enableCombatInput: 1
 --- !u!212 &212736711791876240
 SpriteRenderer:
   m_ObjectHideFlags: 1

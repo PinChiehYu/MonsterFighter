@@ -24,20 +24,11 @@ public class CombatHandler : MonoBehaviour {
         readyToAttack = false;
     }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void SendAttack(CombatHandler enemyHandler)
     {
         if (readyToAttack)
         {
+            comboCounter++;
             OnHitTarget?.Invoke();
             enemyHandler.ReceiveAttack(currentCombatInfo, transform.position.x);
             readyToAttack = false;
@@ -47,8 +38,9 @@ public class CombatHandler : MonoBehaviour {
     public void ReceiveAttack(CombatInfo combatInfo, float enemyXPosition)
     {
         Debug.LogFormat("Player {0} Get {1} Points Hit.", playerInfo.id, combatInfo.damage);
+        Debug.LogFormat("Player {0} Move {1}.", playerInfo.id, combatInfo.applyVelocity);
         playerInfo.CurrentHealthPoint -= combatInfo.damage;
-        playerController.Damaged(enemyXPosition);
+        playerController.Damaged(combatInfo.damage, combatInfo.applyVelocity, enemyXPosition);
     }
 
     public void Fallout()
@@ -62,5 +54,10 @@ public class CombatHandler : MonoBehaviour {
     {
         readyToAttack = true;
         currentCombatInfo = combatInfo;
+    }
+
+    public void CancelAttack()
+    {
+        readyToAttack = false;
     }
 }

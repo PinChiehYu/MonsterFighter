@@ -105,8 +105,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 480
+        y: 320
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -115,7 +115,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da7d30af7dde0eb44af03f732096f4e7
+      spriteID: ccada4cf8b639134aa57aaa97eba3b8a
       vertices: []
       indices: 
       edges: []
@@ -124,9 +124,9 @@ TextureImporter:
       name: Coco_skill_1_1
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 480
+        x: 640
+        y: 320
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -135,7 +135,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a933b1f8fbbbf64697a4e30dd15413f
+      spriteID: a99822a995a045f4d9ab3ebfc2d6b9ec
       vertices: []
       indices: 
       edges: []
@@ -144,9 +144,9 @@ TextureImporter:
       name: Coco_skill_1_2
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 480
+        x: 1280
+        y: 320
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -155,7 +155,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 042e2f0c7c8b04e49830f4ee0ce901c3
+      spriteID: d7ca984b55516d643b5b4a69e6eb2333
       vertices: []
       indices: 
       edges: []
@@ -164,9 +164,9 @@ TextureImporter:
       name: Coco_skill_1_3
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 0
         y: 0
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -175,7 +175,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18808f3a0f7d1ce44a309b11d46cafe8
+      spriteID: 6625d18a0eecc7b41beb832b84c785ec
       vertices: []
       indices: 
       edges: []
@@ -184,9 +184,9 @@ TextureImporter:
       name: Coco_skill_1_4
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 640
         y: 0
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -195,7 +195,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f3c8e30084f10842ba1cf6ea39f64dc
+      spriteID: 52ffe676bd65671489e3cff1635905e2
       vertices: []
       indices: 
       edges: []
@@ -204,9 +204,9 @@ TextureImporter:
       name: Coco_skill_1_5
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 1280
         y: 0
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -215,47 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c358d1d74127d743bad6b5a56bacd9d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Coco_skill_1_6
-      rect:
-        serializedVersion: 2
-        x: 2880
-        y: 0
-        width: 480
-        height: 320
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f257410999630e240b050de2459eaf57
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Coco_skill_1_7
-      rect:
-        serializedVersion: 2
-        x: 3360
-        y: 0
-        width: 480
-        height: 320
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49aacf1aa569c2d408d7006e900e4d8b
+      spriteID: aa7155cb46f7c7443bc27b5484476be6
       vertices: []
       indices: 
       edges: []

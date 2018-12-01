@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e8326d25d81e46bda3f554e1b1053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableMovementInput: 1
+  enableCombatInput: 1
 --- !u!114 &114892976748215828
 MonoBehaviour:
   m_ObjectHideFlags: 1
