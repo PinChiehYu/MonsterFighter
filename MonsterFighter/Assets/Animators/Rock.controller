@@ -13,49 +13,49 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SpeedY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsGrounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AtkL
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AtkH
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SklS
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SklB
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Damaged
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -118,9 +118,12 @@ MonoBehaviour:
     acceleration: {x: 0, y: 0}
   resetVelocityWhenEnter: 0
   combatList:
-  - triggerFrame: 0
+  - combatType: 0
+    triggerFrame: 0
     damage: 10
     applyVelocity: {x: -1.5, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
   switchFrame: 5
 --- !u!114 &114085560634999438
 MonoBehaviour:
@@ -206,9 +209,12 @@ MonoBehaviour:
     acceleration: {x: -15, y: 0}
   resetVelocityWhenEnter: 0
   combatList:
-  - triggerFrame: 0
+  - combatType: 0
+    triggerFrame: 0
     damage: 50
     applyVelocity: {x: -10, y: 10}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
   switchFrame: 5
 --- !u!114 &114269795668937798
 MonoBehaviour:
@@ -252,7 +258,14 @@ MonoBehaviour:
     initVelocity: {x: 0, y: 0}
     acceleration: {x: 0, y: 0}
   resetVelocityWhenEnter: 0
-  combatList: []
+  combatList:
+  - combatType: 1
+    triggerFrame: 0
+    damage: 250
+    applyVelocity: {x: -30, y: 0}
+    projectile: {fileID: 1140254332370364, guid: c1b54be318e31e74d8f5e2af20a16185,
+      type: 2}
+    launchPoint: {x: 0.1, y: 1.3}
   switchFrame: 0
 --- !u!114 &114388313561866744
 MonoBehaviour:
@@ -310,9 +323,12 @@ MonoBehaviour:
     acceleration: {x: 0, y: 0}
   resetVelocityWhenEnter: 0
   combatList:
-  - triggerFrame: 0
+  - combatType: 0
+    triggerFrame: 0
     damage: 100
     applyVelocity: {x: -10, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
   switchFrame: -1
 --- !u!114 &114615865390775656
 MonoBehaviour:
@@ -432,9 +448,12 @@ MonoBehaviour:
     acceleration: {x: -45, y: 0}
   resetVelocityWhenEnter: 0
   combatList:
-  - triggerFrame: 0
+  - combatType: 0
+    triggerFrame: 0
     damage: 100
     applyVelocity: {x: -20, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
   switchFrame: 0
 --- !u!206 &206178026815031308
 BlendTree:

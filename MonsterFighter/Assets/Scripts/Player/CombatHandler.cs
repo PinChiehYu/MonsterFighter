@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInfo), typeof(PlayerController))]
-public class CombatHandler : MonoBehaviour {
+public class CombatHandler : MonoBehaviour, ICombatSender {
 
     private PlayerInfo playerInfo;
     private PlayerController playerController;
@@ -12,7 +12,7 @@ public class CombatHandler : MonoBehaviour {
     private int comboCounter;
 
     private bool readyToAttack;
-    private CombatInfo currentCombatInfo;
+    private Tuple<float, Vector2> combatInfo;
 
     public event Action OnHitTarget;
 
@@ -30,30 +30,28 @@ public class CombatHandler : MonoBehaviour {
         {
             comboCounter++;
             OnHitTarget?.Invoke();
-            enemyHandler.ReceiveAttack(currentCombatInfo, transform.position.x);
+            enemyHandler.ReceiveAttack(combatInfo.Item1, combatInfo.Item2, transform.position.x);
             readyToAttack = false;
         }
     }
 
-    public void ReceiveAttack(CombatInfo combatInfo, float enemyXPosition)
+    public void ReceiveAttack(float damage, Vector2 applyVelocity, float enemyXPosition)
     {
-        Debug.LogFormat("Player {0} Get {1} Points Hit.", playerInfo.id, combatInfo.damage);
-        Debug.LogFormat("Player {0} Move {1}.", playerInfo.id, combatInfo.applyVelocity);
-        playerInfo.CurrentHealthPoint -= combatInfo.damage;
-        playerController.Damaged(combatInfo.damage, combatInfo.applyVelocity, enemyXPosition);
+        playerInfo.CurrentHealthPoint -= damage;
+        playerController.Damaged(applyVelocity, enemyXPosition);
     }
 
     public void Fallout()
     {
-        Debug.LogFormat("Player {0} Fallout.", playerInfo.id);
+        Debug.LogFormat("Player {0} Fallout.", gameObject.name);
         playerInfo.CurrentHealthPoint -= 20;
         playerController.Fallout();
     }
 
-    public void PrepareAttack(CombatInfo combatInfo)
+    public void PrepareAttack(float damage, Vector2 applyVelocity)
     {
         readyToAttack = true;
-        currentCombatInfo = combatInfo;
+        combatInfo = new Tuple<float, Vector2>(damage, applyVelocity);
     }
 
     public void CancelAttack()

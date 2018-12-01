@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
@@ -19,8 +18,8 @@ public class CharacterFactory
         characterNameList.Add("Dummy");
         LoadAllCharacterPrefabs();
 
-        StartPosition[0] = new Vector3(-4f, -3f);
-        StartPosition[1] = new Vector3(4f, -3f);
+        StartPosition[0] = new Vector3(-4f, -3f, 0f);
+        StartPosition[1] = new Vector3(4f, -3f, 0f);
     }
 
     private void LoadAllCharacterPrefabs()
@@ -41,8 +40,8 @@ public class CharacterFactory
 
     public GameObject CreateCharacter(int playerId, string characterName, Dictionary<string, KeyCode> controlSet)
     {
-        GameObject character = UnityEngine.Object.Instantiate(characterDictionary[characterName]);
-        character.GetComponent<PlayerInfo>().id = playerId;
+        GameObject character = Object.Instantiate(characterDictionary[characterName]);
+        character.name = playerId.ToString();
         character.GetComponent<PlayerController>().SetupController(controlSet, StartPosition[playerId]);
 
         return character;

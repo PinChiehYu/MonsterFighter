@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
 
-    public int id;// { get; set; }
-
     [SerializeField]
     private int baseHealthPoint;
     [SerializeField]
@@ -22,7 +20,7 @@ public class PlayerInfo : MonoBehaviour {
             OnHPChange?.Invoke((float)currentHealthPoint / baseHealthPoint);
             if (currentHealthPoint <= 0)
             {
-                OnDie?.Invoke(id);
+                OnDie?.Invoke(int.Parse(gameObject.name));
             }
         }
     }

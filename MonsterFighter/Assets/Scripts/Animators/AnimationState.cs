@@ -31,6 +31,7 @@ public class AnimationState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         controller = animator.GetComponent<PlayerController>();
         combatHandler = animator.GetComponent<CombatHandler>();
         physics = animator.GetComponent<PhysicsObject>();
@@ -76,7 +77,7 @@ public class AnimationState : StateMachineBehaviour
         if (combatId + 1 < combatList.Count && combatList[combatId + 1].triggerFrame <= currentFrame)
         {
             combatId++;
-            combatHandler.PrepareAttack(combatList[combatId]);
+            combatList[combatId].Execute(combatHandler);
         }
         if (switchFrame >= 0f && switchFrame <= currentFrame)
         {

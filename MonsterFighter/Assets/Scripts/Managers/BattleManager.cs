@@ -59,8 +59,18 @@ public class BattleManager : MonoBehaviour {
     private void StartNewRound()
     {
         countdownTimer = maxTimePerRound;
+        CleanUpProjectiles();
         ResetPlayers();
         StartCoroutine(StartRoundDisplay(roundCounter));
+    }
+
+    private void CleanUpProjectiles()
+    {
+        GameObject[] list = GameObject.FindGameObjectsWithTag("Projectile");
+        foreach(GameObject obj in list)
+        {
+            Destroy(obj);
+        }
     }
 
     private void ResetPlayers()

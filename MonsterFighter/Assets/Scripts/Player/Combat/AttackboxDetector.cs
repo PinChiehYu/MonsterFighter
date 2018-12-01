@@ -5,20 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class AttackboxDetector : MonoBehaviour {
 
-    public int id { get; set; }
-    private CombatHandler combatHandler;    
+    public string Id { get; set; }
+    private ICombatSender combatSender;
 
     void Awake()
     {
-        combatHandler = GetComponentInParent<CombatHandler>();
-        id = GetComponentInParent<PlayerInfo>().id;
+        combatSender = GetComponentInParent<ICombatSender>();
     }
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.GetComponentInParent<PlayerInfo>().id != id )
+        Debug.Log(collider.transform.parent.name + ":" + Id);
+        if (collider.transform.parent.name != Id )
         {
-            combatHandler.SendAttack(collider.GetComponentInParent<CombatHandler>());
+            combatSender.SendAttack(collider.GetComponentInParent<CombatHandler>());
         }
     }
 }

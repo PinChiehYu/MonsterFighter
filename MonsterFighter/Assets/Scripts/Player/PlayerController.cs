@@ -128,25 +128,24 @@ public class PlayerController : MonoBehaviour {
     {
         controlSet = controlset;
         initPosition = initposition;
-        GetComponentInChildren<AttackboxDetector>().id = playerInfo.id;
     }
 
     public void ResetController()
     {
         transform.position = initPosition;
-        physics.IsFaceRight = playerInfo.id == 0;
-        physics.IsGrounded = true;
-        EnableBaseInput = true;
-        EnableCombatInput = true;
+        physics.IsFaceRight = gameObject.name == "0";
+        physics.IsGrounded = false;
+        EnableBaseInput = EnableCombatInput = true;
+        GetComponentInChildren<AttackboxDetector>().Id = gameObject.name;
         animator.Rebind();
     }
 
     void OnGUI()
     {
-        GUI.Label(new Rect(0, 15f * playerInfo.id, 200f, 50f), "Player " + playerInfo.id.ToString() + " Current:" + EnableBaseInput.ToString());
+        GUI.Label(new Rect(0, 15f * int.Parse(gameObject.name), 200f, 50f), "Player " + gameObject.name + " Current:" + EnableBaseInput.ToString());
     }
 
-    public void Damaged(int damage, Vector2 applyVelocity, float enemyXPosition)
+    public void Damaged(Vector2 applyVelocity, float enemyXPosition)
     {
         physics.IsFaceRight = enemyXPosition > transform.position.x;
         EnableBaseInput = false;
