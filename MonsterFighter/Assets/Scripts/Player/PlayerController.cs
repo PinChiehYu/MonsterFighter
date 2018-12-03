@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(PlayerInfo), typeof(PhysicsObject))]
 public class PlayerController : MonoBehaviour {
 
-    private PlayerInfo playerInfo;
     private PhysicsObject physics;
     private Animator animator;
 
@@ -21,16 +20,6 @@ public class PlayerController : MonoBehaviour {
     private CombatTrigger combatTrigger;
     
 	public void Awake () {
-        /////////for Sene Test///////
-        string[] controlType = new string[] { "Up", "Down", "Right", "Left", "AtkL", "AtkH", "SklS", "SklB" };
-        string[] defaultControlKeyCode = new string[] { "UpArrow", "DownArrow", "RightArrow", "LeftArrow", "Comma", "Period", "K", "L" };
-        controlSet = new Dictionary<string, KeyCode>();
-        for (int j = 0; j < controlType.Length; j++)
-        {
-            controlSet.Add(controlType[j], (KeyCode)Enum.Parse(typeof(KeyCode), defaultControlKeyCode[j]));
-        }
-        /////////for Sene Test///////
-        playerInfo = GetComponent<PlayerInfo>();
         physics = GetComponent<PhysicsObject>();
         animator = GetComponent<Animator>();
 	}
@@ -145,18 +134,45 @@ public class PlayerController : MonoBehaviour {
         GUI.Label(new Rect(0, 15f * int.Parse(gameObject.name), 200f, 50f), "Player " + gameObject.name + " Current:" + EnableBaseInput.ToString());
     }
 
-    public void Damaged(Vector2 applyVelocity, float enemyXPosition)
+    private IEnumerator damageCo;
+    public void Damaged(Vector2 applyVelocity, float stiffTime, bool isKnockDown, float enemyXPosition)
     {
         physics.IsFaceRight = enemyXPosition > transform.position.x;
         EnableBaseInput = false;
+        if (damageCo != null) StopCoroutine(damageCo);
         physics.SetPhysicsParam(applyVelocity, Vector2.zero, true);
-        animator.SetTrigger("Damaged");
+        damageCo = Stiff(stiffTime, isKnockDown);
+        StartCoroutine(damageCo);
     }
 
     public void Fallout()
     {
         transform.position = new Vector2(-4f, -1f);
+        EnableBaseInput = false;
+        EnableCombatInput = false;
         physics.Forward(0f);
+        if (damageCo != null) StopCoroutine(damageCo);
+        StartCoroutine(Stiff(0f, true));
+    }
+
+    IEnumerator Stiff(float duration, bool knockDown)
+    {
+        animator.ResetTrigger("WakeUp");
         animator.SetTrigger("Damaged");
+        yield return new WaitForSeconds(duration);
+        if (knockDown)
+        {
+            physics.SetPhysicsParam(Vector2.zero, Vector2.zero, true);
+            transform.Find("Damage").gameObject.SetActive(false);
+            animator.SetTrigger("KnockDown");
+            yield return new WaitForSeconds(1f);
+            animator.SetTrigger("WakeUp");
+            yield return new WaitForSeconds(1f);
+            transform.Find("Damage").gameObject.SetActive(true);
+        }
+        else
+        {
+            animator.SetTrigger("WakeUp");
+        }
     }
 }

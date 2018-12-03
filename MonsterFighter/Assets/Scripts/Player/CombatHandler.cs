@@ -12,7 +12,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender {
     private int comboCounter;
 
     private bool readyToAttack;
-    private Tuple<float, Vector2> combatInfo;
+    private CombatInfo combatInfo;
 
     public event Action OnHitTarget;
 
@@ -30,28 +30,42 @@ public class CombatHandler : MonoBehaviour, ICombatSender {
         {
             comboCounter++;
             OnHitTarget?.Invoke();
-            enemyHandler.ReceiveAttack(combatInfo.Item1, combatInfo.Item2, transform.position.x);
+            enemyHandler.ReceiveAttack(combatInfo, transform.position.x);
             readyToAttack = false;
         }
     }
 
-    public void ReceiveAttack(float damage, Vector2 applyVelocity, float enemyXPosition)
+    public void ReceiveAttack(CombatInfo combatInfo, float enemyXPosition)
     {
-        playerInfo.CurrentHealthPoint -= damage;
-        playerController.Damaged(applyVelocity, enemyXPosition);
+        playerInfo.CurrentHealthPoint -= combatInfo.damage;
+        if (combatInfo.isKnockDown)
+        {
+            playerInfo.CurrentKnockDownPoint = 0f;
+            playerController.Damaged(combatInfo.applyVelocity, combatInfo.stiffTime, true, enemyXPosition);
+        }
+        else if (playerInfo.IsKnockDown)
+        {
+            playerInfo.CurrentKnockDownPoint = 0f;
+            playerController.Damaged(combatInfo.applyVelocity, 0, true, enemyXPosition);
+        }
+        else
+        {
+            playerController.Damaged(combatInfo.applyVelocity, combatInfo.stiffTime, false, enemyXPosition);
+        }
     }
 
     public void Fallout()
     {
         Debug.LogFormat("Player {0} Fallout.", gameObject.name);
         playerInfo.CurrentHealthPoint -= 20;
+        playerInfo.CurrentKnockDownPoint = 0f;
         playerController.Fallout();
     }
 
-    public void PrepareAttack(float damage, Vector2 applyVelocity)
+    public void PrepareAttack(CombatInfo info)
     {
         readyToAttack = true;
-        combatInfo = new Tuple<float, Vector2>(damage, applyVelocity);
+        combatInfo = info;
     }
 
     public void CancelAttack()

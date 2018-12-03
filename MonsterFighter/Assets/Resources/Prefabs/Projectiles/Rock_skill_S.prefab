@@ -129,8 +129,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerId: 
   speed: 0
-  damage: 0
-  applyVelocity: {x: 0, y: 0}
+  isPenetrant: 1
+  combatInfo:
+    damage: 0
+    applyVelocity: {x: 0, y: 0}
+    isKnockDown: 0
+    stiffTime: 0
 --- !u!114 &114682455041637342
 MonoBehaviour:
   m_ObjectHideFlags: 1

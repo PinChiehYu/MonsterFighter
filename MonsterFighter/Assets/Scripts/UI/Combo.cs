@@ -13,11 +13,14 @@ public class Combo : MonoBehaviour {
     float timer;
     private TMP_Text Text;
 
+    private Vector2 basePoint;
+
     void Start () {
         Text = GetComponent<TMP_Text>();
         comboCount = 0;
         countdown = 3;
         timer = countdown;
+        basePoint = transform.position;
     }
 
     public void OnPlayerHpChange(float p)

@@ -13,13 +13,13 @@ public class AnimationState : StateMachineBehaviour
     private bool enableCombatInput;
 
     [SerializeField, Header("Action Settings")]
-    private List<ActionInfo> actionList;
+    private List<ActionSetting> actionList;
     [SerializeField]
     private bool resetVelocityWhenEnter;
     private int actionId;
 
     [SerializeField, Header("Combat Settings")]
-    private List<CombatInfo> combatList;
+    private List<CombatSetting> combatList;
     [SerializeField]
     private float switchFrame;
     private int combatId;

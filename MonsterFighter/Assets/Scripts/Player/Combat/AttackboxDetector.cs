@@ -15,7 +15,6 @@ public class AttackboxDetector : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log(collider.transform.parent.name + ":" + Id);
         if (collider.transform.parent.name != Id )
         {
             combatSender.SendAttack(collider.GetComponentInParent<CombatHandler>());
