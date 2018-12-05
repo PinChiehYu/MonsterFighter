@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateType: 2
-  enableBaseInput: 0
+  enableBaseInput: 1
   enableCombatInput: 0
   actionList:
   - triggerFrame: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     triggerFrame: 2
     isKnockDown: 0
     stiffTime: 0.2
-    damage: 100
+    damage: 60
     applyVelocity: {x: -2, y: 0}
     projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
       type: 2}
@@ -133,7 +133,7 @@ MonoBehaviour:
     triggerFrame: 3
     isKnockDown: 1
     stiffTime: 0.2
-    damage: 100
+    damage: 60
     applyVelocity: {x: -2, y: 0}
     projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
       type: 2}
@@ -221,7 +221,7 @@ MonoBehaviour:
   - combatType: 0
     triggerFrame: 0
     isKnockDown: 0
-    stiffTime: 0.55
+    stiffTime: 0.5
     damage: 50
     applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 0}
@@ -248,7 +248,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.4
-    damage: 50
+    damage: 100
     applyVelocity: {x: -2, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -363,7 +363,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.4
-    damage: 75
+    damage: 150
     applyVelocity: {x: -3, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -452,7 +452,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.5
-    damage: 50
+    damage: 60
     applyVelocity: {x: 0, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: -1, y: 0}
@@ -460,7 +460,7 @@ MonoBehaviour:
     triggerFrame: 3
     isKnockDown: 0
     stiffTime: 0.2
-    damage: 10
+    damage: 60
     applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -468,7 +468,7 @@ MonoBehaviour:
     triggerFrame: 5
     isKnockDown: 0
     stiffTime: 0.2
-    damage: 10
+    damage: 60
     applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -476,7 +476,7 @@ MonoBehaviour:
     triggerFrame: 7
     isKnockDown: 0
     stiffTime: 0.2
-    damage: 10
+    damage: 60
     applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -484,7 +484,7 @@ MonoBehaviour:
     triggerFrame: 9
     isKnockDown: 1
     stiffTime: 0
-    damage: 10
+    damage: 60
     applyVelocity: {x: 0, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}

@@ -15,18 +15,20 @@ public class Combo : MonoBehaviour {
 
     private Vector2 basePoint;
 
-    void Start () {
+    void Awake () {
         Text = GetComponent<TMP_Text>();
         comboCount = 0;
         countdown = 3;
         timer = countdown;
-        basePoint = transform.position;
+        basePoint = GetComponent<RectTransform>().anchoredPosition;
+        Debug.Log(basePoint);
     }
 
     public void OnPlayerHpChange(float p)
     {
         timer = countdown;
         comboCount++;
+        GetComponent<RectTransform>().anchoredPosition = basePoint;
         transform.DOMoveX(10f, countdown);
     }
 

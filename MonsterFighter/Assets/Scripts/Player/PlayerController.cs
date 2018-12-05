@@ -98,9 +98,18 @@ public class PlayerController : MonoBehaviour {
 
     public void TriggerNextCombatState()
     {
+        PlayerInfo plyinf = GetComponent<PlayerInfo>();
         string trigger = Enum.GetName(typeof(CombatTrigger), combatTrigger);
-        if (trigger != "None")
+        if (combatTrigger != CombatTrigger.None)
         {
+            if (combatTrigger == CombatTrigger.SklS && plyinf.CurrentEnergyPoint > 0)
+            {
+
+            }
+            else if (combatTrigger == CombatTrigger.SklB && plyinf.CurrentEnergyPoint > 0)
+            {
+
+            }
             animator.SetTrigger(trigger);
             combatTrigger = CombatTrigger.None;
         }
@@ -163,11 +172,13 @@ public class PlayerController : MonoBehaviour {
         if (knockDown)
         {
             physics.SetPhysicsParam(Vector2.zero, Vector2.zero, true);
+            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.6f);
             transform.Find("Damage").gameObject.SetActive(false);
             animator.SetTrigger("KnockDown");
             yield return new WaitForSeconds(1f);
             animator.SetTrigger("WakeUp");
             yield return new WaitForSeconds(1f);
+            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
             transform.Find("Damage").gameObject.SetActive(true);
         }
         else

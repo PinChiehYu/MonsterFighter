@@ -21,8 +21,8 @@ public class InformationSet : MonoBehaviour {
     {
         HPBar = transform.Find("HpBar").GetComponent<Image>();
         MPBar = transform.Find("MpBar").GetComponent<Image>();
-        //Lights[0] = transform.Find("Bubble_1").GetComponent<Image>();
-        //Lights[1] = transform.Find("Bubble_2").GetComponent<Image>();
+        Lights[0] = transform.Find("Bubble_0").GetComponent<Image>();
+        Lights[1] = transform.Find("Bubble_1").GetComponent<Image>();
         newHpPercentage = 1f;
         newMpPercentage = 1f;
     }
@@ -45,13 +45,10 @@ public class InformationSet : MonoBehaviour {
 
     IEnumerator DisplayLight(int id)
     {
-        /*
         while(Lights[id].fillAmount < 1f)
         {
             Lights[id].fillAmount = Mathf.Lerp(Lights[id].fillAmount, 1f, 0.05f);
             yield return null;
         }
-        */
-        yield return null;
     }
 }

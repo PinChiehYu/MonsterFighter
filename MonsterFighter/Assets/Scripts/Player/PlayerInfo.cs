@@ -11,6 +11,10 @@ public class PlayerInfo : MonoBehaviour {
     private int baseManaPoint;
     [SerializeField]
     private int baseEnergyPoint;
+    [SerializeField]
+    private int SkillSCost;
+    [SerializeField]
+    private int SkillBCost;
 
     private int currentHealthPoint;
     public float CurrentHealthPoint

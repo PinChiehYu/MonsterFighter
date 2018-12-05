@@ -227,7 +227,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.7
-    damage: 50
+    damage: 80
     applyVelocity: {x: -10, y: 10}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -279,7 +279,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 1
     stiffTime: 0.5
-    damage: 150
+    damage: 200
     applyVelocity: {x: -5, y: 0}
     projectile: {fileID: 1140254332370364, guid: c1b54be318e31e74d8f5e2af20a16185,
       type: 2}
@@ -345,7 +345,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 1
     stiffTime: 0.1
-    damage: 100
+    damage: 150
     applyVelocity: {x: -5, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -1683,7 +1683,7 @@ AnimatorStateMachine:
     m_Position: {x: -144, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102082798434196868}
-    m_Position: {x: 108, y: 204, z: 0}
+    m_Position: {x: 108, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102720824562176078}
     m_Position: {x: 132, y: 348, z: 0}
