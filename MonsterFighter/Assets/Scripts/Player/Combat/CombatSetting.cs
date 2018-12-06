@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CombatSetting {
+public class CombatSetting
+{
     public CombatType combatType;
     public float triggerFrame;
     public bool isKnockDown;
     public float stiffTime;
+    public AudioClip startClip;
+    public AudioClip hitClip;
+
     [Space(20)]
     public int damage;
     public Vector2 applyVelocity;
@@ -17,7 +21,13 @@ public class CombatSetting {
 
     public void Execute(CombatHandler handler)
     {
-        CombatInfo combatInfo = new CombatInfo(damage, applyVelocity, isKnockDown, stiffTime);
+        if (startClip != null)
+        {
+            handler.GetComponent<AudioSource>().clip = startClip;
+            handler.GetComponent<AudioSource>().Play();
+        }
+
+        CombatInfo combatInfo = new CombatInfo(damage, applyVelocity, isKnockDown, stiffTime, hitClip);
         if(combatType == CombatType.Attack)
         {
             handler.PrepareAttack(combatInfo);

@@ -18,28 +18,19 @@ public class AnimationState : StateMachineBehaviour
     private bool resetVelocityWhenEnter;
     private int actionId;
 
-    [SerializeField, Header("Combat Settings")]
-    private List<CombatSetting> combatList;
-    [SerializeField]
-    private float switchFrame;
-    private int combatId;
-
-    private PlayerController controller;
-    private CombatHandler combatHandler;
+    protected PlayerController controller;
     private PhysicsObject physics;
-    private float currentFrame;
+
+    protected float currentFrame;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
         controller = animator.GetComponent<PlayerController>();
-        combatHandler = animator.GetComponent<CombatHandler>();
         physics = animator.GetComponent<PhysicsObject>();
-        actionId = combatId = -1;
+        actionId = -1;
 
         controller.CurrentState = stateType;
-        controller.EnableBaseInput = enableBaseInput;
-        controller.EnableCombatInput = enableCombatInput;
+        controller.SetInputActivate(enableBaseInput, enableCombatInput);
 
         if (resetVelocityWhenEnter)
         {
@@ -50,17 +41,12 @@ public class AnimationState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         currentFrame = (stateInfo.normalizedTime % 1f) * stateInfo.length * 15;
-        if (actionList.Count > 0)
-        {
-            UpdatePhysicsParamByFrame();
-        }
-        UpdateCombatParamByFrame();
+        UpdatePhysicsParamByFrame();
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         physics.SetPhysicsParam(null, Vector2.zero, true);
-        combatHandler.CancelAttack();
     }
 
     private void UpdatePhysicsParamByFrame()
@@ -69,19 +55,6 @@ public class AnimationState : StateMachineBehaviour
         {
             actionId++;
             physics.SetPhysicsParam(actionList[actionId].initVelocity, actionList[actionId].acceleration, actionList[actionId].useDefaultGravity);
-        }
-    }
-
-    private void UpdateCombatParamByFrame()
-    {
-        if (combatId + 1 < combatList.Count && combatList[combatId + 1].triggerFrame <= currentFrame)
-        {
-            combatId++;
-            combatList[combatId].Execute(combatHandler);
-        }
-        if (switchFrame >= 0f && switchFrame <= currentFrame)
-        {
-            controller.TriggerNextCombatState();
         }
     }
 }

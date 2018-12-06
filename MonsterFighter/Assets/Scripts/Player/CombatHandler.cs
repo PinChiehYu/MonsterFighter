@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInfo), typeof(PlayerController))]
-public class CombatHandler : MonoBehaviour, ICombatSender {
+public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
 
     private PlayerInfo playerInfo;
     private PlayerController playerController;
@@ -14,6 +14,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender {
     private bool readyToAttack;
     private CombatInfo combatInfo;
 
+    public bool Invincible { get; set; }
     public event Action OnHitTarget;
 
     void Awake()
@@ -22,6 +23,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender {
         playerController = GetComponent<PlayerController>();
         comboCounter = 0;
         readyToAttack = false;
+        Invincible = false;
     }
 
     public void SendAttack(CombatHandler enemyHandler)
@@ -37,13 +39,18 @@ public class CombatHandler : MonoBehaviour, ICombatSender {
 
     public void ReceiveAttack(CombatInfo combatInfo, float enemyXPosition)
     {
+        if (Invincible) return;
+
+        GetComponent<AudioSource>().clip = combatInfo.hitClip;
+        GetComponent<AudioSource>().Play();
+
         playerInfo.CurrentHealthPoint -= combatInfo.damage;
         if (combatInfo.isKnockDown)
         {
             playerInfo.CurrentKnockDownPoint = 0f;
             playerController.Damaged(combatInfo.applyVelocity, combatInfo.stiffTime, true, enemyXPosition);
         }
-        else if (playerInfo.IsKnockDown)
+        else if (playerInfo.IsKnockdown)
         {
             playerInfo.CurrentKnockDownPoint = 0f;
             playerController.Damaged(combatInfo.applyVelocity, 0, true, enemyXPosition);

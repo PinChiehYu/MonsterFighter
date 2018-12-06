@@ -11,11 +11,10 @@ public class PlayerController : MonoBehaviour {
 
     private Vector2 initPosition;
     private Dictionary<string, KeyCode> controlSet;
-    private Queue<string> inputBuffer = new Queue<string>();
 
     public StateType CurrentState { get; set; }
-    public bool EnableBaseInput { get; set; }
-    public bool EnableCombatInput { get; set; }
+    private bool enableBaseInput;
+    private bool enableCombatInput;
 
     private CombatTrigger combatTrigger;
     
@@ -32,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleBaseOperation()
     {
-        if (!EnableBaseInput) return;
+        if (!enableBaseInput) return;
 
         if (Input.GetKey(controlSet["Right"]))
         {
@@ -49,6 +48,11 @@ public class PlayerController : MonoBehaviour {
             physics.Forward(0f);
         }
 
+        if ((Input.GetKey(controlSet["Left"]) || Input.GetKey(controlSet["Right"])) && CurrentState == StateType.Base && physics.IsGrounded)
+        {
+            GetComponent<PlayerInfo>().CurrentManaPoint += Time.deltaTime * 10;
+        }
+
         if (Input.GetKeyDown(controlSet["Up"]) && physics.IsGrounded)
         {
             physics.Jump();
@@ -57,7 +61,8 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleCombatOperation()
     {
-        if (!EnableCombatInput) return;
+        if (!enableCombatInput) return;
+        Debug.Log(CurrentState);
 
         if (CurrentState == StateType.Base)
         {
@@ -102,15 +107,18 @@ public class PlayerController : MonoBehaviour {
         string trigger = Enum.GetName(typeof(CombatTrigger), combatTrigger);
         if (combatTrigger != CombatTrigger.None)
         {
-            if (combatTrigger == CombatTrigger.SklS && plyinf.CurrentEnergyPoint > 0)
+            if (combatTrigger == CombatTrigger.SklS && CurrentState == StateType.Base && physics.IsGrounded && plyinf.AbleToCastSkillS)
             {
-
+                animator.SetTrigger(trigger);
             }
-            else if (combatTrigger == CombatTrigger.SklB && plyinf.CurrentEnergyPoint > 0)
+            else if (combatTrigger == CombatTrigger.SklB && CurrentState == StateType.Base && physics.IsGrounded && plyinf.AbleToCastSkillB)
             {
-
+                animator.SetTrigger(trigger);
             }
-            animator.SetTrigger(trigger);
+            else if (combatTrigger != CombatTrigger.SklS && combatTrigger != CombatTrigger.SklB)
+            {
+                animator.SetTrigger(trigger);
+            }
             combatTrigger = CombatTrigger.None;
         }
     }
@@ -126,6 +134,7 @@ public class PlayerController : MonoBehaviour {
     {
         controlSet = controlset;
         initPosition = initposition;
+        GetComponentInChildren<AttackboxDetector>().Id = gameObject.name;
     }
 
     public void ResetController()
@@ -133,21 +142,23 @@ public class PlayerController : MonoBehaviour {
         transform.position = initPosition;
         physics.IsFaceRight = gameObject.name == "0";
         physics.IsGrounded = false;
-        EnableBaseInput = EnableCombatInput = true;
-        GetComponentInChildren<AttackboxDetector>().Id = gameObject.name;
+        enableBaseInput = enableCombatInput = false;
         animator.Rebind();
+        if (damageCo != null) StopCoroutine(damageCo);
+        GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
+        transform.Find("Damage").gameObject.SetActive(true);
     }
 
     void OnGUI()
     {
-        GUI.Label(new Rect(0, 15f * int.Parse(gameObject.name), 200f, 50f), "Player " + gameObject.name + " Current:" + EnableBaseInput.ToString());
+        GUI.Label(new Rect(0, 15f * int.Parse(gameObject.name), 200f, 50f), "Player " + gameObject.name + " Current:" + enableBaseInput.ToString());
     }
 
     private IEnumerator damageCo;
     public void Damaged(Vector2 applyVelocity, float stiffTime, bool isKnockDown, float enemyXPosition)
     {
         physics.IsFaceRight = enemyXPosition > transform.position.x;
-        EnableBaseInput = false;
+        enableBaseInput = false;
         if (damageCo != null) StopCoroutine(damageCo);
         physics.SetPhysicsParam(applyVelocity, Vector2.zero, true);
         damageCo = Stiff(stiffTime, isKnockDown);
@@ -157,8 +168,8 @@ public class PlayerController : MonoBehaviour {
     public void Fallout()
     {
         transform.position = new Vector2(-4f, -1f);
-        EnableBaseInput = false;
-        EnableCombatInput = false;
+        enableBaseInput = false;
+        enableCombatInput = false;
         physics.Forward(0f);
         if (damageCo != null) StopCoroutine(damageCo);
         StartCoroutine(Stiff(0f, true));
@@ -172,18 +183,24 @@ public class PlayerController : MonoBehaviour {
         if (knockDown)
         {
             physics.SetPhysicsParam(Vector2.zero, Vector2.zero, true);
-            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.6f);
-            transform.Find("Damage").gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.4f);
+            GetComponent<CombatHandler>().Invincible = true;
             animator.SetTrigger("KnockDown");
             yield return new WaitForSeconds(1f);
             animator.SetTrigger("WakeUp");
             yield return new WaitForSeconds(1f);
             GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
-            transform.Find("Damage").gameObject.SetActive(true);
+            GetComponent<CombatHandler>().Invincible = false;
         }
         else
         {
             animator.SetTrigger("WakeUp");
         }
+    }
+
+    public void SetInputActivate(bool enableBase, bool enableCombat)
+    {
+        enableBaseInput = enableBase;
+        enableCombatInput = enableCombat;
     }
 }

@@ -27,7 +27,6 @@ public class InformationSet : MonoBehaviour {
         newMpPercentage = 1f;
     }
 	
-	// Update is called once per frame
 	void Update () {
         HPBar.fillAmount = Mathf.Lerp(HPBar.fillAmount, newHpPercentage, 0.1f);
         MPBar.fillAmount = Mathf.Lerp(MPBar.fillAmount, newMpPercentage, 0.1f);
@@ -36,6 +35,11 @@ public class InformationSet : MonoBehaviour {
     public void OnPlayerHpChange(float percentage)
     {
         newHpPercentage = percentage;
+    }
+
+    public void OnPlayerMpChange(float percentage)
+    {
+        newMpPercentage = percentage;
     }
 
     public void LightBubble(int lightId)

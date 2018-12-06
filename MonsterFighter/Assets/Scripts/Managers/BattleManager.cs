@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour {
 
     private int[] playerComboHit = new int[2] { 0, 0 };
 
-    private PlayerInfo[] playerInfos = new PlayerInfo[2];
+    private GameObject[] playerChars = new GameObject[2];
     private int[] playerWinCount = new int[2] { 0, 0 };
 
     void Awake ()
@@ -42,17 +42,19 @@ public class BattleManager : MonoBehaviour {
 
     private void InstantiateCharacters()
     {
-        playerInfos[0] = GameManager.Instance.CreateCharacter(0).GetComponent<PlayerInfo>();
-        playerInfos[1] = GameManager.Instance.CreateCharacter(1).GetComponent<PlayerInfo>();
+        playerChars[0] = GameManager.Instance.CreateCharacter(0);
+        playerChars[1] = GameManager.Instance.CreateCharacter(1);
     }
 
     private void RegisterEvent()
     {
         for (int i = 0; i < 2; i++)
         {
-            playerInfos[i].OnDie += CharacterDie;
-            playerInfos[i].OnHPChange += informationSets[i].OnPlayerHpChange;
-            playerInfos[i].OnHPChange += comboSets[i].OnPlayerHpChange;
+            PlayerInfo plyinf = playerChars[i].GetComponent<PlayerInfo>();
+            plyinf.OnDie += CharacterDie;
+            plyinf.OnHpChange += informationSets[i].OnPlayerHpChange;
+            plyinf.OnMpChange += informationSets[i].OnPlayerMpChange;
+            plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
         }
     }
 
@@ -75,11 +77,14 @@ public class BattleManager : MonoBehaviour {
 
     private void ResetPlayers()
     {
-        playerInfos[0].ResetPlayer();
-        playerInfos[1].ResetPlayer();
+        for (int i = 0; i < 2; i++)
+        {
+            playerChars[i].GetComponent<PlayerInfo>().ResetPlayerInfo();
+            playerChars[i].GetComponent<PlayerController>().ResetController();
+            playerChars[i].GetComponent<PhysicsObject>().ResetPhysics();
+        }
     }
 
-    // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -116,7 +121,7 @@ public class BattleManager : MonoBehaviour {
         bool istimeup = false;
         if (winnerid == -1)
         {
-            winnerid = playerInfos[0].CurrentHealthPoint > playerInfos[1].CurrentHealthPoint ? 0 : 1;
+            winnerid = playerChars[0].GetComponent<PlayerInfo>().CurrentHealthPoint > playerChars[1].GetComponent<PlayerInfo>().CurrentHealthPoint ? 0 : 1;
             istimeup = true;
         }
 
@@ -128,6 +133,8 @@ public class BattleManager : MonoBehaviour {
 
     private void EndBattle()
     {
+        playerChars[0].GetComponent<PlayerController>().SetInputActivate(false, false);
+        playerChars[1].GetComponent<PlayerController>().SetInputActivate(false, false);
         StartCoroutine("EndBattleDisplay");
     }
 

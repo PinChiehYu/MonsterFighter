@@ -97,48 +97,6 @@ MonoBehaviour:
   enableCombatInput: 0
   actionList: []
   resetVelocityWhenEnter: 0
-  combatList: []
-  switchFrame: 0
---- !u!114 &114052815584150636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateType: 2
-  enableBaseInput: 1
-  enableCombatInput: 0
-  actionList:
-  - triggerFrame: 0
-    useDefaultGravity: 1
-    initVelocity: {x: 0, y: 0}
-    acceleration: {x: 0, y: 0}
-  resetVelocityWhenEnter: 0
-  combatList:
-  - combatType: 1
-    triggerFrame: 2
-    isKnockDown: 0
-    stiffTime: 0.2
-    damage: 60
-    applyVelocity: {x: -2, y: 0}
-    projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
-      type: 2}
-    launchPoint: {x: 1.5, y: 1.5}
-  - combatType: 1
-    triggerFrame: 3
-    isKnockDown: 1
-    stiffTime: 0.2
-    damage: 60
-    applyVelocity: {x: -2, y: 0}
-    projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
-      type: 2}
-    launchPoint: {x: 1.5, y: 1}
-  switchFrame: -1
 --- !u!114 &114107750683137008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +155,7 @@ MonoBehaviour:
   switchFrame: -1
   combatId: 0
   combatHandler: {fileID: 0}
---- !u!114 &114178487653743458
+--- !u!114 &114240703929928392
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,12 +163,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
+  m_Script: {fileID: 11500000, guid: ee32b5fb4cf22e945a08d6c04416effc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateType: 1
+  stateType: 2
   enableBaseInput: 0
-  enableCombatInput: 1
+  enableCombatInput: 0
   actionList:
   - triggerFrame: 0
     useDefaultGravity: 1
@@ -218,59 +176,29 @@ MonoBehaviour:
     acceleration: {x: 0, y: 0}
   resetVelocityWhenEnter: 0
   combatList:
-  - combatType: 0
-    triggerFrame: 0
+  - combatType: 1
+    triggerFrame: 2
     isKnockDown: 0
-    stiffTime: 0.5
-    damage: 50
+    stiffTime: 0.2
+    startClip: {fileID: 8300000, guid: 0ed83a71b9a043e478795185c8b74a3e, type: 3}
+    hitClip: {fileID: 8300000, guid: 568d849f6b75987498a69fe644aed69a, type: 3}
+    damage: 60
     applyVelocity: {x: -1, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: 0, y: 0}
-  switchFrame: 4
---- !u!114 &114223095309907996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateType: 1
-  enableBaseInput: 1
-  enableCombatInput: 1
-  actionList: []
-  resetVelocityWhenEnter: 0
-  combatList:
-  - combatType: 0
-    triggerFrame: 0
-    isKnockDown: 0
-    stiffTime: 0.4
-    damage: 100
-    applyVelocity: {x: -2, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: 0, y: 0}
-  switchFrame: 5
---- !u!114 &114262298824522730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateType: 0
-  enableBaseInput: 1
-  enableCombatInput: 1
-  actionList: []
-  resetVelocityWhenEnter: 0
-  combatList: []
-  switchFrame: 0
+    projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
+      type: 2}
+    launchPoint: {x: 0.75, y: 2}
+  - combatType: 1
+    triggerFrame: 3
+    isKnockDown: 1
+    stiffTime: 0.2
+    startClip: {fileID: 8300000, guid: 0ed83a71b9a043e478795185c8b74a3e, type: 3}
+    hitClip: {fileID: 8300000, guid: 568d849f6b75987498a69fe644aed69a, type: 3}
+    damage: 60
+    applyVelocity: {x: -1, y: 0}
+    projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
+      type: 2}
+    launchPoint: {x: 0.75, y: 1.5}
+  switchFrame: -1
 --- !u!114 &114415076054226626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,7 +248,7 @@ MonoBehaviour:
   switchFrame: 4
   combatId: 0
   combatHandler: {fileID: 0}
---- !u!114 &114588161924678260
+--- !u!114 &114549959027140584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,9 +264,7 @@ MonoBehaviour:
   enableCombatInput: 1
   actionList: []
   resetVelocityWhenEnter: 0
-  combatList: []
-  switchFrame: 0
---- !u!114 &114690602119478920
+--- !u!114 &114550362546376004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +272,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
+  m_Script: {fileID: 11500000, guid: ee32b5fb4cf22e945a08d6c04416effc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 1
+  enableBaseInput: 0
+  enableCombatInput: 1
+  actionList:
+  - triggerFrame: 0
+    useDefaultGravity: 1
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  resetVelocityWhenEnter: 0
+  combatList:
+  - combatType: 0
+    triggerFrame: 0
+    isKnockDown: 0
+    stiffTime: 0.55
+    startClip: {fileID: 8300000, guid: b4877c8b91edcb14e9d9ff6020a3fb2b, type: 3}
+    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    damage: 50
+    applyVelocity: {x: -0.5, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  switchFrame: 5
+--- !u!114 &114584850126976676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee32b5fb4cf22e945a08d6c04416effc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateType: 1
@@ -354,7 +312,69 @@ MonoBehaviour:
   enableCombatInput: 0
   actionList:
   - triggerFrame: 0
-    useDefaultGravity: 0
+    useDefaultGravity: 1
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  resetVelocityWhenEnter: 0
+  combatList:
+  - combatType: 0
+    triggerFrame: 3
+    isKnockDown: 0
+    stiffTime: 0.2
+    startClip: {fileID: 8300000, guid: 37e94e3b38b53aa4392cec978a63af60, type: 3}
+    hitClip: {fileID: 0}
+    damage: 40
+    applyVelocity: {x: -0.1, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 5
+    isKnockDown: 0
+    stiffTime: 0.2
+    startClip: {fileID: 0}
+    hitClip: {fileID: 0}
+    damage: 40
+    applyVelocity: {x: -0.1, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 7
+    isKnockDown: 0
+    stiffTime: 0.2
+    startClip: {fileID: 0}
+    hitClip: {fileID: 0}
+    damage: 40
+    applyVelocity: {x: -0.1, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 9
+    isKnockDown: 1
+    stiffTime: 0.2
+    startClip: {fileID: 0}
+    hitClip: {fileID: 0}
+    damage: 40
+    applyVelocity: {x: -4, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  switchFrame: -1
+--- !u!114 &114689647460500978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee32b5fb4cf22e945a08d6c04416effc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 1
+  enableBaseInput: 1
+  enableCombatInput: 0
+  actionList:
+  - triggerFrame: 0
+    useDefaultGravity: 1
     initVelocity: {x: 0, y: 0}
     acceleration: {x: 0, y: 0}
   resetVelocityWhenEnter: 0
@@ -363,8 +383,10 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.4
+    startClip: {fileID: 8300000, guid: b4877c8b91edcb14e9d9ff6020a3fb2b, type: 3}
+    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
     damage: 150
-    applyVelocity: {x: -3, y: 0}
+    applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   switchFrame: -1
@@ -386,6 +408,38 @@ MonoBehaviour:
     damage: 150
     applyVelocity: {x: 0, y: 0}
   switchFrame: -1
+--- !u!114 &114776868642291988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee32b5fb4cf22e945a08d6c04416effc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 1
+  enableBaseInput: 1
+  enableCombatInput: 1
+  actionList:
+  - triggerFrame: 0
+    useDefaultGravity: 1
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  resetVelocityWhenEnter: 0
+  combatList:
+  - combatType: 0
+    triggerFrame: 0
+    isKnockDown: 0
+    stiffTime: 0.4
+    startClip: {fileID: 8300000, guid: b4877c8b91edcb14e9d9ff6020a3fb2b, type: 3}
+    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    damage: 80
+    applyVelocity: {x: -1, y: 0}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  switchFrame: 6
 --- !u!114 &114814924356036926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,68 +481,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionList: []
   resetVelocity: 0
---- !u!114 &114979178493092388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateType: 1
-  enableBaseInput: 0
-  enableCombatInput: 1
-  actionList:
-  - triggerFrame: 0
-    useDefaultGravity: 1
-    initVelocity: {x: 0, y: 0}
-    acceleration: {x: 0, y: 0}
-  resetVelocityWhenEnter: 0
-  combatList:
-  - combatType: 0
-    triggerFrame: 0
-    isKnockDown: 0
-    stiffTime: 0.5
-    damage: 60
-    applyVelocity: {x: 0, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: -1, y: 0}
-  - combatType: 0
-    triggerFrame: 3
-    isKnockDown: 0
-    stiffTime: 0.2
-    damage: 60
-    applyVelocity: {x: -1, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: 0, y: 0}
-  - combatType: 0
-    triggerFrame: 5
-    isKnockDown: 0
-    stiffTime: 0.2
-    damage: 60
-    applyVelocity: {x: -1, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: 0, y: 0}
-  - combatType: 0
-    triggerFrame: 7
-    isKnockDown: 0
-    stiffTime: 0.2
-    damage: 60
-    applyVelocity: {x: -1, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: 0, y: 0}
-  - combatType: 0
-    triggerFrame: 9
-    isKnockDown: 1
-    stiffTime: 0
-    damage: 60
-    applyVelocity: {x: 0, y: 0}
-    projectile: {fileID: 0}
-    launchPoint: {x: 0, y: 0}
-  switchFrame: -1
 --- !u!206 &206399144963939126
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1008,7 +1000,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101788855832101310}
   m_StateMachineBehaviours:
-  - {fileID: 114690602119478920}
+  - {fileID: 114689647460500978}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1036,7 +1028,7 @@ AnimatorState:
   - {fileID: 1101769840202025508}
   - {fileID: 1101953645815847238}
   m_StateMachineBehaviours:
-  - {fileID: 114223095309907996}
+  - {fileID: 114776868642291988}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1092,7 +1084,7 @@ AnimatorState:
   - {fileID: 1101116305558801974}
   - {fileID: 1101831586664984854}
   m_StateMachineBehaviours:
-  - {fileID: 114588161924678260}
+  - {fileID: 114549959027140584}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1120,7 +1112,7 @@ AnimatorState:
   - {fileID: 1101364298582342206}
   - {fileID: 1101259789083201544}
   m_StateMachineBehaviours:
-  - {fileID: 114178487653743458}
+  - {fileID: 114550362546376004}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1131,10 +1123,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 05ed193fada99e045a38de3f33e98fea, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: SpeedX
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: SpeedX
 --- !u!1102 &1102466614604601174
 AnimatorState:
   serializedVersion: 5
@@ -1227,7 +1219,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101949993944952466}
   m_StateMachineBehaviours:
-  - {fileID: 114052815584150636}
+  - {fileID: 114240703929928392}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1253,8 +1245,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101975661981226526}
-  m_StateMachineBehaviours:
-  - {fileID: 114262298824522730}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1281,7 +1272,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101520519540039070}
   m_StateMachineBehaviours:
-  - {fileID: 114979178493092388}
+  - {fileID: 114584850126976676}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
