@@ -433,7 +433,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 1
     stiffTime: 0.75
-    startClip: {fileID: 0}
+    startClip: {fileID: 8300000, guid: 28f1f3863ab2d654999304247f4b7efb, type: 3}
     hitClip: {fileID: 0}
     damage: 200
     applyVelocity: {x: -5, y: 0}

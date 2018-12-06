@@ -298,7 +298,7 @@ MonoBehaviour:
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
     damage: 30
-    applyVelocity: {x: -2, y: 2}
+    applyVelocity: {x: -2, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
     damage: 30
-    applyVelocity: {x: -2, y: 2}
+    applyVelocity: {x: -2, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
     damage: 30
-    applyVelocity: {x: -2, y: 2}
+    applyVelocity: {x: 0, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
     damage: 30
-    applyVelocity: {x: -2, y: 2}
+    applyVelocity: {x: 0, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -337,8 +337,8 @@ MonoBehaviour:
     stiffTime: 0.3
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
-    damage: 30
-    applyVelocity: {x: -2, y: 2}
+    damage: 50
+    applyVelocity: {x: 2, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -347,8 +347,8 @@ MonoBehaviour:
     stiffTime: 0.3
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
-    damage: 30
-    applyVelocity: {x: -2, y: 2}
+    damage: 50
+    applyVelocity: {x: 2, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -357,8 +357,8 @@ MonoBehaviour:
     stiffTime: 0.3
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
-    damage: 30
-    applyVelocity: {x: -2, y: 2}
+    damage: 50
+    applyVelocity: {x: 2, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -367,11 +367,11 @@ MonoBehaviour:
     stiffTime: 0.3
     startClip: {fileID: 8300000, guid: 3769dab878f888747b8ac950cfa251a4, type: 3}
     hitClip: {fileID: 0}
-    damage: 30
-    applyVelocity: {x: -2, y: 2}
+    damage: 50
+    applyVelocity: {x: 2, y: 5}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
-  switchFrame: 0
+  switchFrame: -1
 --- !u!114 &114520890933167432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1136,7 +1136,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: UnityChan_Skill_B
-  m_Speed: 1
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101797276190960228}

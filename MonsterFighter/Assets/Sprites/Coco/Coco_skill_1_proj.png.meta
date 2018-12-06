@@ -6,6 +6,13 @@ TextureImporter:
     21300002: Coco_skill_1_proj_1
     21300004: Coco_skill_1_proj_2
     21300006: Coco_skill_1_proj_3
+    21300008: Coco_skill_S_proj_0
+    21300010: Coco_skill_S_proj_1
+    21300012: Coco_skill_S_proj_2
+    21300014: Coco_skill_S_proj_3
+    21300016: Coco_skill_S_proj_4
+    21300018: Coco_skill_S_proj_5
+    21300020: Coco_skill_S_proj_6
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -97,7 +104,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Coco_skill_1_proj_0
+      name: Coco_skill_S_proj_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 300
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7149d04bfe5f284b8a33fa1df81ebc6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coco_skill_S_proj_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 512
+        width: 300
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01503022eae10e4f9b47a1404eb9a11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coco_skill_S_proj_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 512
+        width: 300
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2b5b697f90c4f942940a52d8a85c459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coco_skill_S_proj_3
       rect:
         serializedVersion: 2
         x: 0
@@ -111,13 +178,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af61a8f3534ff5341b8078881823402f
+      spriteID: 00ca4839e9babde41a86f340fc1f7c7b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_skill_1_proj_1
+      name: Coco_skill_S_proj_4
       rect:
         serializedVersion: 2
         x: 300
@@ -131,13 +198,33 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52326b161fadaa1448fd2ca3eb79e7b3
+      spriteID: 3144a37d34ab3204b9cd2a2c87fe51e9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_skill_1_proj_2
+      name: Coco_skill_S_proj_5
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 256
+        width: 300
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e0a359daf46e5458f2579be8d8f79c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coco_skill_S_proj_6
       rect:
         serializedVersion: 2
         x: 0
@@ -151,27 +238,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f36647ef83d2bc43b7bbe27ca139625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Coco_skill_1_proj_3
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 300
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa77d30b47bde0940a1c2bfcb8ef0894
+      spriteID: 9691a49d5386b9c4ab3f67a85ca0e900
       vertices: []
       indices: 
       edges: []

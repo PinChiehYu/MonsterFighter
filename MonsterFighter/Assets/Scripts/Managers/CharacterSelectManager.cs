@@ -19,7 +19,7 @@ public class CharacterSelectManager : MonoBehaviour {
 
     public void SelectCharacter(string charName)
     {
-        GameManager.Instance.playerCharacterPicks[1] = charName;
+        GameManager.Instance.playerCharacterPicks[0] = charName;
     }
 
     public void StartBattle()

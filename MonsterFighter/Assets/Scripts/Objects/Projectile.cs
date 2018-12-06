@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
-public class Projectile : MonoBehaviour, ICombatSender {
-    // Use this for initialization
+public class Projectile : MonoBehaviour, ICombatSender, IBorderSensor {
+    [HideInInspector]
     public string ownerId;
     public float speed;
     public bool isPenetrant;
+    [HideInInspector]
     public CombatInfo combatInfo;
 
     void Start()
@@ -30,11 +31,11 @@ public class Projectile : MonoBehaviour, ICombatSender {
         }
         else
         {
-            End();
+            Ending();
         }
     }
 
-    public void End()
+    public void Ending()
     {
         Destroy(gameObject);
     }
@@ -43,5 +44,10 @@ public class Projectile : MonoBehaviour, ICombatSender {
     {
         GetComponent<Animator>().SetTrigger("Hit");
         Debug.Log("Missile Hit!");
+    }
+
+    public void Fallout()
+    {
+        Ending();
     }
 }

@@ -9,6 +9,13 @@ TextureImporter:
     21300008: Coco_light_attack_1_4
     21300010: Coco_light_attack_1_5
     21300012: Coco_light_attack_1_6
+    21300014: Coco_attack_L_1_0
+    21300016: Coco_attack_L_1_1
+    21300018: Coco_attack_L_1_2
+    21300020: Coco_attack_L_1_3
+    21300022: Coco_attack_L_1_4
+    21300024: Coco_attack_L_1_5
+    21300026: Coco_attack_L_1_6
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -100,12 +107,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Coco_light_attack_1_0
+      name: Coco_attack_L_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 640
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -114,18 +121,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 975db17e1138af3408fec4e7a24e3540
+      spriteID: 329ad2de402a02447a90cd0f48d8e212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_light_attack_1_1
+      name: Coco_attack_L_1_1
       rect:
         serializedVersion: 2
-        x: 480
+        x: 640
         y: 640
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -134,18 +141,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccd253e146a583f41af468a4a877e299
+      spriteID: 849990306fdbf0d4498accaff95f0647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_light_attack_1_2
+      name: Coco_attack_L_1_2
       rect:
         serializedVersion: 2
-        x: 960
+        x: 1280
         y: 640
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -154,18 +161,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b762b9e290524b2418f24f07e7d7fca6
+      spriteID: 30ddf26fb5a34964cbfc898adb83ef93
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_light_attack_1_3
+      name: Coco_attack_L_1_3
       rect:
         serializedVersion: 2
         x: 0
         y: 320
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -174,18 +181,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec31f87f9038e2409373287eeb94752
+      spriteID: 70539f91122c12f4fa323ca95bb26150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_light_attack_1_4
+      name: Coco_attack_L_1_4
       rect:
         serializedVersion: 2
-        x: 480
+        x: 640
         y: 320
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -194,18 +201,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79a2a170b767c0d47973daa24726ff21
+      spriteID: 64da6ea657db0324abe92db7b3f73908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_light_attack_1_5
+      name: Coco_attack_L_1_5
       rect:
         serializedVersion: 2
-        x: 960
+        x: 1280
         y: 320
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -214,18 +221,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 017643cd6e07ca34c821714b02cca1af
+      spriteID: f5bc30b5bec891644aa1137bcb58359b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coco_light_attack_1_6
+      name: Coco_attack_L_1_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 480
+        width: 640
         height: 320
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -234,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 799affe58f6f20b4b87304a7bc6b91fc
+      spriteID: d1b14e3067019874da780c618afd14d4
       vertices: []
       indices: 
       edges: []

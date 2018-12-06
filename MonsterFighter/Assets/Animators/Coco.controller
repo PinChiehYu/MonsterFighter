@@ -186,7 +186,7 @@ MonoBehaviour:
     applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
       type: 2}
-    launchPoint: {x: 0.75, y: 2}
+    launchPoint: {x: 1.8, y: 1.5}
   - combatType: 1
     triggerFrame: 3
     isKnockDown: 1
@@ -197,7 +197,7 @@ MonoBehaviour:
     applyVelocity: {x: -1, y: 0}
     projectile: {fileID: 1900062803478924, guid: 8fe11b8f89378504cbd5338ec66c2608,
       type: 2}
-    launchPoint: {x: 0.75, y: 1.5}
+    launchPoint: {x: 1.3, y: 1}
   switchFrame: -1
 --- !u!114 &114415076054226626
 MonoBehaviour:
@@ -318,13 +318,13 @@ MonoBehaviour:
   resetVelocityWhenEnter: 0
   combatList:
   - combatType: 0
-    triggerFrame: 3
+    triggerFrame: 2
     isKnockDown: 0
     stiffTime: 0.2
     startClip: {fileID: 8300000, guid: 37e94e3b38b53aa4392cec978a63af60, type: 3}
     hitClip: {fileID: 0}
     damage: 40
-    applyVelocity: {x: -0.1, y: 0}
+    applyVelocity: {x: -0.2, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     startClip: {fileID: 0}
     hitClip: {fileID: 0}
     damage: 40
-    applyVelocity: {x: -0.1, y: 0}
+    applyVelocity: {x: -0.2, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
     startClip: {fileID: 0}
     hitClip: {fileID: 0}
     damage: 40
-    applyVelocity: {x: -0.1, y: 0}
+    applyVelocity: {x: -0.2, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
