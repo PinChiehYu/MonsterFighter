@@ -135,6 +135,7 @@ MonoBehaviour:
     applyVelocity: {x: 0, y: 0}
     isKnockDown: 0
     stiffTime: 0
+    hitClip: {fileID: 0}
 --- !u!114 &114682455041637342
 MonoBehaviour:
   m_ObjectHideFlags: 1

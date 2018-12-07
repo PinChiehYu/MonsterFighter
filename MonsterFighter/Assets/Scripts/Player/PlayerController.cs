@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour {
     private PhysicsObject physics;
     private Animator animator;
 
-    private Vector2 initPosition;
+    private Vector3 initPosition;
+    private Vector3 falloutPosition;
     private Dictionary<string, KeyCode> controlSet;
 
     public StateType CurrentState { get; set; }
@@ -130,10 +131,11 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("SpeedY", physics.Velocity.y);
     }
 
-    public void SetupController(Dictionary<string, KeyCode> controlset, Vector2 initposition)
+    public void SetupController(Dictionary<string, KeyCode> controlset, Vector3 initposition, Vector3 falloutposition)
     {
         controlSet = controlset;
         initPosition = initposition;
+        falloutPosition = falloutposition;
         GetComponentInChildren<AttackboxDetector>().Id = gameObject.name;
     }
 
@@ -142,7 +144,7 @@ public class PlayerController : MonoBehaviour {
         transform.position = initPosition;
         physics.IsFaceRight = gameObject.name == "0";
         physics.IsGrounded = false;
-        enableBaseInput = enableCombatInput = false;
+        SetInputActivate(false, false);
         animator.Rebind();
         if (damageCo != null) StopCoroutine(damageCo);
         GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
@@ -167,7 +169,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Fallout()
     {
-        transform.position = new Vector2(-4f, -1f);
+        transform.position = falloutPosition;
         enableBaseInput = false;
         enableCombatInput = false;
         physics.Forward(0f);
