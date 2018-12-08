@@ -25,8 +25,7 @@ public class SelectManager : MonoBehaviour {
 
         if(selected[0] && selected[1])
         {
-            charCanvas.SetActive(false);
-            mapCanvas.SetActive(true);
+            StartCoroutine(SwitchSelectionCanvas());
         }
     }
 
@@ -43,5 +42,12 @@ public class SelectManager : MonoBehaviour {
     public void StartBattle()
     {
         SceneManager.LoadScene(mapName); //GameManager.Instance.gameMode
+    }
+
+    IEnumerator SwitchSelectionCanvas()
+    {
+        yield return new WaitForSeconds(1f);
+        charCanvas.SetActive(false);
+        mapCanvas.SetActive(true);
     }
 }

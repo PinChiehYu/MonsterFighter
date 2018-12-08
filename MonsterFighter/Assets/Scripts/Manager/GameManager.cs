@@ -59,4 +59,9 @@ public class GameManager
             Time.timeScale = 1;
         }
     }
+
+    public void SwitchScene(string sceneName)
+    {
+
+    }
 }

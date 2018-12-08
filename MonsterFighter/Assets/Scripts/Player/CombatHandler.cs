@@ -63,8 +63,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
 
     public void Fallout()
     {
-        Debug.LogFormat("Player {0} Fallout.", gameObject.name);
-        playerInfo.CurrentHealthPoint -= 20;
+        playerInfo.CurrentHealthPoint -= 100;
         playerInfo.CurrentKnockDownPoint = 0f;
         playerController.Fallout();
     }

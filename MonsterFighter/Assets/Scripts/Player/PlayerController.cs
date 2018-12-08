@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour {
     private void HandleCombatOperation()
     {
         if (!enableCombatInput) return;
-        Debug.Log(CurrentState);
 
         if (CurrentState == StateType.Base)
         {
@@ -145,10 +144,10 @@ public class PlayerController : MonoBehaviour {
         physics.IsFaceRight = gameObject.name == "0";
         physics.IsGrounded = false;
         SetInputActivate(false, false);
-        animator.Rebind();
         if (damageCo != null) StopCoroutine(damageCo);
         GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
-        transform.Find("Damage").gameObject.SetActive(true);
+        GetComponent<CombatHandler>().Invincible = false;
+        animator.Rebind();
     }
 
     void OnGUI()
@@ -170,8 +169,7 @@ public class PlayerController : MonoBehaviour {
     public void Fallout()
     {
         transform.position = falloutPosition;
-        enableBaseInput = false;
-        enableCombatInput = false;
+        SetInputActivate(false, false);
         physics.Forward(0f);
         if (damageCo != null) StopCoroutine(damageCo);
         StartCoroutine(Stiff(0f, true));
@@ -189,14 +187,14 @@ public class PlayerController : MonoBehaviour {
             GetComponent<CombatHandler>().Invincible = true;
             animator.SetTrigger("KnockDown");
             yield return new WaitForSeconds(1f);
-            animator.SetTrigger("WakeUp");
+            WakeUp();
             yield return new WaitForSeconds(1f);
             GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
             GetComponent<CombatHandler>().Invincible = false;
         }
         else
         {
-            animator.SetTrigger("WakeUp");
+            WakeUp();
         }
     }
 
@@ -204,5 +202,10 @@ public class PlayerController : MonoBehaviour {
     {
         enableBaseInput = enableBase;
         enableCombatInput = enableCombat;
+    }
+
+    public void WakeUp()
+    {
+        animator.SetTrigger("WakeUp");
     }
 }

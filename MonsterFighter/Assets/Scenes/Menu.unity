@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.6509804, g: 0.16470589, b: 0.16470589, a: 1}
     m_HighlightedColor: {r: 1, g: 0.078431375, b: 0, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 0.84313726, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -624,7 +624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -141.00003}
+  m_AnchoredPosition: {x: -25, y: -141.00003}
   m_SizeDelta: {x: 384, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84708318
@@ -1012,7 +1012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -344.00003}
+  m_AnchoredPosition: {x: -25, y: -344.00003}
   m_SizeDelta: {x: 384, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181686287
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.6509804, g: 0.16470589, b: 0.16470589, a: 1}
     m_HighlightedColor: {r: 1, g: 0.079761535, b: 0, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 0.84313726, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3627,7 +3627,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.6509804, g: 0.16470589, b: 0.16470589, a: 1}
     m_HighlightedColor: {r: 1, g: 0.078431375, b: 0, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 0.84313726, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3715,7 +3715,7 @@ GameObject:
   - component: {fileID: 796792969}
   - component: {fileID: 796792968}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5870,7 +5870,6 @@ GameObject:
   - component: {fileID: 1405278860}
   - component: {fileID: 1405278859}
   - component: {fileID: 1405278858}
-  - component: {fileID: 1405278862}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5960,17 +5959,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1405278862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1405278857}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89067e3c4153d3d44af7e251a4433113, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1406770597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6578,7 +6566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -244}
+  m_AnchoredPosition: {x: -25, y: -244}
   m_SizeDelta: {x: 384, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544086646
@@ -7399,7 +7387,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1745519641}
   - component: {fileID: 1745519640}
-  - component: {fileID: 1745519639}
   - component: {fileID: 1745519638}
   m_Layer: 0
   m_Name: BackgroundMusic
@@ -7416,21 +7403,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1745519637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7220a2e644679b47a0790d925193ec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 05832c3c1e38a064e9407fe5217ba8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionMusic: {fileID: 8300000, guid: eb6d2e4af0bfb4e44a25f843dd691da8, type: 3}
---- !u!114 &1745519639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1745519637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ce0c0e05dc21046bb0b94c6e5dfd39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  selectionMusic: {fileID: 0}
 --- !u!82 &1745519640
 AudioSource:
   m_ObjectHideFlags: 0

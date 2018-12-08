@@ -46,7 +46,7 @@ public class AnimationState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        physics.SetPhysicsParam(null, Vector2.zero, true);
+        animator.GetComponent<PhysicsObject>().SetPhysicsParam(null, Vector2.zero, true);
     }
 
     private void UpdatePhysicsParamByFrame()

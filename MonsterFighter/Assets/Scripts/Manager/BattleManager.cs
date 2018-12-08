@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Cinemachine;
 using System;
 
 public class BattleManager : MonoBehaviour {
@@ -24,20 +25,23 @@ public class BattleManager : MonoBehaviour {
     private GameObject[] playerChars = new GameObject[2];
     private int[] playerWinCount = new int[2] { 0, 0 };
 
+    private CinemachineTargetGroup targetGroup;
+
     private List<Vector3> pivotList;
 
     void Awake ()
     {
         maxTimePerRound = 90;
         roundCounter = 1;
-       
+        
         timerText = GameObject.Find("CountDownTimer").GetComponent<TMP_Text>();
         announceText = GameObject.Find("Announce").GetComponent<TMP_Text>();
         announceText.gameObject.SetActive(false);
         informationSets = GameObject.Find("Canvas").GetComponentsInChildren<InformationSet>();
         comboSets = GameObject.Find("Canvas").GetComponentsInChildren<Combo>();
-
         pivotList = GameObject.Find("PivotSet").GetComponent<PivotSet>().GetPivotsPosition();
+
+        targetGroup = GameObject.Find("CharGroup").GetComponent<CinemachineTargetGroup>();
 
         InstantiateCharacters();
         RegisterEvent();
@@ -48,6 +52,9 @@ public class BattleManager : MonoBehaviour {
     {
         playerChars[0] = GameManager.Instance.CreateCharacter(0, pivotList[0], pivotList[1]);
         playerChars[1] = GameManager.Instance.CreateCharacter(1, pivotList[2], pivotList[3]);
+
+        targetGroup.m_Targets[0].target = playerChars[0].transform;
+        targetGroup.m_Targets[1].target = playerChars[1].transform;
     }
 
     private void RegisterEvent()
@@ -150,14 +157,21 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator StartRoundDisplay(int roundNumber)
     {
-        GameManager.Instance.PauseTime(true);
         announceText.gameObject.SetActive(true);
         announceText.text = string.Format("Round {0}", roundNumber);
         yield return new WaitForSecondsRealtime(3);
         announceText.text = "Fight!";
         yield return new WaitForSecondsRealtime(1);
         announceText.gameObject.SetActive(false);
-        GameManager.Instance.PauseTime(false);
+        WakeUpPlayers();
+    }
+
+    private void WakeUpPlayers()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            playerChars[i].GetComponent<PlayerController>().WakeUp();
+        }
     }
 
     IEnumerator EndRoundDisplay(bool isTimeUp, int winnerId)

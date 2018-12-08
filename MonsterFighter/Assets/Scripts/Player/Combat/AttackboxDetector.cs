@@ -15,6 +15,7 @@ public class AttackboxDetector : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collider)
     {
+        Debug.Log("Collide");
         string targetname = collider.transform.parent.name;
         if (targetname != Id && targetname.Length == 1)
         {
