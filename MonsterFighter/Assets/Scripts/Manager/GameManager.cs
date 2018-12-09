@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager
 {
@@ -13,9 +14,12 @@ public class GameManager
     public string[] playerCharacterPicks;
     public string gameMode;
 
+    public event Action<int> OnSceneSwitch;
+
     private float fixedtime;
 
     private CharacterFactory characterFactory;
+    private BGMSwitcher bgmSwitcher;
 
     public static GameManager Instance
     {
@@ -39,6 +43,7 @@ public class GameManager
         playerCharacterPicks = new string[2];
 
         characterFactory = new CharacterFactory();
+        bgmSwitcher = GameObject.Find("BGMSwitcher").GetComponent<BGMSwitcher>();
     }
 
     public GameObject CreateCharacter(int playerId, Vector3 startPosition, Vector3 falloutPosition)
@@ -62,6 +67,7 @@ public class GameManager
 
     public void SwitchScene(string sceneName)
     {
-
+        SceneManager.LoadScene(sceneName);
+        //OnSceneSwitch?.Invoke(targetSceneId);
     }
 }

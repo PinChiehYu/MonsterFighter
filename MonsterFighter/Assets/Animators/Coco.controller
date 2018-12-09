@@ -289,7 +289,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.55
-    startClip: {fileID: 8300000, guid: b4877c8b91edcb14e9d9ff6020a3fb2b, type: 3}
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
     damage: 50
     applyVelocity: {x: -0.5, y: 0}
@@ -433,7 +433,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.4
-    startClip: {fileID: 8300000, guid: b4877c8b91edcb14e9d9ff6020a3fb2b, type: 3}
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
     damage: 80
     applyVelocity: {x: -1, y: 0}

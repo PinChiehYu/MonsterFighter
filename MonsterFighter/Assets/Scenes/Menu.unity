@@ -7389,7 +7389,7 @@ GameObject:
   - component: {fileID: 1745519640}
   - component: {fileID: 1745519638}
   m_Layer: 0
-  m_Name: BackgroundMusic
+  m_Name: BGMSwitcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7406,7 +7406,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05832c3c1e38a064e9407fe5217ba8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionMusic: {fileID: 0}
+  musicList:
+  - {fileID: 8300000, guid: e7ded88273840a848aef4a5f93ace89c, type: 3}
+  - {fileID: 8300000, guid: da3aa6eccaa9ae64a948306461723130, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &1745519640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7416,9 +7421,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e4bdcd75eb30483429a736157bf8b3af, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7509,7 +7514,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1745519637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 371.04297, y: 191.94058, z: -1.3433809}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

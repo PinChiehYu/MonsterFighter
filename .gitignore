@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+MonsterFighter/Assets/Sounds/Background/BGM_selection.wav
+MonsterFighter/Assets/Sounds/Background/BGM_map.wav

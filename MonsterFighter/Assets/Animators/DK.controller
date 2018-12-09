@@ -198,7 +198,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 1
     stiffTime: 0.5
-    startClip: {fileID: 8300000, guid: 21d4be7d51d51e14d940290f82040b45, type: 3}
+    startClip: {fileID: 8300000, guid: 0cf5ee7f0b06e9c40a86eb3d637f85a8, type: 3}
     hitClip: {fileID: 0}
     damage: 75
     applyVelocity: {x: -10, y: 0}

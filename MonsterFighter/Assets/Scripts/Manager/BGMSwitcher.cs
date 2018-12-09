@@ -1,29 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class BGMSwitcher : MonoBehaviour
 {
 
-    public AudioClip selectionMusic;
+    public List<AudioClip> musicList;
 
-
-    private AudioSource source;
+    private AudioSource audioSource;
 
 
     // Use this for initialization
     void Awake()
     {
-        source = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
+        audioSource = GetComponent<AudioSource>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-
-    void OnLevelWasLoaded(int level)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (level == 1)
+        int sceneId = scene.buildIndex;
+        Debug.Log(sceneId);
+        if (sceneId < musicList.Count)
         {
-            source.clip = selectionMusic;
-            source.Play();
+            audioSource.Stop();
+            audioSource.clip = musicList[sceneId];
+            audioSource.Play();
         }
-
     }
 }

@@ -54,7 +54,9 @@ public class BattleManager : MonoBehaviour {
         playerChars[1] = GameManager.Instance.CreateCharacter(1, pivotList[2], pivotList[3]);
 
         targetGroup.m_Targets[0].target = playerChars[0].transform;
+        targetGroup.m_Targets[0].radius = 3;
         targetGroup.m_Targets[1].target = playerChars[1].transform;
+        targetGroup.m_Targets[1].radius = 3;
     }
 
     private void RegisterEvent()
@@ -93,6 +95,8 @@ public class BattleManager : MonoBehaviour {
             playerChars[i].GetComponent<PlayerInfo>().ResetPlayerInfo();
             playerChars[i].GetComponent<PlayerController>().ResetController();
             playerChars[i].GetComponent<PhysicsObject>().ResetPhysics();
+
+            targetGroup.m_Targets[i].weight = 1;
         }
     }
 
@@ -127,19 +131,19 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
-    private void EndRound(int winnerid)
+    private void EndRound(int winnerId)
     {
         bool istimeup = false;
-        if (winnerid == -1)
+        if (winnerId == -1)
         {
-            winnerid = playerChars[0].GetComponent<PlayerInfo>().CurrentHealthPoint > playerChars[1].GetComponent<PlayerInfo>().CurrentHealthPoint ? 0 : 1;
+            winnerId = playerChars[0].GetComponent<PlayerInfo>().CurrentHealthPoint > playerChars[1].GetComponent<PlayerInfo>().CurrentHealthPoint ? 0 : 1;
             istimeup = true;
         }
 
-        playerWinCount[winnerid]++;
+        playerWinCount[winnerId]++;
         roundCounter++;
-        Debug.LogFormat("Player {0} win {1} round", winnerid, playerWinCount[winnerid]);
-        StartCoroutine(EndRoundDisplay(istimeup, winnerid));
+        Debug.LogFormat("Player {0} win {1} round", winnerId, playerWinCount[winnerId]);
+        StartCoroutine(EndRoundDisplay(istimeup, winnerId));
     }
 
     private void EndBattle()
@@ -151,8 +155,8 @@ public class BattleManager : MonoBehaviour {
 
     private void CharacterDie(int id)
     {
-        id = id * -1 + 1;
-        EndRound(id);
+        targetGroup.m_Targets[id].weight = 0;
+        EndRound(id * -1 + 1);
     }
 
     IEnumerator StartRoundDisplay(int roundNumber)

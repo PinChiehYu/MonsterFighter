@@ -63,7 +63,7 @@ public class CharSelectSheet : MonoBehaviour
         lockImage.gameObject.SetActive(true);
         characterPointer = -1;
 
-        FindObjectOfType<SelectManager>().FinishSelect(playerId);
+        selectManager.FinishSelect(playerId);
     }
 
     private void SelectCharacter(int prePointer)
