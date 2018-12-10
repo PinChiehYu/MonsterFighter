@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5338aa237b750447984518ce31d1711
+guid: b38f1ccd8f881f841896fbe2fd181518
 TextureImporter:
   fileIDToRecycleName:
     21300000: Rock_jump_falling_0
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -101,6 +101,46 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 320
+        width: 320
+        height: 320
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 314d91112c95a084fb17aad1be0bd25d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_jump_falling_1
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 320
+        height: 320
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14983ac8f15daec488cd4fc2499bc5db
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_jump_falling_2
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 320
         height: 320
@@ -111,13 +151,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0e94e80b9ee68f40be1daf8eaf6253c
+      spriteID: b78d5edc64bc6634a9f4b7bfd9f4b753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rock_jump_falling_1
+      name: Rock_jump_falling_3
       rect:
         serializedVersion: 2
         x: 320
@@ -131,47 +171,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a215b69638ca1b47b238650f2b29c4f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_jump_falling_2
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 320
-        height: 320
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6d95b98ab4cb44419b2a8f3881e1e2f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_jump_falling_3
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 320
-        height: 320
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1937be8eef8eed04cba83002c4e32db7
+      spriteID: f1f2c930fc4bdda419add0409b61edb2
       vertices: []
       indices: 
       edges: []
@@ -179,7 +179,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 814ab1d5fd5a2eb43a024df7b8c23fcb
+    spriteID: 180a31e5eddb6b24f9bc15bcdacd96f2
     vertices: []
     indices: 
     edges: []

@@ -5,6 +5,10 @@ TextureImporter:
     21300000: Rock_jump_0
     21300002: Rock_jump_1
     21300004: Rock_jump_2
+    21300006: Rock_jump_3
+    21300008: Rock_jump_4
+    21300010: Rock_jump_5
+    21300012: Rock_jump_6
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -100,7 +104,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 320
         width: 320
         height: 320
       alignment: 7
@@ -110,7 +114,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b2ba97e0ad0fab4ea8d36fd5a64aa12
+      spriteID: 5c7f032e13424a1409cb1cc879329cb1
       vertices: []
       indices: 
       edges: []
@@ -120,7 +124,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 0
+        y: 320
         width: 320
         height: 320
       alignment: 7
@@ -130,7 +134,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 669f6467fb716fc4b9148a347e9baf4e
+      spriteID: 4ccb8095afe5c7b42b681e536836c131
       vertices: []
       indices: 
       edges: []
@@ -139,7 +143,7 @@ TextureImporter:
       name: Rock_jump_2
       rect:
         serializedVersion: 2
-        x: 640
+        x: 0
         y: 0
         width: 320
         height: 320
@@ -150,7 +154,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7db70e0e80cbf2148a13e949e8759473
+      spriteID: 94158d24a4da0cd4e9fdfee9922a265c
       vertices: []
       indices: 
       edges: []

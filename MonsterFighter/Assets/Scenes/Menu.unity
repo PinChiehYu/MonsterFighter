@@ -7407,11 +7407,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicList:
-  - {fileID: 8300000, guid: e7ded88273840a848aef4a5f93ace89c, type: 3}
+  - {fileID: 8300000, guid: 0428c7fcf6ead454f968bc5d3bf17b0b, type: 3}
   - {fileID: 8300000, guid: da3aa6eccaa9ae64a948306461723130, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a62c08fa9b0f7d54c8bb6e6b7960f929, type: 3}
+  - {fileID: 8300000, guid: ae9374eee4f50cb4891cd2264646e3b9, type: 3}
+  - {fileID: 8300000, guid: 35e97ff9bc34c1d4a903c1098da7964e, type: 3}
 --- !u!82 &1745519640
 AudioSource:
   m_ObjectHideFlags: 0

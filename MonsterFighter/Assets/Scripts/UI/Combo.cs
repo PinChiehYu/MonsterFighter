@@ -28,8 +28,10 @@ public class Combo : MonoBehaviour {
     {
         timer = countdown;
         comboCount++;
-        GetComponent<RectTransform>().anchoredPosition = basePoint;
-        transform.DOMoveX(10f, countdown);
+        Debug.Log(comboCount);
+        //GetComponent<RectTransform>().anchoredPosition = basePoint;
+        //transform.DOMoveX(10f, countdown);
+        GetComponent<TMP_Text>().text = comboCount.ToString();
     }
 
     // Update is called once per frame

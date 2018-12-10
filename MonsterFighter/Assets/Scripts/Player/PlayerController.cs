@@ -140,19 +140,14 @@ public class PlayerController : MonoBehaviour {
 
     public void ResetController()
     {
+        if (damageCo != null) StopCoroutine(damageCo);
+        animator.ResetTrigger("WakeUp");
+        animator.Rebind();
+        SetInputActivate(false, false);
         transform.position = initPosition;
         physics.IsFaceRight = gameObject.name == "0";
         physics.IsGrounded = false;
-        SetInputActivate(false, false);
-        if (damageCo != null) StopCoroutine(damageCo);
-        GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
-        GetComponent<CombatHandler>().Invincible = false;
-        animator.Rebind();
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(0, 15f * int.Parse(gameObject.name), 200f, 50f), "Player " + gameObject.name + " Current:" + enableBaseInput.ToString());
+        SetInvincible(false);
     }
 
     private IEnumerator damageCo;
@@ -172,7 +167,8 @@ public class PlayerController : MonoBehaviour {
         SetInputActivate(false, false);
         physics.Forward(0f);
         if (damageCo != null) StopCoroutine(damageCo);
-        StartCoroutine(Stiff(0f, true));
+        damageCo = Stiff(0f, true);
+        StartCoroutine(damageCo);
     }
 
     IEnumerator Stiff(float duration, bool knockDown)
@@ -183,14 +179,12 @@ public class PlayerController : MonoBehaviour {
         if (knockDown)
         {
             physics.SetPhysicsParam(Vector2.zero, Vector2.zero, true);
-            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.4f);
-            GetComponent<CombatHandler>().Invincible = true;
+            SetInvincible(true);
             animator.SetTrigger("KnockDown");
             yield return new WaitForSeconds(1f);
             WakeUp();
             yield return new WaitForSeconds(1f);
-            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
-            GetComponent<CombatHandler>().Invincible = false;
+            SetInvincible(false);
         }
         else
         {
@@ -207,5 +201,19 @@ public class PlayerController : MonoBehaviour {
     public void WakeUp()
     {
         animator.SetTrigger("WakeUp");
+    }
+
+    private void SetInvincible(bool yes)
+    {
+        if (yes)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.4f);
+            GetComponent<CombatHandler>().Invincible = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
+            GetComponent<CombatHandler>().Invincible = false;
+        }
     }
 }

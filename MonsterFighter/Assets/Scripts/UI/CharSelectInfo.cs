@@ -3,5 +3,5 @@
 public class CharSelectInfo : MonoBehaviour
 {
     public string characterName;
-    public Sprite characterSprite, characterNameSprite;
+    public Sprite characterSprite, characterNameSprite, characterIconSprite;
 }

@@ -4,21 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Cinemachine;
-using System;
 
 public class BattleManager : MonoBehaviour {
 
     [SerializeField]
     private int maxWinRound;
+    [SerializeField]
     private int maxTimePerRound;
 
     private int roundCounter;
     private float countdownTimer;
 
-    private TMP_Text timerText;
-    private TMP_Text announceText;
-    private InformationSet[] informationSets;
-    private Combo[] comboSets;
+    private Information information;
 
     private int[] playerComboHit = new int[2] { 0, 0 };
 
@@ -31,18 +28,16 @@ public class BattleManager : MonoBehaviour {
 
     void Awake ()
     {
-        maxTimePerRound = 90;
         roundCounter = 1;
-        
-        timerText = GameObject.Find("CountDownTimer").GetComponent<TMP_Text>();
-        announceText = GameObject.Find("Announce").GetComponent<TMP_Text>();
-        announceText.gameObject.SetActive(false);
-        informationSets = GameObject.Find("Canvas").GetComponentsInChildren<InformationSet>();
-        comboSets = GameObject.Find("Canvas").GetComponentsInChildren<Combo>();
+
+        information = GameObject.Find("Information").GetComponent<Information>();
+        //comboSets = GameObject.Find("Information").GetComponentsInChildren<Combo>();
         pivotList = GameObject.Find("PivotSet").GetComponent<PivotSet>().GetPivotsPosition();
-
         targetGroup = GameObject.Find("CharGroup").GetComponent<CinemachineTargetGroup>();
+    }
 
+    void Start()
+    {
         InstantiateCharacters();
         RegisterEvent();
         StartNewRound();
@@ -65,9 +60,9 @@ public class BattleManager : MonoBehaviour {
         {
             PlayerInfo plyinf = playerChars[i].GetComponent<PlayerInfo>();
             plyinf.OnDie += CharacterDie;
-            plyinf.OnHpChange += informationSets[i].OnPlayerHpChange;
-            plyinf.OnMpChange += informationSets[i].OnPlayerMpChange;
-            plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
+            plyinf.OnHpChange += information.OnPlayerHpChange(i);
+            plyinf.OnMpChange += information.OnPlayerMpChange(i);
+            //plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
         }
     }
 
@@ -107,7 +102,7 @@ public class BattleManager : MonoBehaviour {
         }
 
         countdownTimer -= Time.deltaTime;
-        timerText.text = ((int)Mathf.Ceil(countdownTimer)).ToString();
+        information.UpdateTimer((int)Mathf.Ceil(countdownTimer));
 
         if(countdownTimer < 0f)
         {
@@ -120,14 +115,13 @@ public class BattleManager : MonoBehaviour {
     {
         if (Time.timeScale == 0f)
         {
-            announceText.gameObject.SetActive(false);
+            information.TurnOffAnnounce();
             Time.timeScale = 1f;
         }
         else
         {
             Time.timeScale = 0f;
-            announceText.gameObject.SetActive(true);
-            announceText.text = "PAUSE";
+            information.TurnOnAnnounce("PAUSE");
         }
     }
 
@@ -161,13 +155,14 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator StartRoundDisplay(int roundNumber)
     {
-        announceText.gameObject.SetActive(true);
-        announceText.text = string.Format("Round {0}", roundNumber);
+        Time.timeScale = 0;
+        information.TurnOnAnnounce(string.Format("Round {0}", roundNumber));
         yield return new WaitForSecondsRealtime(3);
-        announceText.text = "Fight!";
+        information.TurnOnAnnounce("Fight!");
         yield return new WaitForSecondsRealtime(1);
-        announceText.gameObject.SetActive(false);
+        information.TurnOffAnnounce();
         WakeUpPlayers();
+        Time.timeScale = 1;
     }
 
     private void WakeUpPlayers()
@@ -181,11 +176,10 @@ public class BattleManager : MonoBehaviour {
     IEnumerator EndRoundDisplay(bool isTimeUp, int winnerId)
     {
         Time.timeScale = 0;
-        announceText.gameObject.SetActive(true);
-        announceText.text = isTimeUp ? "Time's Up!" : "Knock Out!";
-        informationSets[winnerId].LightBubble(playerWinCount[winnerId]);
+        information.TurnOnAnnounce(isTimeUp ? "Time's Up!" : "Knock Out!");
+        information.LightUpBubble(winnerId, playerWinCount[winnerId]);
         yield return new WaitForSecondsRealtime(3);
-        announceText.gameObject.SetActive(false);
+        information.TurnOffAnnounce();
         Time.timeScale = 1;
 
         if (playerWinCount[winnerId] == maxWinRound)
@@ -201,8 +195,7 @@ public class BattleManager : MonoBehaviour {
     IEnumerator EndBattleDisplay(int winnerId)
     {
         Time.timeScale = 0;
-        announceText.gameObject.SetActive(true);
-        announceText.text = string.Format("Player {0} Win!", winnerId + 1);
+        information.TurnOnAnnounce(string.Format("Player {0} Win!", winnerId + 1));
         yield return new WaitForSecondsRealtime(3);
         Time.timeScale = 1;
 

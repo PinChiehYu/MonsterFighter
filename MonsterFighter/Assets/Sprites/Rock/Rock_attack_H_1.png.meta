@@ -116,7 +116,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 440e32a893a4fbb4da6846ebc426897a
+      spriteID: 2c6a866d7a01d414f98da2314aaaa3f5
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92da0f9a5c6215f498674983950c4e51
+      spriteID: 483895b1ff761784a863776f95e59249
       vertices: []
       indices: 
       edges: []
@@ -156,33 +156,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fea149c0a20c6f64190c23f7e4844562
+      spriteID: 9286bd9cf2a84fb49b27fbb707bd6ef4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: Rock_attack_H_1_3
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 640
-        width: 640
-        height: 320
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 887487908f997db43879a4f70f496f78
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_attack_H_1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -196,13 +176,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cb05b109a119a142be9502f004358a9
+      spriteID: c525afa8abec3b84db855dfbaca0002d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rock_attack_H_1_5
+      name: Rock_attack_H_1_4
       rect:
         serializedVersion: 2
         x: 640
@@ -216,13 +196,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9521270b93a24549812121a3db1365f
+      spriteID: 4043d93a0ce40df41a87db27164cfb92
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rock_attack_H_1_6
+      name: Rock_attack_H_1_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -236,33 +216,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1481a0911ba79cd409dd19b1c696e5e8
+      spriteID: 01d7ff8b075be3d47a9dae6d294e796d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rock_attack_H_1_7
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 320
-        width: 640
-        height: 320
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a722ae5e0a8e554499cfad9c16c81b8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rock_attack_H_1_8
+      name: Rock_attack_H_1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -276,7 +236,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c36f214cafc70c48822084f7b660a27
+      spriteID: fdc069427de21a944a2707c86561bf5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_attack_H_1_7
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 640
+        height: 320
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51d5536b461a624daeb845954406e48
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_attack_H_1_8
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 640
+        height: 320
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c75d0a93e7c2ae4aa2b4937565133ba
       vertices: []
       indices: 
       edges: []

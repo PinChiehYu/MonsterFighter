@@ -196,6 +196,31 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 61330311697966580, guid: fb088b996b8760644b9798774940fb6e,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 61330311697966580, guid: fb088b996b8760644b9798774940fb6e,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61330311697966580, guid: fb088b996b8760644b9798774940fb6e,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61330311697966580, guid: fb088b996b8760644b9798774940fb6e,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 61330311697966580, guid: fb088b996b8760644b9798774940fb6e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb088b996b8760644b9798774940fb6e, type: 2}
   m_IsPrefabAsset: 0
@@ -499,6 +524,30 @@ Prefab:
     - target: {fileID: 4619805413766000, guid: cae74f52355d5dd479678b0c0504f5f6, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 61730015392073600, guid: cae74f52355d5dd479678b0c0504f5f6,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 61730015392073600, guid: cae74f52355d5dd479678b0c0504f5f6,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61730015392073600, guid: cae74f52355d5dd479678b0c0504f5f6,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 61730015392073600, guid: cae74f52355d5dd479678b0c0504f5f6,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847120226795504, guid: cae74f52355d5dd479678b0c0504f5f6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae74f52355d5dd479678b0c0504f5f6, type: 2}

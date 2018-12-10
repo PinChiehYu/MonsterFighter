@@ -12,12 +12,10 @@ public class CharacterFactory
 
     public CharacterFactory()
     {
-        characterNameList.Add("UnityChan");
-        characterNameList.Add("CatFighter");
         characterNameList.Add("Coco");
         characterNameList.Add("Rock");
         characterNameList.Add("DK");
-        characterNameList.Add("Dummy");
+        characterNameList.Add("UnityChan");
         LoadAllCharacterPrefabs();
 
         StartPosition[0] = new Vector3(-4f, -3f, 0f);
@@ -31,13 +29,9 @@ public class CharacterFactory
         foreach (string name in characterNameList)
         {
             characterDictionary.Add(name, Resources.Load<GameObject>("Prefabs/Characters/" + name));
-            if (characterDictionary[name] != null)
+            if (characterDictionary[name] == null)
             {
-                //Debug.Log("Load Prefab Success:" + name);
-            }
-            else
-            {
-                //Debug.LogWarning("Load Prefab Fail:" + name);
+                Debug.LogWarning("Load Prefab Fail:" + name);
             }
         }
     }

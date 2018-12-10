@@ -10,16 +10,15 @@ public class GameManager
     private static object m_oLock = new object();
     private static GameManager m_oInstance = null;
 
+    private Dictionary<string, int> CharNameToId;
+
     public Dictionary<string, KeyCode>[] playerControlSets;
     public string[] playerCharacterPicks;
     public string gameMode;
 
-    public event Action<int> OnSceneSwitch;
-
     private float fixedtime;
 
     private CharacterFactory characterFactory;
-    private BGMSwitcher bgmSwitcher;
 
     public static GameManager Instance
     {
@@ -43,7 +42,11 @@ public class GameManager
         playerCharacterPicks = new string[2];
 
         characterFactory = new CharacterFactory();
-        bgmSwitcher = GameObject.Find("BGMSwitcher").GetComponent<BGMSwitcher>();
+        CharNameToId = new Dictionary<string, int>();
+        CharNameToId.Add("Coco", 0);
+        CharNameToId.Add("Rock", 1);
+        CharNameToId.Add("DK", 2);
+        CharNameToId.Add("UnityChan", 3);
     }
 
     public GameObject CreateCharacter(int playerId, Vector3 startPosition, Vector3 falloutPosition)
@@ -63,6 +66,11 @@ public class GameManager
             Time.fixedDeltaTime = fixedtime;
             Time.timeScale = 1;
         }
+    }
+
+    public int GetPlayerPickId(int playerId)
+    {
+        return CharNameToId[playerCharacterPicks[playerId]];
     }
 
     public void SwitchScene(string sceneName)

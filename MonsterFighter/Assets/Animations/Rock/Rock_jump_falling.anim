@@ -3,7 +3,7 @@
 --- !u!74 &7400000
 AnimationClip:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Rock_jump_falling
   serializedVersion: 6
@@ -19,13 +19,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e5338aa237b750447984518ce31d1711, type: 3}
+      value: {fileID: 21300000, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
     - time: 0.06666667
-      value: {fileID: 21300002, guid: e5338aa237b750447984518ce31d1711, type: 3}
+      value: {fileID: 21300002, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
     - time: 0.13333334
-      value: {fileID: 21300004, guid: e5338aa237b750447984518ce31d1711, type: 3}
+      value: {fileID: 21300004, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
     - time: 0.2
-      value: {fileID: 21300006, guid: e5338aa237b750447984518ce31d1711, type: 3}
+      value: {fileID: 21300006, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -45,10 +45,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e5338aa237b750447984518ce31d1711, type: 3}
-    - {fileID: 21300002, guid: e5338aa237b750447984518ce31d1711, type: 3}
-    - {fileID: 21300004, guid: e5338aa237b750447984518ce31d1711, type: 3}
-    - {fileID: 21300006, guid: e5338aa237b750447984518ce31d1711, type: 3}
+    - {fileID: 21300000, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
+    - {fileID: 21300002, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
+    - {fileID: 21300004, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
+    - {fileID: 21300006, guid: b38f1ccd8f881f841896fbe2fd181518, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

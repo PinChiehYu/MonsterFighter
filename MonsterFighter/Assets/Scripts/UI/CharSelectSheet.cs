@@ -19,6 +19,10 @@ public class CharSelectSheet : MonoBehaviour
     private Image characterName;
     private Image lockImage;
 
+    private AudioSource clickAudio;
+    [SerializeField]
+    private AudioClip switchClip, lockClip;
+
     private SelectManager selectManager;
 
     void Awake()
@@ -27,6 +31,7 @@ public class CharSelectSheet : MonoBehaviour
         characterName = transform.Find("CharacterName").GetComponent<Image>();
         lockImage = transform.Find("Lock").GetComponent<Image>();
         selectManager = FindObjectOfType<SelectManager>();
+        clickAudio = GetComponent<AudioSource>();
 
         leftInput = GameManager.Instance.playerControlSets[playerId]["Left"];
         rightInput = GameManager.Instance.playerControlSets[playerId]["Right"];
@@ -42,14 +47,20 @@ public class CharSelectSheet : MonoBehaviour
         {
             characterPointer--;
             SelectCharacter(characterPointer + 1);
+            clickAudio.clip = switchClip;
+            clickAudio.Play();
         }
         else if (Input.GetKeyDown(rightInput) && characterPointer + 1 < selectionList.Count)
         {
             characterPointer++;
             SelectCharacter(characterPointer - 1);
+            clickAudio.clip = switchClip;
+            clickAudio.Play();
         }
         else if (Input.GetKeyDown(selectInput))
         {
+            clickAudio.clip = lockClip;
+            clickAudio.Play();
             FinishSelect();
         }
     }
