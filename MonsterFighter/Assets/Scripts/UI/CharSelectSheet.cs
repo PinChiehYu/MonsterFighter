@@ -32,10 +32,15 @@ public class CharSelectSheet : MonoBehaviour
         lockImage = transform.Find("Lock").GetComponent<Image>();
         selectManager = FindObjectOfType<SelectManager>();
         clickAudio = GetComponent<AudioSource>();
+    }
 
+    void Start()
+    {
         leftInput = GameManager.Instance.playerControlSets[playerId]["Left"];
         rightInput = GameManager.Instance.playerControlSets[playerId]["Right"];
         selectInput = GameManager.Instance.playerControlSets[playerId]["AtkL"];
+
+        clickAudio.clip = switchClip;
         characterPointer = 0;
         SelectCharacter(0);
     }
@@ -47,14 +52,12 @@ public class CharSelectSheet : MonoBehaviour
         {
             characterPointer--;
             SelectCharacter(characterPointer + 1);
-            clickAudio.clip = switchClip;
             clickAudio.Play();
         }
         else if (Input.GetKeyDown(rightInput) && characterPointer + 1 < selectionList.Count)
         {
             characterPointer++;
             SelectCharacter(characterPointer - 1);
-            clickAudio.clip = switchClip;
             clickAudio.Play();
         }
         else if (Input.GetKeyDown(selectInput))

@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 909403334}
   - component: {fileID: 909403333}
   m_Layer: 0
-  m_Name: CM vcam
+  m_Name: CMvcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,6 +1012,7 @@ GameObject:
   - component: {fileID: 1972531439}
   - component: {fileID: 1972531438}
   - component: {fileID: 1972531437}
+  - component: {fileID: 1972531440}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1092,6 +1093,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1972531440
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972531435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 20a705aea2d80e0478fb89b6f43d8530, type: 2}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
 --- !u!1001 &2065920654
 Prefab:
   m_ObjectHideFlags: 0

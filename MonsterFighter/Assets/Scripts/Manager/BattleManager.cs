@@ -23,6 +23,7 @@ public class BattleManager : MonoBehaviour {
     private int[] playerWinCount = new int[2] { 0, 0 };
 
     private CinemachineTargetGroup targetGroup;
+    private CinemachineBasicMultiChannelPerlin cameraNoise;
 
     private List<Vector3> pivotList;
 
@@ -34,6 +35,7 @@ public class BattleManager : MonoBehaviour {
         //comboSets = GameObject.Find("Information").GetComponentsInChildren<Combo>();
         pivotList = GameObject.Find("PivotSet").GetComponent<PivotSet>().GetPivotsPosition();
         targetGroup = GameObject.Find("CharGroup").GetComponent<CinemachineTargetGroup>();
+        cameraNoise = GameObject.Find("CMvcam").GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     void Start()
@@ -52,6 +54,7 @@ public class BattleManager : MonoBehaviour {
         targetGroup.m_Targets[0].radius = 3;
         targetGroup.m_Targets[1].target = playerChars[1].transform;
         targetGroup.m_Targets[1].radius = 3;
+        //cameraNoise.
     }
 
     private void RegisterEvent()
@@ -61,6 +64,7 @@ public class BattleManager : MonoBehaviour {
             PlayerInfo plyinf = playerChars[i].GetComponent<PlayerInfo>();
             plyinf.OnDie += CharacterDie;
             plyinf.OnHpChange += information.OnPlayerHpChange(i);
+            plyinf.OnHpChange += StartShaking;
             plyinf.OnMpChange += information.OnPlayerMpChange(i);
             //plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
         }
@@ -200,5 +204,22 @@ public class BattleManager : MonoBehaviour {
         Time.timeScale = 1;
 
         SceneManager.LoadScene("Menu");
+    }
+
+    private void StartShaking(float f)
+    {
+        if (shake != null) StopCoroutine(shake);
+        shake = ShakeCamera(0.1f);
+        StartCoroutine(shake);
+    }
+
+    private IEnumerator shake;
+    private IEnumerator ShakeCamera(float duration)
+    {
+        cameraNoise.m_AmplitudeGain = 0.3f;
+        cameraNoise.m_FrequencyGain = 100f;
+        yield return new WaitForSecondsRealtime(duration);
+        cameraNoise.m_AmplitudeGain = 0f;
+        cameraNoise.m_FrequencyGain = 0f;
     }
 }

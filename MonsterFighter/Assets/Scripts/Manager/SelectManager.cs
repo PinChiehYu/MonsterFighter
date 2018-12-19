@@ -31,17 +31,12 @@ public class SelectManager : MonoBehaviour {
 
     public void PickMap(string map)
     {
-        if (mapName == map)
-        {
-            StartBattle();
-        }
-
         mapName = map;
     }
 
     public void StartBattle()
     {
-        SceneManager.LoadScene(mapName); //GameManager.Instance.gameMode
+        SceneManager.LoadScene(mapName);
     }
 
     IEnumerator SwitchSelectionCanvas()
