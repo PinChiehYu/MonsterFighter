@@ -46,6 +46,11 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
         GetComponent<AudioSource>().Play();
 
         playerInfo.CurrentHealthPoint -= combatInfo.damage;
+        if (combatInfo.stateType == StateType.Combat)
+        {
+            playerInfo.CurrentKnockDownPoint += combatInfo.damage;
+        }
+
         if (combatInfo.isKnockDown)
         {
             playerInfo.CurrentKnockDownPoint = 0f;

@@ -3,6 +3,7 @@
 [System.Serializable]
 public class CombatInfo
 {
+    public StateType stateType;
     public int damage;
     public Vector2 applyVelocity;
     public bool isKnockDown;
@@ -10,8 +11,9 @@ public class CombatInfo
     public bool isCrit;
     public AudioClip hitClip;
 
-    public CombatInfo(int damage, Vector2 applyvelocity, bool isknockdown, float stifftime, bool iscrit, AudioClip hitclip)
+    public CombatInfo(StateType type, int damage, Vector2 applyvelocity, bool isknockdown, float stifftime, bool iscrit, AudioClip hitclip)
     {
+        stateType = type;
         this.damage = damage;
         applyVelocity = applyvelocity;
         isKnockDown = isknockdown;

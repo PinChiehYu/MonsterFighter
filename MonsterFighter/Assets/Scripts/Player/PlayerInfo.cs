@@ -10,8 +10,6 @@ public class PlayerInfo : MonoBehaviour {
     [SerializeField]
     private int baseManaPoint;
     [SerializeField]
-    private int baseEnergyPoint;
-    [SerializeField]
     private int skillSCost;
     [SerializeField]
     private int skillBCost;
@@ -22,7 +20,6 @@ public class PlayerInfo : MonoBehaviour {
         get { return currentHealthPoint; }
         set
         {
-            CurrentKnockDownPoint += (currentHealthPoint - (int)value) * 100f / baseHealthPoint;
             currentHealthPoint = Mathf.RoundToInt(value);
             OnHpChange?.Invoke((float)currentHealthPoint / baseHealthPoint);
             RestartKnockdownTiming();
@@ -42,19 +39,18 @@ public class PlayerInfo : MonoBehaviour {
             OnMpChange?.Invoke(currentManaPoint / baseManaPoint);
         }
     }
-    private int currentEnergyPoint;
-    public float CurrentEnergyPoint { get { return currentEnergyPoint / baseEnergyPoint; } set { currentEnergyPoint = (int)value; } }
 
-    private float currentKnockdownPoint;
+    private int currentKnockdownPoint;
     public float CurrentKnockDownPoint
     {
-        get { return currentKnockdownPoint; }
+        get { return currentKnockdownPoint * baseHealthPoint; }
         set
         {
-            currentKnockdownPoint = Mathf.Clamp(value, 0f, 30f);
+            currentKnockdownPoint = Mathf.Clamp((int)(value / baseHealthPoint), 0, 30);
+            OnKnockdownChange?.Invoke(currentKnockdownPoint);
         }
     }
-    public bool IsKnockdown { get { return currentKnockdownPoint >= 30f; } }
+    public bool IsKnockdown { get { return currentKnockdownPoint >= 30; } }
 
     public bool AbleToCastSkillS
     {
@@ -83,25 +79,25 @@ public class PlayerInfo : MonoBehaviour {
 
     public event Action<float> OnHpChange;
     public event Action<float> OnMpChange;
-    public event Action<float> OnEPChange;
+    public event Action<float> OnKnockdownChange;
     public event Action<int> OnDie;
 
     public void ResetPlayerInfo()
     {
         CurrentHealthPoint = baseHealthPoint;
-        CurrentManaPoint = 100;
-        CurrentEnergyPoint = 0;
+        CurrentManaPoint = 0;
+        CurrentKnockDownPoint = 0;
     }
 
-    private IEnumerator declineCo;
+    private IEnumerator declineCor;
     private void RestartKnockdownTiming()
     {
-        if (declineCo != null)
+        if (declineCor != null)
         {
-            StopCoroutine(declineCo);
+            StopCoroutine(declineCor);
         }
-        declineCo = KnockdownValueDecline();
-        StartCoroutine(declineCo);
+        declineCor = KnockdownValueDecline();
+        StartCoroutine(declineCor);
     }
 
     IEnumerator KnockdownValueDecline()
@@ -109,7 +105,7 @@ public class PlayerInfo : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         while (CurrentKnockDownPoint > 0f)
         {
-            CurrentKnockDownPoint -= 0.06f;
+            CurrentKnockDownPoint -= 0.06f * baseHealthPoint;
             yield return new WaitForSeconds(0.01f);
         }
     }

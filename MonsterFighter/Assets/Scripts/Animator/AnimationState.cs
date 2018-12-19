@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationState : StateMachineBehaviour
@@ -18,16 +16,26 @@ public class AnimationState : StateMachineBehaviour
     private bool resetVelocityWhenEnter;
     private int actionId;
 
+    [SerializeField, Header("Combat Settings")]
+    private List<CombatSetting> combatList;
+    [SerializeField]
+    private float switchFrame;
+    private int combatId;
+
     protected PlayerController controller;
     private PhysicsObject physics;
+    private CombatHandler handler;
 
-    protected float currentFrame;
+    private float currentFrame;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller = animator.GetComponent<PlayerController>();
         physics = animator.GetComponent<PhysicsObject>();
         actionId = -1;
+
+        handler = animator.GetComponent<CombatHandler>();
+        combatId = -1;
 
         controller.CurrentState = stateType;
         controller.SetInputActivate(enableBaseInput, enableCombatInput);
@@ -42,19 +50,37 @@ public class AnimationState : StateMachineBehaviour
     {
         currentFrame = (stateInfo.normalizedTime % 1f) * stateInfo.length * 15;
         UpdatePhysicsParamByFrame();
+        if(stateType != StateType.Base)
+        {
+            UpdateCombatParamByFrame();
+        }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<PhysicsObject>().SetPhysicsParam(null, Vector2.zero, true);
+        handler.CancelAttack();
     }
 
     private void UpdatePhysicsParamByFrame()
     {
-        if (actionId+1 < actionList.Count && actionList[actionId+1].triggerFrame <= currentFrame)
+        if (actionId + 1 < actionList.Count && actionList[actionId + 1].triggerFrame <= currentFrame)
         {
             actionId++;
             physics.SetPhysicsParam(actionList[actionId].initVelocity, actionList[actionId].acceleration, actionList[actionId].useDefaultGravity);
+        }
+    }
+
+    private void UpdateCombatParamByFrame()
+    {
+        if (combatId + 1 < combatList.Count && combatList[combatId + 1].triggerFrame <= currentFrame)
+        {
+            combatId++;
+            combatList[combatId].Execute(handler, stateType);
+        }
+        if (switchFrame >= 0f && switchFrame <= currentFrame)
+        {
+            controller.TriggerNextCombatState();
         }
     }
 }

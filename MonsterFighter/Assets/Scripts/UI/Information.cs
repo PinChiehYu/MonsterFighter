@@ -37,6 +37,11 @@ public class Information : MonoBehaviour {
         return statusBars[playerId].OnPlayerMpChange;
     }
 
+    public Action<float> OnPlayerKnockdownChange(int playerId)
+    {
+        return statusBars[playerId].OnPlayerKnockdownChange;
+    }
+
     public void UpdateTimer(int time)
     {
         timer.text = time.ToString();

@@ -5,6 +5,15 @@ TextureImporter:
     21300000: InfoBar_background
     21300002: InfoBar_MP
     21300004: InfoBar_HP
+    21300006: InfoBar_background
+    21300008: InfoBar_MP
+    21300010: InfoBar_HP
+    21300012: InfoBar_knockdown
+    21300014: InfoBar_4
+    21300016: InfoBar_knockdown
+    21300018: InfoBar_background
+    21300020: InfoBar_MP
+    21300022: InfoBar_HP
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -110,7 +119,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 497505a42bd78964a8a8b9b3cfaf3ded
+      spriteID: 5c7e0a1fe1389934a90fb3b46dfef9fa
       vertices: []
       indices: 
       edges: []
@@ -123,14 +132,14 @@ TextureImporter:
         y: 200
         width: 800
         height: 200
-      alignment: 9
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 164, y: 56, z: 291, w: 73}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2920d7887aa9b145a7f2a2914d59422
+      spriteID: 20bef71740acfad469c0179a049c95ab
       vertices: []
       indices: 
       edges: []
@@ -145,12 +154,32 @@ TextureImporter:
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 156, y: 92, z: 15, w: 35}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ec45322549e5a445954afa68d320a98
+      spriteID: cf0aec9ff6cc8ac418eefd2a8a400333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InfoBar_knockdown
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 800
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f856b9d0cc03a5449cd858091dfbba2
       vertices: []
       indices: 
       edges: []

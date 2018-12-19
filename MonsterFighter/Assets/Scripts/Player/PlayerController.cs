@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour {
     private IEnumerator damageCo;
     public void Damaged(Vector2 applyVelocity, float stiffTime, bool isKnockDown, float enemyXPosition)
     {
+        combatTrigger = CombatTrigger.None;
         physics.IsFaceRight = enemyXPosition > transform.position.x;
         enableBaseInput = false;
         if (damageCo != null) StopCoroutine(damageCo);

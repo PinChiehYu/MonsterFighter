@@ -54,7 +54,6 @@ public class BattleManager : MonoBehaviour {
         targetGroup.m_Targets[0].radius = 3;
         targetGroup.m_Targets[1].target = playerChars[1].transform;
         targetGroup.m_Targets[1].radius = 3;
-        //cameraNoise.
     }
 
     private void RegisterEvent()
@@ -65,6 +64,7 @@ public class BattleManager : MonoBehaviour {
             plyinf.OnDie += CharacterDie;
             plyinf.OnHpChange += information.OnPlayerHpChange(i);
             plyinf.OnMpChange += information.OnPlayerMpChange(i);
+            plyinf.OnKnockdownChange += information.OnPlayerKnockdownChange(i);
             //plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
             playerChars[i].GetComponent<CombatHandler>().OnReceiveCrit += StartShaking;
         }

@@ -20,7 +20,7 @@ public class CombatSetting
     public GameObject projectile;
     public Vector2 launchPoint;
 
-    public void Execute(CombatHandler handler)
+    public void Execute(CombatHandler handler, StateType statetype)
     {
         if (startClip != null)
         {
@@ -28,7 +28,7 @@ public class CombatSetting
             handler.GetComponent<AudioSource>().Play();
         }
 
-        CombatInfo combatInfo = new CombatInfo(damage, applyVelocity, isKnockDown, stiffTime, isCrit, hitClip);
+        CombatInfo combatInfo = new CombatInfo(statetype, damage, applyVelocity, isKnockDown, stiffTime, isCrit, hitClip);
         if(combatType == CombatType.Attack)
         {
             handler.PrepareAttack(combatInfo);
