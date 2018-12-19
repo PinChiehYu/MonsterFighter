@@ -64,9 +64,9 @@ public class BattleManager : MonoBehaviour {
             PlayerInfo plyinf = playerChars[i].GetComponent<PlayerInfo>();
             plyinf.OnDie += CharacterDie;
             plyinf.OnHpChange += information.OnPlayerHpChange(i);
-            plyinf.OnHpChange += StartShaking;
             plyinf.OnMpChange += information.OnPlayerMpChange(i);
             //plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
+            playerChars[i].GetComponent<CombatHandler>().OnReceiveCrit += StartShaking;
         }
     }
 
@@ -206,7 +206,7 @@ public class BattleManager : MonoBehaviour {
         SceneManager.LoadScene("Menu");
     }
 
-    private void StartShaking(float f)
+    private void StartShaking()
     {
         if (shake != null) StopCoroutine(shake);
         shake = ShakeCamera(0.1f);
@@ -216,7 +216,7 @@ public class BattleManager : MonoBehaviour {
     private IEnumerator shake;
     private IEnumerator ShakeCamera(float duration)
     {
-        cameraNoise.m_AmplitudeGain = 0.3f;
+        cameraNoise.m_AmplitudeGain = 1f;
         cameraNoise.m_FrequencyGain = 100f;
         yield return new WaitForSecondsRealtime(duration);
         cameraNoise.m_AmplitudeGain = 0f;

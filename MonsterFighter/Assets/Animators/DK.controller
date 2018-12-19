@@ -122,6 +122,7 @@ MonoBehaviour:
     triggerFrame: 1
     isKnockDown: 0
     stiffTime: 0.4
+    isCrit: 0
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 70
@@ -162,6 +163,7 @@ MonoBehaviour:
     triggerFrame: 3
     isKnockDown: 1
     stiffTime: 0.2
+    isCrit: 1
     startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 150
@@ -198,6 +200,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.3
+    isCrit: 0
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 70
@@ -230,6 +233,7 @@ MonoBehaviour:
     triggerFrame: 1.5
     isKnockDown: 0
     stiffTime: 0.2
+    isCrit: 0
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 50
@@ -258,6 +262,7 @@ MonoBehaviour:
     triggerFrame: 0
     isKnockDown: 0
     stiffTime: 0.5
+    isCrit: 0
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 80
@@ -294,6 +299,7 @@ MonoBehaviour:
     triggerFrame: 3
     isKnockDown: 1
     stiffTime: 0.5
+    isCrit: 1
     startClip: {fileID: 8300000, guid: 0cf5ee7f0b06e9c40a86eb3d637f85a8, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 120

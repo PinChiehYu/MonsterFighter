@@ -9,6 +9,7 @@ public class CombatSetting
     public float triggerFrame;
     public bool isKnockDown;
     public float stiffTime;
+    public bool isCrit;
     public AudioClip startClip;
     public AudioClip hitClip;
 
@@ -27,7 +28,7 @@ public class CombatSetting
             handler.GetComponent<AudioSource>().Play();
         }
 
-        CombatInfo combatInfo = new CombatInfo(damage, applyVelocity, isKnockDown, stiffTime, hitClip);
+        CombatInfo combatInfo = new CombatInfo(damage, applyVelocity, isKnockDown, stiffTime, isCrit, hitClip);
         if(combatType == CombatType.Attack)
         {
             handler.PrepareAttack(combatInfo);

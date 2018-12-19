@@ -16,6 +16,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
 
     public bool Invincible { get; set; }
     public event Action OnHitTarget;
+    public event Action OnReceiveCrit;
 
     void Awake()
     {
@@ -59,6 +60,11 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
         {
             playerController.Damaged(combatInfo.applyVelocity, combatInfo.stiffTime, false, enemyXPosition);
         }
+
+        if (combatInfo.isCrit)
+        {
+            OnReceiveCrit?.Invoke();
+        }
     }
 
     public void Fallout()
@@ -66,6 +72,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
         playerInfo.CurrentHealthPoint -= 100;
         playerInfo.CurrentKnockDownPoint = 0f;
         playerController.Fallout();
+        OnReceiveCrit?.Invoke();
     }
 
     public void PrepareAttack(CombatInfo info)
