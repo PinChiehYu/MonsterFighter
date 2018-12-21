@@ -22,7 +22,10 @@ public class Information : MonoBehaviour {
         timer = transform.Find("Timer").GetComponent<TMP_Text>();
         statusBars[0] = transform.Find("StatusBar_0").GetComponent<StatusBar>();
         statusBars[1] = transform.Find("StatusBar_1").GetComponent<StatusBar>();
+    }
 
+    void Start()
+    {
         statusBars[0].SetIcon(iconList[GameManager.Instance.GetPlayerPickId(0)]);
         statusBars[1].SetIcon(iconList[GameManager.Instance.GetPlayerPickId(1)]);
     }

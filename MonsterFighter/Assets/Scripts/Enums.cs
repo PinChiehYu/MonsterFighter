@@ -1,6 +1,7 @@
 ﻿public enum GameMode
 {
-
+    Battle,
+    Practice
 }
 
 public enum StateType

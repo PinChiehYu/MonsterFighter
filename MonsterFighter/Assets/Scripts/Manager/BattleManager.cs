@@ -70,8 +70,10 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
+    private bool isEnd;
     private void StartNewRound()
     {
+        isEnd = false;
         countdownTimer = maxTimePerRound;
         CleanUpProjectiles();
         ResetPlayers();
@@ -131,15 +133,22 @@ public class BattleManager : MonoBehaviour {
 
     private void EndRound(int winnerId)
     {
+        if (isEnd) return;
+        isEnd = true;
+
         bool istimeup = false;
         if (winnerId == -1)
         {
-            winnerId = playerChars[0].GetComponent<PlayerInfo>().CurrentHealthPoint > playerChars[1].GetComponent<PlayerInfo>().CurrentHealthPoint ? 0 : 1;
+            winnerId = (playerChars[0].GetComponent<PlayerInfo>().CurrentHealthPoint > playerChars[1].GetComponent<PlayerInfo>().CurrentHealthPoint) ? 0 : 1;
             istimeup = true;
         }
 
         playerWinCount[winnerId]++;
         roundCounter++;
+        for (int i = 0; i < 2; i++)
+        {
+            playerChars[i].GetComponent<PlayerController>().SetInputActivate(false, false);
+        }
         Debug.LogFormat("Player {0} win {1} round", winnerId, playerWinCount[winnerId]);
         StartCoroutine(EndRoundDisplay(istimeup, winnerId));
     }
@@ -179,9 +188,9 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator EndRoundDisplay(bool isTimeUp, int winnerId)
     {
-        Time.timeScale = 0;
         information.TurnOnAnnounce(isTimeUp ? "Time's Up!" : "Knock Out!");
         information.LightUpBubble(winnerId, playerWinCount[winnerId]);
+        Time.timeScale = isTimeUp ? 0 : 0.1f;
         yield return new WaitForSecondsRealtime(3);
         information.TurnOffAnnounce();
         Time.timeScale = 1;

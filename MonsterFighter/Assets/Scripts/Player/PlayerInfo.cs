@@ -20,9 +20,8 @@ public class PlayerInfo : MonoBehaviour {
         get { return currentHealthPoint; }
         set
         {
-            currentHealthPoint = Mathf.RoundToInt(value);
+            currentHealthPoint = Mathf.Clamp((int)value, 0, baseHealthPoint);
             OnHpChange?.Invoke((float)currentHealthPoint / baseHealthPoint);
-            RestartKnockdownTiming();
             if (currentHealthPoint <= 0)
             {
                 OnDie?.Invoke(int.Parse(gameObject.name));
@@ -40,17 +39,20 @@ public class PlayerInfo : MonoBehaviour {
         }
     }
 
-    private int currentKnockdownPoint;
-    public float CurrentKnockDownPoint
+    private float currentKnockdownPoint;
+    public float CurrentKnockdownPoint
     {
-        get { return currentKnockdownPoint * baseHealthPoint; }
+        get { return currentKnockdownPoint * baseHealthPoint / 100; }
         set
         {
-            currentKnockdownPoint = Mathf.Clamp((int)(value / baseHealthPoint), 0, 30);
+            RestartKnockdownTiming();
+            currentKnockdownPoint = Mathf.Clamp((value * 100 / baseHealthPoint), 0f, 30f);
             OnKnockdownChange?.Invoke(currentKnockdownPoint);
         }
     }
-    public bool IsKnockdown { get { return currentKnockdownPoint >= 30; } }
+    public bool IsKnockdown { get { return currentKnockdownPoint >= 30f; } }
+
+    public bool IsDead { get { return currentHealthPoint <= 0; } }
 
     public bool AbleToCastSkillS
     {
@@ -85,27 +87,27 @@ public class PlayerInfo : MonoBehaviour {
     public void ResetPlayerInfo()
     {
         CurrentHealthPoint = baseHealthPoint;
-        CurrentManaPoint = 0;
-        CurrentKnockDownPoint = 0;
+        CurrentKnockdownPoint = 0;
     }
 
-    private IEnumerator declineCor;
+    private IEnumerator declineCo;
     private void RestartKnockdownTiming()
     {
-        if (declineCor != null)
+        if (declineCo != null)
         {
-            StopCoroutine(declineCor);
+            StopCoroutine(declineCo);
         }
-        declineCor = KnockdownValueDecline();
-        StartCoroutine(declineCor);
+        declineCo = KnockdownValueDecline();
+        StartCoroutine(declineCo);
     }
 
-    IEnumerator KnockdownValueDecline()
+    private IEnumerator KnockdownValueDecline()
     {
         yield return new WaitForSeconds(3f);
-        while (CurrentKnockDownPoint > 0f)
+        while (currentHealthPoint > 0f)
         {
-            CurrentKnockDownPoint -= 0.06f * baseHealthPoint;
+            currentKnockdownPoint = Mathf.Clamp(currentKnockdownPoint - 0.3f, 0f, 30f);
+            OnKnockdownChange?.Invoke(currentKnockdownPoint);
             yield return new WaitForSeconds(0.01f);
         }
     }

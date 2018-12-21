@@ -1334,22 +1334,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114479692721410380, guid: 8f03cce0d70e88e47bce7d26ab472564,
+    - target: {fileID: 114725195272157520, guid: 8f03cce0d70e88e47bce7d26ab472564,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114479692721410380, guid: 8f03cce0d70e88e47bce7d26ab472564,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114176907652025138, guid: 8f03cce0d70e88e47bce7d26ab472564,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114176907652025138, guid: 8f03cce0d70e88e47bce7d26ab472564,
+    - target: {fileID: 114725195272157520, guid: 8f03cce0d70e88e47bce7d26ab472564,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -1360,16 +1350,6 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114363179745181440, guid: 8f03cce0d70e88e47bce7d26ab472564,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114725195272157520, guid: 8f03cce0d70e88e47bce7d26ab472564,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114725195272157520, guid: 8f03cce0d70e88e47bce7d26ab472564,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1

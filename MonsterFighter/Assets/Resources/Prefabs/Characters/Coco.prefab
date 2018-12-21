@@ -352,7 +352,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealthPoint: 1000
   baseManaPoint: 100
-  baseEnergyPoint: 100
   skillSCost: 10
   skillBCost: 0
 --- !u!114 &114869219597991760
@@ -418,7 +417,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 09e31436a23108c4aa81cceec5f3ce54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

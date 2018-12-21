@@ -40,7 +40,7 @@ public class MapSelectSheet : MonoBehaviour
 
         clickAudio.clip = switchClip;
         mapPointer = 0;
-        SelectMap(0);
+        SelectMap(4);
     }
 
     private void Update()

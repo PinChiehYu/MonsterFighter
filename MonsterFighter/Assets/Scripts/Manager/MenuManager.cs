@@ -96,9 +96,15 @@ public class MenuManager : MonoBehaviour {
         return button.GetComponentInChildren<TMP_Text>();
     }
 
-    public void StartGame(string mode)
+    public void StartBattle()
     {
-        GameManager.Instance.gameMode = mode;
+        GameManager.Instance.gameMode = GameMode.Battle;
+        GameManager.Instance.SwitchScene("Select");
+    }
+
+    public void StartPractice()
+    {
+        GameManager.Instance.gameMode = GameMode.Practice;
         GameManager.Instance.SwitchScene("Select");
     }
 }

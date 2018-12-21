@@ -14,7 +14,7 @@ public class GameManager
 
     public Dictionary<string, KeyCode>[] playerControlSets;
     public string[] playerCharacterPicks;
-    public string gameMode;
+    public GameMode gameMode;
 
     private float fixedtime;
 
@@ -52,6 +52,11 @@ public class GameManager
     public GameObject CreateCharacter(int playerId, Vector3 startPosition, Vector3 falloutPosition)
     {
         return characterFactory.CreateCharacter(playerId, playerCharacterPicks[playerId], playerControlSets[playerId], startPosition, falloutPosition);
+    }
+
+    public GameObject CreateDummy(Vector3 startPosition, Vector3 falloutPosition)
+    {
+        return characterFactory.CreateDummy(startPosition, falloutPosition);
     }
 
     public void PauseTime(bool yes)

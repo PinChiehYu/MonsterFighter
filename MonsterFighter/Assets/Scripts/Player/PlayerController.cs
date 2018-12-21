@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(PlayerInfo), typeof(PhysicsObject))]
-public class PlayerController : MonoBehaviour {
-
-    private PhysicsObject physics;
+public class PlayerController : MonoBehaviour
+{
+    protected PhysicsObject physics;
     private Animator animator;
 
     private Vector3 initPosition;
@@ -18,13 +18,16 @@ public class PlayerController : MonoBehaviour {
     private bool enableCombatInput;
 
     private CombatTrigger combatTrigger;
+
+    private bool isDummy;
     
-	public void Awake () {
+	private void Awake () {
         physics = GetComponent<PhysicsObject>();
         animator = GetComponent<Animator>();
-	}
+    }
 
-    void Update () {
+    protected virtual void Update ()
+    {
         HandleBaseOperation();
         HandleCombatOperation();
         UpdateAnimator();
@@ -33,6 +36,11 @@ public class PlayerController : MonoBehaviour {
     private void HandleBaseOperation()
     {
         if (!enableBaseInput) return;
+        if (isDummy)
+        {
+            if (physics.IsGrounded) physics.Forward(0f);
+            return;
+        }
 
         if (Input.GetKey(controlSet["Right"]))
         {
@@ -62,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleCombatOperation()
     {
-        if (!enableCombatInput) return;
+        if (isDummy || !enableCombatInput) return;
 
         if (CurrentState == StateType.Base)
         {
@@ -136,6 +144,7 @@ public class PlayerController : MonoBehaviour {
         initPosition = initposition;
         falloutPosition = falloutposition;
         GetComponentInChildren<AttackboxDetector>().Id = gameObject.name;
+        isDummy = (controlset.Count == 0);
     }
 
     public void ResetController()
@@ -143,7 +152,6 @@ public class PlayerController : MonoBehaviour {
         if (damageCo != null) StopCoroutine(damageCo);
         animator.ResetTrigger("WakeUp");
         animator.Rebind();
-        SetInputActivate(false, false);
         transform.position = initPosition;
         physics.IsFaceRight = gameObject.name == "0";
         physics.IsGrounded = false;
@@ -165,7 +173,6 @@ public class PlayerController : MonoBehaviour {
     public void Fallout()
     {
         transform.position = falloutPosition;
-        SetInputActivate(false, false);
         physics.Forward(0f);
         if (damageCo != null) StopCoroutine(damageCo);
         damageCo = Stiff(0f, true);
@@ -174,6 +181,7 @@ public class PlayerController : MonoBehaviour {
 
     IEnumerator Stiff(float duration, bool knockDown)
     {
+        SetInputActivate(false, false);
         animator.ResetTrigger("WakeUp");
         animator.SetTrigger("Damaged");
         yield return new WaitForSeconds(duration);
@@ -202,6 +210,7 @@ public class PlayerController : MonoBehaviour {
     public void WakeUp()
     {
         animator.SetTrigger("WakeUp");
+        SetInputActivate(true, true);
     }
 
     private void SetInvincible(bool yes)

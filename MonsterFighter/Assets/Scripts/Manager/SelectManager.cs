@@ -14,8 +14,17 @@ public class SelectManager : MonoBehaviour {
     {
         charCanvas = GameObject.Find("CharacterCanvas");
         mapCanvas = GameObject.Find("MapCanvas");
+    }
+
+    void Start()
+    {
         mapCanvas.SetActive(false);
-        mapName = "";
+
+        if (GameManager.Instance.gameMode == GameMode.Practice)
+        {
+            selected[1] = true;
+            GameObject.Find("P2Character").SetActive(false);
+        }
     }
 
     private bool[] selected = new bool[2];
@@ -32,17 +41,26 @@ public class SelectManager : MonoBehaviour {
     public void PickMap(string map)
     {
         mapName = map;
+        Debug.Log(mapName);
     }
 
     public void StartBattle()
     {
+        mapName = GameManager.Instance.gameMode == GameMode.Practice ? "Practice" : mapName;
         SceneManager.LoadScene(mapName);
     }
 
     IEnumerator SwitchSelectionCanvas()
     {
         yield return new WaitForSeconds(1f);
-        charCanvas.SetActive(false);
-        mapCanvas.SetActive(true);
+        if (GameManager.Instance.gameMode == GameMode.Practice)
+        {
+            StartBattle();
+        }
+        else
+        {
+            charCanvas.SetActive(false);
+            mapCanvas.SetActive(true);
+        }
     }
 }

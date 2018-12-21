@@ -17,6 +17,7 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
     public bool Invincible { get; set; }
     public event Action OnHitTarget;
     public event Action OnReceiveCrit;
+    public event Action OnReceiveAttack;
 
     void Awake()
     {
@@ -41,41 +42,44 @@ public class CombatHandler : MonoBehaviour, ICombatSender, IBorderSensor {
     public void ReceiveAttack(CombatInfo combatInfo, float enemyXPosition)
     {
         if (Invincible) return;
+        OnReceiveAttack?.Invoke();
 
         GetComponent<AudioSource>().clip = combatInfo.hitClip;
         GetComponent<AudioSource>().Play();
 
         playerInfo.CurrentHealthPoint -= combatInfo.damage;
-        if (combatInfo.stateType == StateType.Combat)
+
+        if (combatInfo.isCrit)
         {
-            playerInfo.CurrentKnockDownPoint += combatInfo.damage;
+            OnReceiveCrit?.Invoke();
         }
 
-        if (combatInfo.isKnockDown)
+        if (combatInfo.stateType == StateType.Combat)
         {
-            playerInfo.CurrentKnockDownPoint = 0f;
+            playerInfo.CurrentKnockdownPoint += combatInfo.damage;
+        }
+
+        if (combatInfo.isKnockDown || playerInfo.IsDead)
+        {
+            playerInfo.CurrentKnockdownPoint = 0f;
             playerController.Damaged(combatInfo.applyVelocity, combatInfo.stiffTime, true, enemyXPosition);
         }
         else if (playerInfo.IsKnockdown)
         {
-            playerInfo.CurrentKnockDownPoint = 0f;
+            playerInfo.CurrentKnockdownPoint = 0f;
             playerController.Damaged(combatInfo.applyVelocity, 0, true, enemyXPosition);
         }
         else
         {
             playerController.Damaged(combatInfo.applyVelocity, combatInfo.stiffTime, false, enemyXPosition);
         }
-
-        if (combatInfo.isCrit)
-        {
-            OnReceiveCrit?.Invoke();
-        }
     }
 
     public void Fallout()
     {
+        OnReceiveAttack?.Invoke();
         playerInfo.CurrentHealthPoint -= 100;
-        playerInfo.CurrentKnockDownPoint = 0f;
+        playerInfo.CurrentKnockdownPoint = 0f;
         playerController.Fallout();
         OnReceiveCrit?.Invoke();
     }
