@@ -81,7 +81,7 @@ public class MapSelectSheet : MonoBehaviour
     private void SelectMap(int prePointer)
     {
         mapImage.sprite = selectionList[mapPointer].mapSprite;
-        mapName.sprite = selectionList[mapPointer].mapNameSprite;
+        mapName.sprite = selectionList[mapPointer].mapTitleSprite;
         selectionList[prePointer].GetComponent<Image>().color = Color.white;
         selectionList[mapPointer].GetComponent<Image>().color = Color.red;
 

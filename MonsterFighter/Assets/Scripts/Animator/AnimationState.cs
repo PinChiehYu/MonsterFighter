@@ -59,7 +59,7 @@ public class AnimationState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<PhysicsObject>().SetPhysicsParam(null, Vector2.zero, true);
-        handler.CancelAttack();
+        animator.GetComponent<CombatHandler>().CancelAttack();
     }
 
     private void UpdatePhysicsParamByFrame()

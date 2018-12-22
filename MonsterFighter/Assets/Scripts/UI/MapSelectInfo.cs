@@ -3,5 +3,5 @@
 public class MapSelectInfo : MonoBehaviour
 {
     public string mapName;
-    public Sprite mapSprite, mapNameSprite;
+    public Sprite mapSprite, mapTitleSprite;
 }

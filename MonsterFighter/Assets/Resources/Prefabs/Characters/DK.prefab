@@ -371,7 +371,7 @@ MonoBehaviour:
   baseHealthPoint: 1000
   baseManaPoint: 100
   skillSCost: 30
-  skillBCost: 0
+  skillBCost: 100
 --- !u!114 &114965720342015158
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -134,7 +134,7 @@ MonoBehaviour:
     stiffTime: 0.5
     isCrit: 1
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
-    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 60
     applyVelocity: {x: -3, y: 8}
     projectile: {fileID: 0}
@@ -160,10 +160,10 @@ MonoBehaviour:
   - combatType: 0
     triggerFrame: 1
     isKnockDown: 0
-    stiffTime: 0.4
+    stiffTime: 0.35
     isCrit: 0
-    startClip: {fileID: 0}
-    hitClip: {fileID: 0}
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 70
     applyVelocity: {x: -3, y: -3}
     projectile: {fileID: 0}
@@ -221,8 +221,8 @@ MonoBehaviour:
     isKnockDown: 1
     stiffTime: 0.2
     isCrit: 0
-    startClip: {fileID: 8300000, guid: 0ed83a71b9a043e478795185c8b74a3e, type: 3}
-    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
+    hitClip: {fileID: 0}
     damage: 150
     applyVelocity: {x: -20, y: 8}
     projectile: {fileID: 0}
@@ -306,7 +306,7 @@ MonoBehaviour:
     stiffTime: 0.5
     isCrit: 1
     startClip: {fileID: 8300000, guid: 0cf5ee7f0b06e9c40a86eb3d637f85a8, type: 3}
-    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 100
     applyVelocity: {x: -15, y: 8}
     projectile: {fileID: 0}
@@ -413,7 +413,7 @@ MonoBehaviour:
     stiffTime: 0.1
     isCrit: 1
     startClip: {fileID: 8300000, guid: 0cf5ee7f0b06e9c40a86eb3d637f85a8, type: 3}
-    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 100
     applyVelocity: {x: -10, y: 1}
     projectile: {fileID: 0}
@@ -526,6 +526,180 @@ MonoBehaviour:
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   switchFrame: 4
+--- !u!114 &114864401698356012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 2
+  enableBaseInput: 0
+  enableCombatInput: 0
+  actionList:
+  - triggerFrame: 1
+    useDefaultGravity: 0
+    initVelocity: {x: 7, y: 0}
+    acceleration: {x: -5, y: 0}
+  - triggerFrame: 3
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 7
+    useDefaultGravity: 0
+    initVelocity: {x: 70, y: 30}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 8
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 12
+    useDefaultGravity: 0
+    initVelocity: {x: -30, y: 25}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 13
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 17
+    useDefaultGravity: 0
+    initVelocity: {x: 30, y: 25}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 18
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 22
+    useDefaultGravity: 0
+    initVelocity: {x: -30, y: 25}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 23
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 27
+    useDefaultGravity: 0
+    initVelocity: {x: 30, y: 25}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 28
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 32
+    useDefaultGravity: 0
+    initVelocity: {x: -15, y: 25}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 33
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 37
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: -70}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 39
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 42
+    useDefaultGravity: 1
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  resetVelocityWhenEnter: 1
+  combatList:
+  - combatType: 0
+    triggerFrame: 2
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 50
+    applyVelocity: {x: -7, y: 15}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 8
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 30
+    applyVelocity: {x: -0.1, y: 10}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 13
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 30
+    applyVelocity: {x: 0.1, y: 8}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 18
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 30
+    applyVelocity: {x: -0.1, y: 8}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 23
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 30
+    applyVelocity: {x: -0.1, y: 10}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 28
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 30
+    applyVelocity: {x: -0.1, y: 14}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 33
+    isKnockDown: 0
+    stiffTime: 0.5
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 30
+    applyVelocity: {x: -0.1, y: -20}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 38
+    isKnockDown: 1
+    stiffTime: 0.2
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
+    damage: 120
+    applyVelocity: {x: 0, y: 50}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  switchFrame: -1
 --- !u!114 &114868008557948346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,7 +723,7 @@ MonoBehaviour:
     stiffTime: 0.3
     isCrit: 1
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
-    hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
+    hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 80
     applyVelocity: {x: -3, y: 8}
     projectile: {fileID: 0}
@@ -1077,6 +1251,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101500324927848474
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102173989487022376}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101501325934283686
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1305,6 +1500,33 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101943918527752296
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsGrounded
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: SklB
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102411273973372126}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101955553412271020
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1397,6 +1619,7 @@ AnimatorState:
   - {fileID: 1101258580427898042}
   - {fileID: 1101237065600337942}
   - {fileID: 1101467866329761816}
+  - {fileID: 1101943918527752296}
   m_StateMachineBehaviours:
   - {fileID: 114163941971113988}
   m_Position: {x: 50, y: 50, z: 0}
@@ -1469,6 +1692,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &1102411273973372126
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: DK_skill_B
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101500324927848474}
+  m_StateMachineBehaviours:
+  - {fileID: 114864401698356012}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 4763ac609d092e249b73379df86ab194, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102527686483932306
 AnimatorState:
   serializedVersion: 5
@@ -1530,7 +1780,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: DK_jumpattack_L
-  m_Speed: 1.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101401882550791106}
@@ -1770,13 +2020,13 @@ AnimatorStateMachine:
     m_Position: {x: 696, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102789492183657110}
-    m_Position: {x: 288, y: 312, z: 0}
+    m_Position: {x: 48, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102793796458893136}
-    m_Position: {x: 48, y: 228, z: 0}
+    m_Position: {x: 288, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102669127769916006}
-    m_Position: {x: 288, y: 228, z: 0}
+    m_Position: {x: 288, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102535456093511368}
     m_Position: {x: 168, y: -120, z: 0}
@@ -1792,13 +2042,16 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102656749809022760}
     m_Position: {x: 696, y: -48, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102411273973372126}
+    m_Position: {x: 516, y: -180, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101876532492645748}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 72, y: 300, z: 0}
+  m_AnyStatePosition: {x: 60, y: 276, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 828, y: 144, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

@@ -7,8 +7,6 @@ public class PracticeManager : MonoBehaviour {
 
     private Information information;
 
-    private int[] playerComboHit = new int[2] { 0, 0 };
-
     private GameObject[] playerChars = new GameObject[2];
     private int[] playerWinCount = new int[2] { 0, 0 };
 
@@ -16,18 +14,20 @@ public class PracticeManager : MonoBehaviour {
     private CinemachineBasicMultiChannelPerlin cameraNoise;
 
     private List<Vector3> pivotList;
+    private GameObject fininshCanvas;
 
     // Use this for initialization
     void Awake()
     {
         information = GameObject.Find("Information").GetComponent<Information>();
-        //comboSets = GameObject.Find("Information").GetComponentsInChildren<Combo>();
         pivotList = GameObject.Find("PivotSet").GetComponent<PivotSet>().GetPivotsPosition();
         targetGroup = GameObject.Find("CharGroup").GetComponent<CinemachineTargetGroup>();
         cameraNoise = GameObject.Find("CMvcam").GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        fininshCanvas = GameObject.Find("FinishCanvas");
     }
 
     void Start () {
+        fininshCanvas.SetActive(false);
         InstantiateCharacters();
         RegisterEvent();
         StartNewRound();
@@ -36,7 +36,7 @@ public class PracticeManager : MonoBehaviour {
     private void InstantiateCharacters()
     {
         playerChars[0] = GameManager.Instance.CreateCharacter(0, pivotList[0], pivotList[1]);
-        playerChars[1] = GameManager.Instance.CreateDummy(pivotList[2], pivotList[3]);
+        playerChars[1] = GameManager.Instance.CreateDummy(1, pivotList[2], pivotList[3]);
 
         targetGroup.m_Targets[0].target = playerChars[0].transform;
         targetGroup.m_Targets[0].radius = 3;

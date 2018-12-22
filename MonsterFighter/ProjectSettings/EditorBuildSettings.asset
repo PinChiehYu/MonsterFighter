@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Maps/Practice.unity
     guid: fb920e78d7d83fb49baef145c9d40adb
   - enabled: 1
-    path: Assets/Scenes/Maps/Space.unity
-    guid: f6f75b6a974159c4ca28fbc3fcb2c733
+    path: Assets/Scenes/Maps/Desert.unity
+    guid: dc2ad08d530a02b468efda9e46b4e96e
   - enabled: 1
     path: Assets/Scenes/Maps/IceField.unity
     guid: dbbebbeb3b8b24e4186ae2549c3076db
@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Maps/Xmas.unity
     guid: ed2ea487825786a40abd24c9c102dde1
   - enabled: 1
-    path: Assets/Scenes/Maps/Desert.unity
-    guid: dc2ad08d530a02b468efda9e46b4e96e
+    path: Assets/Scenes/Maps/Shenmu.unity
+    guid: 39c7873713b67794ba8fb5f5f0e63775
+  - enabled: 1
+    path: Assets/Scenes/Maps/Space.unity
+    guid: f6f75b6a974159c4ca28fbc3fcb2c733
   m_configObjects: {}

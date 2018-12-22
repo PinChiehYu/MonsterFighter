@@ -54,9 +54,9 @@ public class GameManager
         return characterFactory.CreateCharacter(playerId, playerCharacterPicks[playerId], playerControlSets[playerId], startPosition, falloutPosition);
     }
 
-    public GameObject CreateDummy(Vector3 startPosition, Vector3 falloutPosition)
+    public GameObject CreateDummy(int playerId, Vector3 startPosition, Vector3 falloutPosition)
     {
-        return characterFactory.CreateDummy(startPosition, falloutPosition);
+        return characterFactory.CreateDummy(playerId, playerCharacterPicks[playerId], startPosition, falloutPosition);
     }
 
     public void PauseTime(bool yes)
@@ -76,11 +76,5 @@ public class GameManager
     public int GetPlayerPickId(int playerId)
     {
         return CharNameToId[playerCharacterPicks[playerId]];
-    }
-
-    public void SwitchScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-        //OnSceneSwitch?.Invoke(targetSceneId);
     }
 }

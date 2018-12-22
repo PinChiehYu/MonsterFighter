@@ -128,6 +128,24 @@ MonoBehaviour:
   resetVelocityWhenEnter: 0
   combatList: []
   switchFrame: 0
+--- !u!114 &114030101179539384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 1
+  enableBaseInput: 0
+  enableCombatInput: 0
+  actionList: []
+  resetVelocityWhenEnter: 0
+  combatList: []
+  switchFrame: 0
 --- !u!114 &114107750683137008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -599,7 +617,7 @@ MonoBehaviour:
     startClip: {fileID: 0}
     hitClip: {fileID: 0}
     damage: 0
-    applyVelocity: {x: 6, y: 0}
+    applyVelocity: {x: 8, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -610,7 +628,7 @@ MonoBehaviour:
     startClip: {fileID: 0}
     hitClip: {fileID: 0}
     damage: 0
-    applyVelocity: {x: 6, y: 0}
+    applyVelocity: {x: 8, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -621,7 +639,7 @@ MonoBehaviour:
     startClip: {fileID: 0}
     hitClip: {fileID: 0}
     damage: 0
-    applyVelocity: {x: 3, y: 0}
+    applyVelocity: {x: 5, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -632,7 +650,7 @@ MonoBehaviour:
     startClip: {fileID: 0}
     hitClip: {fileID: 0}
     damage: 0
-    applyVelocity: {x: 2, y: 0}
+    applyVelocity: {x: 3, y: 0}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   - combatType: 0
@@ -653,8 +671,8 @@ MonoBehaviour:
     isCrit: 1
     startClip: {fileID: 0}
     hitClip: {fileID: 8300000, guid: ab66ed614c350c34c9299eeb7691b369, type: 3}
-    damage: 90
-    applyVelocity: {x: -30, y: 15}
+    damage: 100
+    applyVelocity: {x: -40, y: 15}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   switchFrame: -1
@@ -1033,11 +1051,11 @@ MonoBehaviour:
   - combatType: 0
     triggerFrame: 1
     isKnockDown: 0
-    stiffTime: 0.1
+    stiffTime: 0.3
     isCrit: 0
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
     hitClip: {fileID: 8300000, guid: c93f6cefcb8a685468e8c2fea38fb329, type: 3}
-    damage: 30
+    damage: 50
     applyVelocity: {x: -1, y: 1}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
@@ -2020,7 +2038,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Coco_jumpattack_L
-  m_Speed: 0.8
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101700398170825878}
@@ -2051,7 +2069,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101913726828753664}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114030101179539384}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

@@ -103,7 +103,7 @@ MonoBehaviour:
     isKnockDown: 0
     stiffTime: 0.4
     isCrit: 1
-    startClip: {fileID: 8300000, guid: 0ed83a71b9a043e478795185c8b74a3e, type: 3}
+    startClip: {fileID: 8300000, guid: ab66ed614c350c34c9299eeb7691b369, type: 3}
     hitClip: {fileID: 0}
     damage: 150
     applyVelocity: {x: -12, y: 6}
@@ -333,10 +333,10 @@ MonoBehaviour:
   - combatType: 0
     triggerFrame: 1
     isKnockDown: 0
-    stiffTime: 0.3
+    stiffTime: 0.35
     isCrit: 0
     startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
-    hitClip: {fileID: 8300000, guid: 21d4be7d51d51e14d940290f82040b45, type: 3}
+    hitClip: {fileID: 8300000, guid: d36a444dfd6cd1242896b865a8add890, type: 3}
     damage: 60
     applyVelocity: {x: -3, y: -3}
     projectile: {fileID: 0}
@@ -406,6 +406,112 @@ MonoBehaviour:
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   switchFrame: 5
+--- !u!114 &114553716517569236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 2
+  enableBaseInput: 0
+  enableCombatInput: 0
+  actionList:
+  - triggerFrame: 2
+    useDefaultGravity: 1
+    initVelocity: {x: 15, y: 13}
+    acceleration: {x: -3, y: -5}
+  - triggerFrame: 4
+    useDefaultGravity: 1
+    initVelocity: {x: 15, y: -10}
+    acceleration: {x: 0, y: -5}
+  - triggerFrame: 7
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 0}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 9
+    useDefaultGravity: 1
+    initVelocity: {x: 3, y: 40}
+    acceleration: {x: 0, y: -80}
+  - triggerFrame: 15
+    useDefaultGravity: 0
+    initVelocity: {x: 0, y: 4}
+    acceleration: {x: 0, y: -1}
+  - triggerFrame: 18
+    useDefaultGravity: 0
+    initVelocity: {x: 3, y: -10}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 20
+    useDefaultGravity: 0
+    initVelocity: {x: -2.5, y: 5}
+    acceleration: {x: 2, y: -3}
+  - triggerFrame: 22
+    useDefaultGravity: 1
+    initVelocity: {x: 30, y: -100}
+    acceleration: {x: -5, y: -60}
+  - triggerFrame: 24
+    useDefaultGravity: 1
+    initVelocity: {x: 0, y: -30}
+    acceleration: {x: 0, y: 5}
+  - triggerFrame: 26
+    useDefaultGravity: 1
+    initVelocity: {x: -20, y: 12}
+    acceleration: {x: 0, y: 0}
+  - triggerFrame: 28
+    useDefaultGravity: 1
+    initVelocity: {x: -3, y: 3}
+    acceleration: {x: 0, y: 0}
+  resetVelocityWhenEnter: 1
+  combatList:
+  - combatType: 0
+    triggerFrame: 1
+    isKnockDown: 0
+    stiffTime: 0.3
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: d36a444dfd6cd1242896b865a8add890, type: 3}
+    damage: 30
+    applyVelocity: {x: -13, y: 6}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 6
+    isKnockDown: 0
+    stiffTime: 0.8
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 21d4be7d51d51e14d940290f82040b45, type: 3}
+    hitClip: {fileID: 0}
+    damage: 100
+    applyVelocity: {x: -3, y: 22}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 18
+    isKnockDown: 0
+    stiffTime: 0.4
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 0f36d843651f72c4eb5172a7c8b4a705, type: 3}
+    hitClip: {fileID: 8300000, guid: ab66ed614c350c34c9299eeb7691b369, type: 3}
+    damage: 80
+    applyVelocity: {x: -5, y: -25}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  - combatType: 0
+    triggerFrame: 25
+    isKnockDown: 1
+    stiffTime: 0.2
+    isCrit: 1
+    startClip: {fileID: 8300000, guid: 21d4be7d51d51e14d940290f82040b45, type: 3}
+    hitClip: {fileID: 0}
+    damage: 150
+    applyVelocity: {x: -30, y: 10}
+    projectile: {fileID: 0}
+    launchPoint: {x: 0, y: 0}
+  switchFrame: -1
 --- !u!114 &114604465714169186
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -646,6 +752,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateType: 0
+  enableBaseInput: 0
+  enableCombatInput: 0
+  actionList: []
+  resetVelocityWhenEnter: 0
+  combatList: []
+  switchFrame: 0
+--- !u!114 &114810785194490934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5679276408884b94c931ef7376fcabe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 1
   enableBaseInput: 0
   enableCombatInput: 0
   actionList: []
@@ -1206,6 +1330,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101421251979663378
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102082798434196868}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101464240277855662
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -1536,6 +1681,33 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101734886199814404
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsGrounded
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: SklB
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102555613943656626}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101751987120790660
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1754,6 +1926,7 @@ AnimatorState:
   - {fileID: 1101184857318569178}
   - {fileID: 1101061834993343386}
   - {fileID: 1101529197202976634}
+  - {fileID: 1101734886199814404}
   m_StateMachineBehaviours:
   - {fileID: 114735724759127974}
   m_Position: {x: 50, y: 50, z: 0}
@@ -1962,6 +2135,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &1102555613943656626
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Rock_skill_B
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101421251979663378}
+  m_StateMachineBehaviours:
+  - {fileID: 114553716517569236}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 6836461794f2d8b4d9d737e5caa4935b, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102576423221493124
 AnimatorState:
   serializedVersion: 5
@@ -2056,7 +2256,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101322260932287786}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114810785194490934}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2255,6 +2456,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102599924904446834}
     m_Position: {x: 672, y: 24, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102555613943656626}
+    m_Position: {x: 324, y: -120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101523492998689906}

@@ -41,8 +41,18 @@ public class CharSelectSheet : MonoBehaviour
         selectInput = GameManager.Instance.playerControlSets[playerId]["AtkL"];
 
         clickAudio.clip = switchClip;
-        characterPointer = 0;
-        SelectCharacter(0);
+
+        if(playerId == 1 && GameManager.Instance.gameMode == GameMode.Practice)
+        {
+            characterPointer = UnityEngine.Random.Range(0, selectionList.Count);
+            SelectCharacter(characterPointer);
+            enabled = false;
+        }
+        else
+        {
+            characterPointer = 0;
+            SelectCharacter(0);
+        }
     }
 
     private void Update()

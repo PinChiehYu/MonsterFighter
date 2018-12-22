@@ -43,7 +43,6 @@ public class Projectile : MonoBehaviour, ICombatSender, IBorderSensor {
     private void OnHit()
     {
         GetComponent<Animator>().SetTrigger("Hit");
-        Debug.Log("Missile Hit!");
     }
 
     public void Fallout()

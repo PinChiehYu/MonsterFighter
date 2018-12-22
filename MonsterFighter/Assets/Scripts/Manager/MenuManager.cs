@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MenuManager : MonoBehaviour {
@@ -33,7 +34,7 @@ public class MenuManager : MonoBehaviour {
         if(currentButton != null)
         {
             Event e = Event.current;
-            if (e.isKey)
+            if (e.isKey && e.keyCode != KeyCode.P && e.keyCode != KeyCode.Escape)
             {
                 int playerNumber = Int32.Parse(currentButton.name.Split(new char[] { '_' })[0]);
                 string controlType = currentButton.name.Split(new char[] { '_' })[1];
@@ -64,6 +65,11 @@ public class MenuManager : MonoBehaviour {
 
     public void SaveSetting()
     {
+        if (currentButton != null)
+        {
+            GetButtonText(currentButton).fontStyle = FontStyles.Bold;
+        }
+
         for (int i = 0; i < 2; i++)
         {
             for (int j = 0; j < controlType.Length; j++)
@@ -99,12 +105,12 @@ public class MenuManager : MonoBehaviour {
     public void StartBattle()
     {
         GameManager.Instance.gameMode = GameMode.Battle;
-        GameManager.Instance.SwitchScene("Select");
+        SceneSwitcher.instance.SwitchScene("Select");
     }
 
     public void StartPractice()
     {
         GameManager.Instance.gameMode = GameMode.Practice;
-        GameManager.Instance.SwitchScene("Select");
+        SceneSwitcher.instance.SwitchScene("Select");
     }
 }

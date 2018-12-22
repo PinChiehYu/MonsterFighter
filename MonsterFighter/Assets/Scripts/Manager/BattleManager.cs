@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 using Cinemachine;
 
@@ -13,11 +12,9 @@ public class BattleManager : MonoBehaviour {
     private int maxTimePerRound;
 
     private int roundCounter;
-    private float countdownTimer;
+    private float countdownTimer = 99;
 
     private Information information;
-
-    private int[] playerComboHit = new int[2] { 0, 0 };
 
     private GameObject[] playerChars = new GameObject[2];
     private int[] playerWinCount = new int[2] { 0, 0 };
@@ -26,29 +23,34 @@ public class BattleManager : MonoBehaviour {
     private CinemachineBasicMultiChannelPerlin cameraNoise;
 
     private List<Vector3> pivotList;
+    private GameObject fininshCanvas;
 
     void Awake ()
     {
         roundCounter = 1;
 
         information = GameObject.Find("Information").GetComponent<Information>();
-        //comboSets = GameObject.Find("Information").GetComponentsInChildren<Combo>();
         pivotList = GameObject.Find("PivotSet").GetComponent<PivotSet>().GetPivotsPosition();
         targetGroup = GameObject.Find("CharGroup").GetComponent<CinemachineTargetGroup>();
         cameraNoise = GameObject.Find("CMvcam").GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        fininshCanvas = GameObject.Find("FinishCanvas");
     }
 
     void Start()
     {
+        fininshCanvas.SetActive(false);
+        Time.timeScale = 0f;
         InstantiateCharacters();
         RegisterEvent();
-        StartNewRound();
+        ResetPlayers();
+        SceneSwitcher.instance.OnSecenLoaded += StartNewRound;
     }
 
     private void InstantiateCharacters()
     {
         playerChars[0] = GameManager.Instance.CreateCharacter(0, pivotList[0], pivotList[1]);
         playerChars[1] = GameManager.Instance.CreateCharacter(1, pivotList[2], pivotList[3]);
+        StopPlayer();
 
         targetGroup.m_Targets[0].target = playerChars[0].transform;
         targetGroup.m_Targets[0].radius = 3;
@@ -65,7 +67,6 @@ public class BattleManager : MonoBehaviour {
             plyinf.OnHpChange += information.OnPlayerHpChange(i);
             plyinf.OnMpChange += information.OnPlayerMpChange(i);
             plyinf.OnKnockdownChange += information.OnPlayerKnockdownChange(i);
-            //plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
             playerChars[i].GetComponent<CombatHandler>().OnReceiveCrit += StartShaking;
         }
     }
@@ -102,11 +103,6 @@ public class BattleManager : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SwitchPause();
-        }
-
         countdownTimer -= Time.deltaTime;
         information.UpdateTimer((int)Mathf.Ceil(countdownTimer));
 
@@ -114,20 +110,6 @@ public class BattleManager : MonoBehaviour {
         {
             countdownTimer = 0f;
             EndRound(-1);
-        }
-    }
-
-    private void SwitchPause()
-    {
-        if (Time.timeScale == 0f)
-        {
-            information.TurnOffAnnounce();
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            Time.timeScale = 0f;
-            information.TurnOnAnnounce("PAUSE");
         }
     }
 
@@ -149,14 +131,11 @@ public class BattleManager : MonoBehaviour {
         {
             playerChars[i].GetComponent<PlayerController>().SetInputActivate(false, false);
         }
-        Debug.LogFormat("Player {0} win {1} round", winnerId, playerWinCount[winnerId]);
         StartCoroutine(EndRoundDisplay(istimeup, winnerId));
     }
 
     private void EndBattle()
     {
-        playerChars[0].GetComponent<PlayerController>().SetInputActivate(false, false);
-        playerChars[1].GetComponent<PlayerController>().SetInputActivate(false, false);
         StartCoroutine("EndBattleDisplay");
     }
 
@@ -168,6 +147,7 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator StartRoundDisplay(int roundNumber)
     {
+        StopPlayer();
         Time.timeScale = 0;
         information.TurnOnAnnounce(string.Format("Round {0}", roundNumber));
         yield return new WaitForSecondsRealtime(3);
@@ -176,6 +156,12 @@ public class BattleManager : MonoBehaviour {
         information.TurnOffAnnounce();
         WakeUpPlayers();
         Time.timeScale = 1;
+    }
+
+    private void StopPlayer()
+    {
+        playerChars[0].GetComponent<PlayerController>().SetInputActivate(false, false);
+        playerChars[1].GetComponent<PlayerController>().SetInputActivate(false, false);
     }
 
     private void WakeUpPlayers()
@@ -210,9 +196,8 @@ public class BattleManager : MonoBehaviour {
         Time.timeScale = 0;
         information.TurnOnAnnounce(string.Format("Player {0} Win!", winnerId + 1));
         yield return new WaitForSecondsRealtime(3);
-        Time.timeScale = 1;
 
-        SceneManager.LoadScene("Menu");
+        fininshCanvas.SetActive(true);
     }
 
     private void StartShaking()
@@ -230,5 +215,19 @@ public class BattleManager : MonoBehaviour {
         yield return new WaitForSecondsRealtime(duration);
         cameraNoise.m_AmplitudeGain = 0f;
         cameraNoise.m_FrequencyGain = 0f;
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneSwitcher.instance.OnSecenLoaded -= StartNewRound;
+        SceneSwitcher.instance.ReloadScene();
+    }
+
+    public void BackToScene(string scene)
+    {
+        Time.timeScale = 1;
+        SceneSwitcher.instance.OnSecenLoaded -= StartNewRound;
+        SceneSwitcher.instance.SwitchScene(scene);
     }
 }

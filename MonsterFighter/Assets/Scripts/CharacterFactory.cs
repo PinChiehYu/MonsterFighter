@@ -45,10 +45,10 @@ public class CharacterFactory
         return character;
     }
 
-    public GameObject CreateDummy(Vector3 startPoint, Vector3 falloutPoint)
+    public GameObject CreateDummy(int playerId, string characterName, Vector3 startPoint, Vector3 falloutPoint)
     {
-        GameObject character = Object.Instantiate(characterDictionary["Coco"]);
-        character.name = "1";
+        GameObject character = Object.Instantiate(characterDictionary[characterName]);
+        character.name = playerId.ToString();
         character.GetComponent<PlayerController>().SetupController(new Dictionary<string, KeyCode>(), startPoint, falloutPoint);
 
         return character;
