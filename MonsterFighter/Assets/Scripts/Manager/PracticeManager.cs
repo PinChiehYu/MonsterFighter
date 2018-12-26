@@ -27,10 +27,11 @@ public class PracticeManager : MonoBehaviour {
     }
 
     void Start () {
+        SceneSwitcher.instance.OnSecenLoaded += StartNewRound;
         fininshCanvas.SetActive(false);
         InstantiateCharacters();
         RegisterEvent();
-        StartNewRound();
+        ResetPlayers();
     }
 
     private void InstantiateCharacters()
@@ -52,7 +53,6 @@ public class PracticeManager : MonoBehaviour {
             plyinf.OnHpChange += information.OnPlayerHpChange(i);
             plyinf.OnMpChange += information.OnPlayerMpChange(i);
             plyinf.OnKnockdownChange += information.OnPlayerKnockdownChange(i);
-            //plyinf.OnHpChange += comboSets[i].OnPlayerHpChange;
             playerChars[i].GetComponent<CombatHandler>().OnReceiveCrit += StartShaking;
             playerChars[i].GetComponent<CombatHandler>().OnReceiveAttack += RestLockHpMp;
         }
@@ -83,28 +83,6 @@ public class PracticeManager : MonoBehaviour {
             playerChars[i].GetComponent<PhysicsObject>().ResetPhysics();
 
             targetGroup.m_Targets[i].weight = 1;
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SwitchPause();
-        }
-    }
-
-    private void SwitchPause()
-    {
-        if (Time.timeScale == 0f)
-        {
-            information.TurnOffAnnounce();
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            Time.timeScale = 0f;
-            information.TurnOnAnnounce("PAUSE");
         }
     }
 

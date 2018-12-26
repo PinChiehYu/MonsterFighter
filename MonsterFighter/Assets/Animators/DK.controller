@@ -224,7 +224,7 @@ MonoBehaviour:
     startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
     hitClip: {fileID: 0}
     damage: 150
-    applyVelocity: {x: -20, y: 8}
+    applyVelocity: {x: -17, y: 8}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   switchFrame: -1
@@ -599,7 +599,7 @@ MonoBehaviour:
     acceleration: {x: 0, y: 0}
   - triggerFrame: 37
     useDefaultGravity: 0
-    initVelocity: {x: 0, y: -70}
+    initVelocity: {x: 0, y: -85}
     acceleration: {x: 0, y: 0}
   - triggerFrame: 39
     useDefaultGravity: 0
@@ -696,7 +696,7 @@ MonoBehaviour:
     startClip: {fileID: 8300000, guid: 4e37afa2ad50f3a43844e205946c400e, type: 3}
     hitClip: {fileID: 8300000, guid: 8115f389314ee454aadd50686abb72b8, type: 3}
     damage: 120
-    applyVelocity: {x: 0, y: 50}
+    applyVelocity: {x: 0, y: 25}
     projectile: {fileID: 0}
     launchPoint: {x: 0, y: 0}
   switchFrame: -1

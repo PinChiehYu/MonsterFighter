@@ -27,8 +27,6 @@ public class BattleManager : MonoBehaviour {
 
     void Awake ()
     {
-        roundCounter = 1;
-
         information = GameObject.Find("Information").GetComponent<Information>();
         pivotList = GameObject.Find("PivotSet").GetComponent<PivotSet>().GetPivotsPosition();
         targetGroup = GameObject.Find("CharGroup").GetComponent<CinemachineTargetGroup>();
@@ -38,19 +36,20 @@ public class BattleManager : MonoBehaviour {
 
     void Start()
     {
-        fininshCanvas.SetActive(false);
+        SceneSwitcher.instance.OnSecenLoaded += StartNewRound;
         Time.timeScale = 0f;
+        roundCounter = 1;
+        fininshCanvas.SetActive(false);
         InstantiateCharacters();
         RegisterEvent();
         ResetPlayers();
-        SceneSwitcher.instance.OnSecenLoaded += StartNewRound;
     }
 
     private void InstantiateCharacters()
     {
         playerChars[0] = GameManager.Instance.CreateCharacter(0, pivotList[0], pivotList[1]);
         playerChars[1] = GameManager.Instance.CreateCharacter(1, pivotList[2], pivotList[3]);
-        StopPlayer();
+        StopPlayers();
 
         targetGroup.m_Targets[0].target = playerChars[0].transform;
         targetGroup.m_Targets[0].radius = 3;
@@ -76,9 +75,16 @@ public class BattleManager : MonoBehaviour {
     {
         isEnd = false;
         countdownTimer = maxTimePerRound;
+        StopPlayers();
         CleanUpProjectiles();
         ResetPlayers();
         StartCoroutine(StartRoundDisplay(roundCounter));
+    }
+
+    private void StopPlayers()
+    {
+        playerChars[0].GetComponent<PlayerController>().SetInputActivate(false, false);
+        playerChars[1].GetComponent<PlayerController>().SetInputActivate(false, false);
     }
 
     private void CleanUpProjectiles()
@@ -113,6 +119,32 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
+    private void CharacterDie(int id)
+    {
+        targetGroup.m_Targets[id].weight = 0;
+        EndRound(id * -1 + 1);
+    }
+
+    IEnumerator StartRoundDisplay(int roundNumber)
+    {
+        Time.timeScale = 0;
+        information.TurnOnAnnounce(string.Format("Round {0}", roundNumber));
+        yield return new WaitForSecondsRealtime(3);
+        information.TurnOnAnnounce("Fight!");
+        yield return new WaitForSecondsRealtime(1);
+        information.TurnOffAnnounce();
+        WakeUpPlayers();
+        Time.timeScale = 1;
+    }
+
+    private void WakeUpPlayers()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            playerChars[i].GetComponent<PlayerController>().WakeUp();
+        }
+    }
+
     private void EndRound(int winnerId)
     {
         if (isEnd) return;
@@ -127,49 +159,8 @@ public class BattleManager : MonoBehaviour {
 
         playerWinCount[winnerId]++;
         roundCounter++;
-        for (int i = 0; i < 2; i++)
-        {
-            playerChars[i].GetComponent<PlayerController>().SetInputActivate(false, false);
-        }
+        StopPlayers();
         StartCoroutine(EndRoundDisplay(istimeup, winnerId));
-    }
-
-    private void EndBattle()
-    {
-        StartCoroutine("EndBattleDisplay");
-    }
-
-    private void CharacterDie(int id)
-    {
-        targetGroup.m_Targets[id].weight = 0;
-        EndRound(id * -1 + 1);
-    }
-
-    IEnumerator StartRoundDisplay(int roundNumber)
-    {
-        StopPlayer();
-        Time.timeScale = 0;
-        information.TurnOnAnnounce(string.Format("Round {0}", roundNumber));
-        yield return new WaitForSecondsRealtime(3);
-        information.TurnOnAnnounce("Fight!");
-        yield return new WaitForSecondsRealtime(1);
-        information.TurnOffAnnounce();
-        WakeUpPlayers();
-        Time.timeScale = 1;
-    }
-
-    private void StopPlayer()
-    {
-        playerChars[0].GetComponent<PlayerController>().SetInputActivate(false, false);
-        playerChars[1].GetComponent<PlayerController>().SetInputActivate(false, false);
-    }
-
-    private void WakeUpPlayers()
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            playerChars[i].GetComponent<PlayerController>().WakeUp();
-        }
     }
 
     IEnumerator EndRoundDisplay(bool isTimeUp, int winnerId)

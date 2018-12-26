@@ -100,13 +100,13 @@ MonoBehaviour:
   combatList:
   - combatType: 1
     triggerFrame: 3
-    isKnockDown: 0
+    isKnockDown: 1
     stiffTime: 0.4
     isCrit: 1
     startClip: {fileID: 8300000, guid: ab66ed614c350c34c9299eeb7691b369, type: 3}
     hitClip: {fileID: 0}
     damage: 150
-    applyVelocity: {x: -12, y: 6}
+    applyVelocity: {x: -17, y: 6}
     projectile: {fileID: 1140254332370364, guid: c1b54be318e31e74d8f5e2af20a16185,
       type: 2}
     launchPoint: {x: 0, y: 1.5}
